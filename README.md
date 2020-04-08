@@ -30,6 +30,7 @@ This is a high-level platform for restaurants where customers could order the me
 - Pay platform
 - Intolerance filter
 - Customize error messages
+- Screensaver 
 
 
 ## Tech challenge
