@@ -10,9 +10,18 @@ exports.isNotLoggedIn = () => (req, res, next) => {
   else next(createError(403));
 };
 
-exports.validationLoggin = () => (req, res, next) => { // Validacion mínima al loguearse
-  const { company, password } = req.body;
+/* Al tener 2 Logins, uno como compañía (admin) y otro como employee, se comprueba cosas distintas
+ya que en los forms los inputs van a tener nombres distintos */
 
-  if (!company || !password) next(createError(400));
+
+//Login compañía
+exports.validationLogginCompany = () => (req, res, next) => { // Validacion mínima al loguearse
+  const { name, password, email } = req.body;
+
+  if (!name || !password || !email ) next(createError(400));
   else next();
 }
+
+
+
+
