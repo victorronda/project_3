@@ -6,6 +6,7 @@ const plateSchema = new Schema({
   typeItem: {type: String, enum: ['Dessert', 'Drinks', 'Appetizers', 'Main Plate', 'Second Plate']},
   ingredients: Array,
   description: String,
+  image: String,
   price: Number,
   quantity: Number
 }, {
