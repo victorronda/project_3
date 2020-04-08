@@ -10,9 +10,9 @@ exports.isNotLoggedIn = () => (req, res, next) => {
   else next(createError(403));
 };
 
-exports.validationLoggin = () => (req, res, next) => {
-  const { username, password } = req.body;
+exports.validationLoggin = () => (req, res, next) => { // Validacion mínima al loguearse
+  const { company, password } = req.body;
 
-  if (!username || !password) next(createError(400));
+  if (!company || !password) next(createError(400));
   else next();
 }
