@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const menuSchema = new Schema({
+const employeeSchema = new Schema({
   name: String,
-  plates: [{type: Schema.Types.ObjectId, ref: "Plate"}],
+  password: String,
   companyId: [{type: Schema.Types.ObjectId, ref: "Company"}]
 }, {
   timestamps: {
@@ -12,6 +12,6 @@ const menuSchema = new Schema({
   },
 });
 
-const Menu = mongoose.model('Menu', menuSchema);
+const Employee = mongoose.model('Employee', employeeSchema);
 
-module.exports = Menu;
+module.exports = Employee;
