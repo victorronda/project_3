@@ -58,6 +58,14 @@ router.post('/staff/add', isLoggedIn(), formFullfilledLogin(), async (req, res, 
 			const hashPass = bcrypt.hashSync(password, salt);
 			const newEmployee = await Employee.create({ name, password: hashPass, companyId: req.session.currentUser});
 			res.status(200).json(newEmployee)
+
+/* POR FIIIN! ACTUALIZAMOS MODELO COMPANY TRAS AÑADIR, LO USAREMOS EN MUCHAS RUTAS! */
+			const companyUpdate=await Company.findByIdAndUpdate(
+				req.session.currentUser, 
+				{ $push: { employees: newEmployee} }, // En este caso, habrá que hacer el push a Menu para que entre en el array que tiene de plates?
+				{ new: true }
+				);
+			res.status(200).json(companyUpdate)
 		}
 	} catch (error) {
 		next(error);

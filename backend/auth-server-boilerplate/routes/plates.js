@@ -14,7 +14,7 @@ router.use(isLoggedIn()); // Si no pusieramos este .use tendriamos que llamar a 
 // Create plate
 router.post("/add/plate", async (req, res, next) => { 
     const { name, typeItem, ingredients, description, image, price, quantity } = req.body;
-    const companyId = req.session.currentUser._id;
+    const companyId = req.session.currentUser;
     const plate = await Plate.create({ name, typeItem, ingredients, description, image, price, quantity });
 
     req.session.currentUser = await Plate.findByIdAndUpdate(
