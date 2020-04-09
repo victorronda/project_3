@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const plateSchema = new Schema({
+const dishSchema = new Schema({
   name: String,
   typeItem: {type: String, enum: ['Dessert', 'Drinks', 'Appetizers', 'Main Plate', 'Second Plate']},
   ingredients: Array,
@@ -16,6 +16,6 @@ const plateSchema = new Schema({
   },
 });
 
-const Plate = mongoose.model('Plate', plateSchema);
+const Dish = mongoose.model('Dish', dishSchema);
 
-module.exports = Plate;
+module.exports = Dish;

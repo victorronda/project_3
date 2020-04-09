@@ -9,16 +9,16 @@ const Menu = require('../models/Menu');
 
 
 // HELPER FUNCTIONS -> me lo he traído por si acaso, creo que no es necesario así luego borrar si eso
-const { isLoggedIn, isNotLoggedIn, validationLogginCompany } = require('../helpers/middlewares');
+const { isLoggedIn} = require('../helpers/middlewares');
+router.use(isLoggedIn())
 
 // Añadir, editar y borrar cartas
 
 //Añadimos una carta nueva (new Menu)
-router.post('/menu/add', isLoggedIn(), async (req, res, next) => {
-	const { name, plates } = req.body;
-	req.session.currentUser = theCompanyID;
-
-	const newMenu = await Menu.create({ name, plates, companyId: theCompanyID });
+router.post('/menu/add', async (req, res, next) => {
+	const { name, dishes } = req.body;
+	
+	const newMenu = await Menu.create({ name, dishes, companyId: req.session.currentUser });
 	try {
 		res
 			.status(200) //  OK
@@ -29,7 +29,7 @@ router.post('/menu/add', isLoggedIn(), async (req, res, next) => {
 });
 
 //Editamos una carta (edit Menu)
-router.put('/menu/:idMenu', isLoggedIn(), async (req, res, next) => {
+router.put('/menu/:idMenu', async (req, res, next) => {
 	if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
 		res.status(400).json({ message: 'Specified id is not valid' }); //Ya veremos si finalmente se renderizaría este error así y donde
 		return;
@@ -46,7 +46,7 @@ router.put('/menu/:idMenu', isLoggedIn(), async (req, res, next) => {
 });
 
 //Eliminamos una carta (delete Menu)
-router.delete('/menu/:idMenu', isLoggedIn(), async (req, res, next) => {
+router.delete('/menu/:idMenu', async (req, res, next) => {
 	if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
 		res.status(400).json({ message: 'Specified id is not valid' }); //Ya veremos si finalmente se renderizaría este error así y donde
 		return;
@@ -75,7 +75,7 @@ router.delete('/menu/:idMenu', isLoggedIn(), async (req, res, next) => {
 estarán visibles a los clientes? Supongo que en MenuClientView pero habrá que cambiar la vista en caso de que hayan 
 más de una carta disponible */
 
-router.get('/menu/client/:idMenu', isLoggedIn(), async (req, res, next) => {
+router.get('/menu/client/:idMenu', async (req, res, next) => {
 	/* Siempre valido si esta logeado ( isLoggedIn() ) ya que sino cualquier persona que escribiera la ruta /menu/client en su 
 navegador podría entrar */
 	if (!mongoose.Types.ObjectId.isValid(req.params.idMenu)) {
@@ -100,7 +100,7 @@ navegador podría entrar */
 /* Cuando veamos el listado de todos las cartas(menus) y queramos seleccionemos uno en concreto */
 
 
-router.get('/menu/admin/:idMenu', isLoggedIn(), async (req, res, next) => {
+router.get('/menu/admin/:idMenu', async (req, res, next) => {
 	if (!mongoose.Types.ObjectId.isValid(req.params.idMenu)) {
 		res.status(400).json({ message: 'Specified id is not valid' }); //Ya veremos si finalmente se renderizaría este error así y donde
 		return;
@@ -129,7 +129,7 @@ router.get('/menu/admin', isLoggedIn(), async (req, res, next) => {
     }
     
     const allAdminMenus = await Menu.find()
-                                .populate('plates')
+                                .populate('dishes')
                                 .populate('companyId');
 	try {
 		res
