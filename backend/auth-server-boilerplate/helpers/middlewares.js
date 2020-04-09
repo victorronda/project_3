@@ -5,6 +5,13 @@ exports.isLoggedIn = () => (req, res, next) => {
   else next(createError(401));
 };
 
+exports.isLoggedInStaff = () => (req, res, next) => {
+  if (companyId === req.session.currentUser) next();
+  else next(createError(401));
+};
+
+
+
 exports.isNotLoggedIn = () => (req, res, next) => {
   if (!req.session.currentUser) next();
   else next(createError(403));
@@ -15,12 +22,20 @@ ya que en los forms los inputs van a tener nombres distintos */
 
 
 //Login compañía
-exports.validationLogginCompany = () => (req, res, next) => { // Validacion mínima al loguearse
-  const { name, password, email } = req.body;
+exports.formFullfilled = () => (req, res, next) => { // Validacion mínima al loguearse
+const { name, password, email} = req.body
 
   if (!name || !password || !email ) next(createError(400));
   else next();
 }
+
+
+exports.formFullfilledLogin = () => (req, res, next) => { // Validacion mínima al loguearse
+  const { name, password} = req.body
+  
+    if (!name || !password) next(createError(400));
+    else next();
+  }
 
 
 
