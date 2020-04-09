@@ -14,7 +14,7 @@ const cors = require("cors");
 const authRouter=require('./routes/auth')
 const employeesRouter=require('./routes/employees')
 const menusRouter=require('./routes/menus')
-const platesRouter=require('./routes/plates')
+const dishesRouter=require('./routes/dishes')
 const tablesRouter=require('./routes/tables')
 
 
@@ -72,7 +72,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use('/auth', authRouter)
 app.use('/employees', employeesRouter)
 app.use('/menus', menusRouter)
-app.use('/plates', platesRouter)
+app.use('/dishes', dishesRouter)
 /* app.use('/tables', tablesRouter) */
 
 

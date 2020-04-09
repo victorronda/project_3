@@ -5,12 +5,6 @@ exports.isLoggedIn = () => (req, res, next) => {
   else next(createError(401));
 };
 
-exports.isLoggedInStaff = () => (req, res, next) => {
-  if (companyId === req.session.currentUser) next();
-  else next(createError(401));
-};
-
-
 
 exports.isNotLoggedIn = () => (req, res, next) => {
   if (!req.session.currentUser) next();

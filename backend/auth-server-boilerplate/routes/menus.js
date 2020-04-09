@@ -16,9 +16,9 @@ router.use(isLoggedIn())
 
 //Añadimos una carta nueva (new Menu)
 router.post('/menu/add', async (req, res, next) => {
-	const { name, plates } = req.body;
+	const { name, dishes } = req.body;
 	
-	const newMenu = await Menu.create({ name, plates, companyId: req.session.currentUser });
+	const newMenu = await Menu.create({ name, dishes, companyId: req.session.currentUser });
 	try {
 		res
 			.status(200) //  OK
@@ -129,7 +129,7 @@ router.get('/menu/admin', isLoggedIn(), async (req, res, next) => {
     }
     
     const allAdminMenus = await Menu.find()
-                                .populate('plates')
+                                .populate('dishes')
                                 .populate('companyId');
 	try {
 		res
