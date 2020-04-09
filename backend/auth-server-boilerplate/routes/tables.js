@@ -11,10 +11,10 @@ router.use(isLoggedIn())
 
 // Add Table
 router.post('/add', async (req, res, next) => {
-	const { number, dishes, bill } = req.body;
+	const { number, dishes } = req.body;
 	
 	try {
-		const newTable = await Table.create({ number, dishes, bill, companyId: req.session.currentUser });		
+		const newTable = await Table.create({ number, dishes, companyId: req.session.currentUser });		
 		await Company.findByIdAndUpdate(
 				req.session.currentUser, 
 				{ $push: { tables: newTable} },
