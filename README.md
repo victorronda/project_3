@@ -11,9 +11,9 @@ This is a high-level platform for restaurants where customers could order the me
 - Logout: As a user I can logout from the platform so no one else can use it
 - Order request: As a client I can demand the order on my own screen.
 - CRUD menu: As a user I can create, edit and delete my menus
-- CRUD plates: As a user I can create, edit and delete my plates
+- CRUD dishes: As a user I can create, edit and delete my dishes
 - CRUD table: As a user I can create, edit and delete my tables
-- Random plates: As a user I can look for a random recipe according to the ingredients that I have in stock.
+- Random dishes: As a user I can look for a random recipe according to the ingredients that I have in stock.
 
 
 ## MVP
@@ -31,6 +31,7 @@ This is a high-level platform for restaurants where customers could order the me
 - Intolerance filter
 - Customize error messages
 - Screensaver 
+- Several menus
 
 
 ## Tech challenge

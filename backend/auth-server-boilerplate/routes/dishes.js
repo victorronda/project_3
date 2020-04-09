@@ -58,12 +58,6 @@ router.get('/:_id', async (req,res,next) => {
 
 
 
-
-
-
-
-
-
 // Edit dish
 router.put("/:_id/edit", async (req, res, next) => {    
     const { name, typeItem, ingredients, description, price, quantity } = req.body;//Quito de dentro la image
