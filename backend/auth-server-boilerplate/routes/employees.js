@@ -98,7 +98,12 @@ router.delete('/staff/:_id/delete', isLoggedIn(), async (req, res, next) => {
 	}
 	try {
 		await Employee.findByIdAndDelete({ _id });
-		res.status(200).json({ message: 'Employee deleted' });
+		await Company.findByIdAndUpdate(
+			req.session.currentUser, 
+			{ $pull: { employees: _id} }, // En este caso, habrá que hacer el push a Menu para que entre en el array que tiene de dishes?
+			{ new: true }
+			);
+			res.status(200).json({ message: 'Employee deleted' });
 	} catch (error) {
 		next(error);
 	}

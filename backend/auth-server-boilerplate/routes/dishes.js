@@ -7,48 +7,52 @@ const Company = require("../models/Company");
 const Dish = require("../models/Dish");
 const Table = require("../models/Table");
 const Menu = require("../models/Menu");
+const uploadCloud = require('../config/cloudinary.js');
 
 const { isLoggedIn } = require("../helpers/middlewares");
-router.use(isLoggedIn()); // Si no pusieramos este .use tendriamos que llamar a la función en cada ruta
+router.use(isLoggedIn()); 
 
-// Create Dish
-router.post("/add/dish", async (req, res, next) => { 
-    const { name, typeItem, ingredients, description, image, price, quantity } = req.body;
-    const companyId = req.session.currentUser;
-    const dish = await Dish.create({ name, typeItem, ingredients, description, image, price, quantity });
+// Create Dish ///OJOOOOO FALTA REVISAR EL PROBLEMILLA DEL IMAGE FILE
+router.post("/add", uploadCloud.single('image'), async (req, res, next) => { 
+    const { name, typeItem, ingredients, description, price, quantity } = req.body;
+    /* const image = req.file.url; Nos da problemas al coger el file */
 
-    req.session.currentUser = await Dish.findByIdAndUpdate(
-        { "_id": companyId }, 
-        { $push: { dish: dish._id } }, // En este caso, habrá que hacer el push a Menu para que entre en el array que tiene de dishes?
-        { new: true }
-        );
+    try{
 
-    res.json(dish);
+        const dish = await Dish.create({ name, typeItem, ingredients, description, price, quantity });/* Falta poner image dentro del 
+         create cuando solucionemos el problema de la linea 19   */
+        res.status(200).json(dish);
+    } catch(err) {
+        console.log('You have the error: ', err)
+        next(err)
+    } 
 })
 
-// Edit dish
-router.put("/dish/:_id/edit", async (req, res, next) => {
-    const { _id } = req.params;
-    const { name, typeItem, ingredients, description, image, price, quantity } = req.body;
-    const updatedDish = await Dish.findByIdAndUpdate(
-        { "_id": _id }, 
-        { $set: {name, typeItem, ingredients, description, image, price, quantity} }, 
-        { new: true });
 
-    res.status(200).json(updatedDish);
+
+
+// Edit dish
+router.put("/:_id/edit", async (req, res, next) => {    
+    const { name, typeItem, ingredients, description, price, quantity } = req.body;//Quito de dentro la image
+    try{
+        const updatedDish = await Dish.findByIdAndUpdate(
+            req.params._id , 
+            { $set: {name, typeItem, ingredients, description, price, quantity} }, //Quito de dentro la image
+            { new: true });
+    
+        res.status(200).json(updatedDish);
+    } catch(err) {
+        console.log('You have the error: ', err)
+        next(err)
+    }
 })
 
 // Delete dish
-router.delete("/dish/:_id/delete", async (req, res, next) => {
-
-    if(!mongoose.Types.ObjectId.isValid(req.params.id)) {
-      res.status(400).json({ message: 'Specified id is not valid' });
-      return;
-    }
+router.delete("/:_id/delete", async (req, res, next) => {
     
     try {
-        await Dish.findByIdAndRemove(req.params.id);
-        res.status(200).json({ message: `Dish with ${req.params.id} deleted.` });
+        await Dish.findByIdAndRemove(req.params._id);
+        res.status(200).json({ message: `Dish with ${req.params._id} deleted.` });
     } catch (err) {
         next(error)
     }

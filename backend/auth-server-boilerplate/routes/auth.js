@@ -6,7 +6,7 @@ const createError = require('http-errors');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const Company = require('../models/Company');
-const Employee = require('../models/Employee');
+
 
 // HELPER FUNCTIONS
 const { isLoggedIn, isNotLoggedIn, formFullfilled, formFullfilledLogin } = require('../helpers/middlewares');
