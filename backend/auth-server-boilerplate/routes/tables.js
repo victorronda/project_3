@@ -5,53 +5,41 @@ const Menu = require('../models/Menu');
 const Company = require('../models/Company');
 const Table = require('../models/Table');
 const Dish = require('../models/Dish');
-const Table = require('../models/Table');
-const Company = require('../models/Company');
-const Dish = require('../models/Dish')
 
 
 const { isLoggedIn} = require('../helpers/middlewares');
 router.use(isLoggedIn())
 
-
-
 // Añadir y editar mesas --> Añadir (Amalia) y editar (Víctor)
-
-const {isLoggedIn} = require('../helpers/middlewares');
-router.use(isLoggedIn())
 
 // Add Table
 router.post('/add', async (req, res, next) => {
-	const { number, dishes } = req.body;
+	const { numberTables } = req.body;
 	
 	try {
-		const newTable = await Table.create({ number, dishes, companyId: req.session.currentUser });		
-		await Company.findByIdAndUpdate(
-				req.session.currentUser, 
-				{ $push: { tables: newTable} },
-				{ new: true }
-				);
-			res.status(200).json(newTable)
+		
+		
+			for (let i=1;i<=numberTables;i++){
+			const newTable=await Table.create({number: i, dishes: [], companyId: req.session.currentUser, bill:0})
+
+
+			await Company.findByIdAndUpdate(
+					req.session.currentUser, 
+					{ $push: { tables: newTable } },
+					{ new: true }
+					);
+
+		}	
+			res.status(200).json({message: 'Tables created successful'}) 
+
 	} catch (error) {
 		next(error);
 	}
 });
 
-// Edit Table
-router.put('/:_id/edit', async (req, res, next) => {
-
-
-
-
-
-
-
-
-
-
 
 //Editar nº de mesas
-router.put('/tables', async (req,res,next) => {
+router.put('/edit', async (req,res,next) => {
 const {numberTables} = req.body
 
 
@@ -62,29 +50,37 @@ Si se me ocurre otra forma de hacerlo lo intento, pero por ahora es lo que hay..
     Table.collection.drop();
 
     try {
-    for (let i=1;i<=numberTables;i++){
-        const asManyTablesAsNumberEdit = await Table.create({number: 0, dishes: [], companyId: [], bill:0})
-        res.status(200).json(asManyTablesAsNumberEdit)
-    }
-    } catch (error) {
+		await Company.findByIdAndUpdate(
+			req.session.currentUser,{ tables: [] } 
+			,
+			{ new: true }
+			);
+
+		for (let i=1;i<=numberTables;i++){
+			const newTable=await Table.create({number: i, dishes: [], companyId: req.session.currentUser, bill:0})
+
+
+			await Company.findByIdAndUpdate(
+					req.session.currentUser,{ $push: { tables: newTable } } 
+					,
+					{ new: true }
+					);
+
+		}	
+			res.status(200).json({message: 'Tables created successful'}) 
+} catch (error) {
 		next(error);
 	} 
 })
 
 
 
-
+/* NOS HEMOS QUEDADO POR AQUÍ */
 
 
 // Tener en cuenta borrar platos de la mesa con cada cliente (y el imput de la cantidad de platos) --> Amalia
 
-	try {
-		const editedTable = await Table.findByIdAndUpdate(req.params._id, req.body);
-		res.status(200).json(editedTable);
-	} catch (error) {
-		next(error);
-	}
-});
+	
 
 // Rastaurar carta para próximo cliente
 router.put('menus/:_id/pay', async (req, res, next) => {
@@ -102,6 +98,13 @@ try {
 		next(err);
 	}
 });
+
+
+
+
+
+
+
 
 // No se si necesitamos otro get para que vuelva a salir la carta o simplemente con la actualizacion anterior ya la tenemos
 router.get('menus/:_id', async (req, res, next) => {
