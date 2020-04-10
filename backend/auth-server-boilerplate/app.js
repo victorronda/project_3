@@ -73,7 +73,7 @@ app.use('/auth', authRouter)
 app.use('/employees', employeesRouter)
 app.use('/menus', menusRouter)
 app.use('/dishes', dishesRouter)
-/* app.use('/tables', tablesRouter) */
+app.use('/tables', tablesRouter)
 
 
 

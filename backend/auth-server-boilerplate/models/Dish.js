@@ -8,7 +8,8 @@ const dishSchema = new Schema({
   description: String,
   image: String,
   price: Number,
-  quantity: Number
+  quantity: Number,
+  tables: [{type: Schema.Types.ObjectId, ref: "Table"}]
 }, {
   timestamps: {
     createdAt: 'created_at',

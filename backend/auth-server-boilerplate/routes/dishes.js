@@ -30,6 +30,33 @@ router.post("/add", uploadCloud.single('image'), async (req, res, next) => {
 
 
 
+//List of dishes 
+router.get('/showAll', async (req,res, next) => {
+
+    try {
+        const allDishes = await Dish.find()
+        res.status(200).json(allDishes);
+	} catch (error) {
+		next(error);
+    }
+})
+
+
+//A dish, in particular (see details)
+router.get('/:_id', async (req,res,next) => {
+
+    try {
+        const myDish = await Dish.findById(req.params._id)      
+        res.status(200).json(myDish);
+	} catch (error) {
+		next(error);
+    }
+
+})
+
+
+
+
 
 // Edit dish
 router.put("/:_id/edit", async (req, res, next) => {    
