@@ -5,7 +5,7 @@ const companySchema = new Schema({
   name: String,
   email: String,
   password: String,
-  employees: [{type: Schema.Types.ObjectId, ref: "Employee"}], // serán objetos de name y password asignados por el Admin en staff, además del Id de la empresa
+  employees: [{type: Schema.Types.ObjectId, ref: "Employee"}],
   menus: [{type: Schema.Types.ObjectId, ref: "Menu"}],
   tables: [{type: Schema.Types.ObjectId, ref: "Table"}]
 }, {
