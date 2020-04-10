@@ -35,7 +35,6 @@ router.post('/login',  isLoggedIn(), formFullfilledLogin(), async (req, res, nex
 
 // Employee list
 router.get('/staff', isLoggedIn(), async (req, res, next) => {
-	// No estoy segura si tendrá que buscarlos con el companyId para que salgan todos los que tiene contratado la empresa
 	try {
 		const employees = await Employee.find();
 		res.status(200).json(employees);
@@ -46,7 +45,6 @@ router.get('/staff', isLoggedIn(), async (req, res, next) => {
 
 
 router.post('/staff/add', isLoggedIn(), formFullfilledLogin(), async (req, res, next) => {
-	// Cuando se loguee tendran que coincidir las keys con algun objeto de los que haya en Company
 	const { name, password } = req.body;
 	try {
 		const user = await Employee.findOne({ name });
@@ -62,7 +60,7 @@ router.post('/staff/add', isLoggedIn(), formFullfilledLogin(), async (req, res, 
 /* POR FIIIN! ACTUALIZAMOS MODELO COMPANY TRAS AÑADIR, LO USAREMOS EN MUCHAS RUTAS! */
 			const companyUpdate=await Company.findByIdAndUpdate(
 				req.session.currentUser, 
-				{ $push: { employees: newEmployee} }, // En este caso, habrá que hacer el push a Menu para que entre en el array que tiene de dishes?
+				{ $push: { employees: newEmployee} },
 				{ new: true }
 				);
 			res.status(200).json(companyUpdate)
@@ -79,7 +77,6 @@ router.put('/staff/:_id/edit', isLoggedIn(), async (req, res, next) => {
 	console.log('Este req params no mola', req.params._id)
 	
 	const { name, password } = req.body;
-	//console.log(name);
 	try {
 		const salt = bcrypt.genSaltSync(saltRounds);
 		const hashPass = bcrypt.hashSync(password, salt);
@@ -100,7 +97,7 @@ router.delete('/staff/:_id/delete', isLoggedIn(), async (req, res, next) => {
 		await Employee.findByIdAndDelete({ _id });
 		await Company.findByIdAndUpdate(
 			req.session.currentUser, 
-			{ $pull: { employees: _id} }, // En este caso, habrá que hacer el push a Menu para que entre en el array que tiene de dishes?
+			{ $pull: { employees: _id} },
 			{ new: true }
 			);
 			res.status(200).json({ message: 'Employee deleted' });

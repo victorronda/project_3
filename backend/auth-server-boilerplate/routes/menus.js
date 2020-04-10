@@ -8,8 +8,8 @@ const Company = require('../models/Company');
 
 
 // HELPER FUNCTIONS -> me lo he traído por si acaso, creo que no es necesario así luego borrar si eso
-const { isLoggedIn} = require('../helpers/middlewares');
-router.use(isLoggedIn())
+const {isLoggedIn} = require('../helpers/middlewares');
+router.use(isLoggedIn());
 
 // Añadir, editar y borrar cartas
 
@@ -21,7 +21,7 @@ router.post('/add', async (req, res, next) => {
 		const newMenu = await Menu.create({ name, dishes, companyId: req.session.currentUser });		
 		await Company.findByIdAndUpdate(
 				req.session.currentUser, 
-				{ $push: { menus: newMenu} }, // En este caso, habrá que hacer el push a Menu para que entre en el array que tiene de dishes?
+				{ $push: { menus: newMenu} },
 				{ new: true }
 				);
 			res.status(200).json(newMenu)
