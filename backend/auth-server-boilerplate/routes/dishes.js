@@ -30,7 +30,7 @@ router.post("/add", uploadCloud.single('image'), async (req, res, next) => {
 
 
 
-//List of dishes 
+//List of dishes /* OJOOOOOOO!!!!! FALTA COMPROBAR EN POSTMAN */
 router.get('/showAll', async (req,res, next) => {
 
     try {
@@ -42,7 +42,7 @@ router.get('/showAll', async (req,res, next) => {
 })
 
 
-//A dish, in particular (see details)
+//A dish, in particular (see details) /* OJOOOOOOO!!!!! FALTA COMPROBAR EN POSTMAN */
 router.get('/:_id', async (req,res,next) => {
 
     try {

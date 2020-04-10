@@ -64,11 +64,6 @@ router.delete('/:_id/delete', async (req, res, next) => {
 
 //MENU CLIENTE -- Realmente las cantidades se ponen en el plato de la mesa, no en el menú.
 
-/* Aquí mostramos el menu que hayamos seleccionado. OJO!! Si hay varias cartas creadas, ¿dónde seleccionamos la que estárá o
-estarán visibles a los clientes? Supongo que en MenuClientView pero habrá que cambiar la vista en caso de que hayan 
-más de una carta disponible */
-
-
 //Ver el menú tanto como admin como cliente
 router.get('/:_id', async (req, res, next) => {
 	/* Siempre valido si esta logeado ( isLoggedIn() ) ya que sino cualquier persona que escribiera la ruta /menu/client en su 

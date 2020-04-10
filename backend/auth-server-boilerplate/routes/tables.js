@@ -81,7 +81,8 @@ const { quantity } = req.body;
     try {
         const orderedDish = await Dish.findByIdAndUpdate(req.params.dishId,{$and: [{quantity},{$push: {tables: req.params.tableId}}]})
         res.json(orderedDish);
-        const updatedTable = await Table.findByIdAndUpdate(req.params.tableId,{$push: {dishes: req.params.dishId}})   
+        const updatedTable = await Table.findByIdAndUpdate(req.params.tableId,{$push: {dishes: req.params.dishId}})/* Quizás si no
+        es req.params.dishId pueda usar el orderedDish para {$push: {dishes: orderedDish}}*/   
         res.status(200).json(updatedTable);   
 	} catch (error) {
 		next(error);
