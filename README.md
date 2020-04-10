@@ -4,15 +4,14 @@
 This is a high-level platform for restaurants where customers could order the menus in digital-modern way and, as the restaurant, you can manage all the tasks needed to succeed.
 
 ## User stories
-- 404: As an anon/user I can see a 404 page if I try to reach a page that does not exist so that I know it's my fault
-- Signup: As an anon I can sign up in the platform so that I can start managing my restaurant
+- 404: As an anon/user I can see a 404 page if I try to reach a page that does not exist so that I know it's my fault.
+- Signup: As an anon I can sign up in the platform so that I can start managing my restaurant.
 - Login: As a user I can login to the platform so I can edit and see according to my user's role (admin or waiter).
-- Logout: As a user I can logout from the platform so no one else can use it
+- Logout: As a user I can logout from the platform so no one else can use it.
 - Order request: As a client I can demand the order on my own screen.
-- CRUD menu: As a user I can create, edit and delete my menus
-- CRUD dishes: As a user I can create, edit and delete my dishes
-- CRUD table: As a user I can create, edit and delete my tables
-- Random dishes: As a user I can look for a random recipe according to the ingredients that I have in stock.
+- CRUD menu: As a user I can create, edit and delete my menus.
+- CRUD dishes: As a user I can create, edit and delete my dishes.
+- CRUD table: As a user I can create, edit and delete my tables.
 
 ## MVP
 - Connect Back-end and Front-end
@@ -44,7 +43,7 @@ This is a high-level platform for restaurants where customers could order the me
 |      **Path**      | **Component**             |    **Permissions**   | **Behavior**                                   |
 |--------------------|---------------------------| ---------------------| -----------------------------------------------|
 | `/`                | HomePageComponent         | Public route         | HomePage                                       |
-| `/signup`          | SignupPageComponent       | Private route        | Signup form, link to login, navigate to homepage after signup|
+| `/signup`          | SignupPageComponent       | Public route         | Signup form, link to login, navigate to homepage after signup|
 | `/`                |                           |                      |                                                |
 | `/`                |                           |                      |                                                |
 
