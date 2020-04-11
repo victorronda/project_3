@@ -101,7 +101,17 @@ This is a high-level platform for restaurants where customers could order the me
     number: Number, 
     dishes: [{type: Schema.Types.ObjectId, ref: "Dish"}],
     companyId: [{type: Schema.Types.ObjectId, ref: "Company"}],
-    bill: Number
+    orders: [{type: Schema.Types.ObjectId, ref: "Order"}]
+ }
+````
+
+- Order Model
+````
+ {
+    dishesId: [{type: Schema.Types.ObjectId, ref: "Dish"}], 
+    tableId: [{type: Schema.Types.ObjectId, ref: "Table"}],
+    quantity: Array,
+    bill: number
  }
 ````
 
@@ -120,6 +130,8 @@ This is a high-level platform for restaurants where customers could order the me
 | `PUT`         | `/menus/:_id/edit`           |                                   | 200              | 400            | Admin can edit menus                 |
 | `DELETE`      | `/menus/:_id/delete`         |                                   | 200              | 400            | Admin can delete menus               |
 | `GET`         | `/menus/:_id`                |                                   | 200              | 400            | Shows the menu that customers are going to see|
+| `GET`         | `/dishes/showAll`            |                                   | 200              | 400            | Shows the dishes that the admin has created|
+| `GET`         | `/dishes/:id`                |                                   | 200              | 400            | Shows details of each dish           |
 | `POST`        | `/dishes/add`                | {name, typeItem, ingredients, description, image, price}|201|   400   | Admin can create dishes              |
 | `PUT`         | `/dishes/:id/edit`           |                                   | 200              | 400            | Admin can edit dishes                |
 | `DELETE`      | `/dishes/:id/delete`         |                                   | 200              | 400            | Admin can delete dishes              |
