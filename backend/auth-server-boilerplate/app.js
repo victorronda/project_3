@@ -10,13 +10,12 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 const cors = require("cors");
 
-
-const authRouter=require('./routes/auth')
-const employeesRouter=require('./routes/employees')
-const menusRouter=require('./routes/menus')
-const dishesRouter=require('./routes/dishes')
-const tablesRouter=require('./routes/tables')
-
+const authRouter=require('./routes/auth');
+const employeesRouter=require('./routes/employees');
+const menusRouter=require('./routes/menus');
+const dishesRouter=require('./routes/dishes');
+const tablesRouter=require('./routes/tables');
+const ordersRouter=require('./routes/orders');
 
 // MONGOOSE CONNECTION
 mongoose
@@ -63,19 +62,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 // ROUTER MIDDLEWARE
-
-
-
-
-
-
-app.use('/auth', authRouter)
-app.use('/employees', employeesRouter)
-app.use('/menus', menusRouter)
-app.use('/dishes', dishesRouter)
-app.use('/tables', tablesRouter)
-
-
+app.use('/auth', authRouter);
+app.use('/employees', employeesRouter);
+app.use('/menus', menusRouter);
+app.use('/dishes', dishesRouter);
+app.use('/tables', tablesRouter);
+app.use('/orders', ordersRouter);
 
 // ERROR HANDLING
 // catch 404 and forward to error handler

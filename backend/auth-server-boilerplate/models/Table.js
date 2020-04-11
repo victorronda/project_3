@@ -5,7 +5,7 @@ const tableSchema = new Schema({
   number: Number, 
   dishes: [{type: Schema.Types.ObjectId, ref: "Dish"}],
   companyId: [{type: Schema.Types.ObjectId, ref: "Company"}],
-  bill: Number
+  orders: [{type: Schema.Types.ObjectId, ref: "Order"}]
 }, {
   timestamps: {
     createdAt: 'created_at',
