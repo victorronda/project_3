@@ -99,7 +99,6 @@ This is a high-level platform for restaurants where customers could order the me
 ````
  {
     number: Number, 
-    dishes: [{type: Schema.Types.ObjectId, ref: "Dish"}],
     companyId: [{type: Schema.Types.ObjectId, ref: "Company"}],
     orders: [{type: Schema.Types.ObjectId, ref: "Order"}]
  }
@@ -137,11 +136,10 @@ This is a high-level platform for restaurants where customers could order the me
 | `DELETE`      | `/dishes/:id/delete`         |                                   | 200              | 400            | Admin can delete dishes              |
 | `POST`        | `/tables/add`                | {number, dishes}                  | 201              | 400            | Admin can create tables              |
 | `PUT`         | `/tables/:id/edit`           |                                   | 200              | 400            | Admin can edit tables                |
-| `PUT`         | `/tables/menus/:id/pay`      |                                   | 200              | 400            | Shows original menu fot the following clients|
-| `GET`         | `/tables/menus/:id`          |                                   | 200              | 400            | Shows clean menu for next costumers  |
-| `GET`         | `/tables`                    |                                   | 200              | 400            |                                      |
-| `GET`         | `/tables`                    |                                   | 200              | 400            |                                      |
-| `GET`         | `/tables`                    |                                   | 200              | 400            |                                      |
+| `GET`         | `/tables/showAll`            |                                   | 200              | 400            | Shows all the tables with orders     |
+| `POST`        | `/orders/add/tableId`        |{quantity, dishesId, tableId, bill}| 201              | 400            | Creates a order in the current table |
+| `PUT`         | `/orders/orderId/edit`       |                                   | 200              | 400            | Edit the order in the current table  |
+| `PUT`         | `/orders/:orderId/table/:tableId/confirm`|                       | 200              | 400            | Confirms the final order in the current table|
 
 ## Links
 
