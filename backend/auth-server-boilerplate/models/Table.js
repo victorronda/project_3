@@ -3,7 +3,6 @@ const Schema = mongoose.Schema;
 
 const tableSchema = new Schema({
   number: Number, 
-  dishes: [{type: Schema.Types.ObjectId, ref: "Dish"}],
   companyId: [{type: Schema.Types.ObjectId, ref: "Company"}],
   orders: [{type: Schema.Types.ObjectId, ref: "Order"}]
 }, {

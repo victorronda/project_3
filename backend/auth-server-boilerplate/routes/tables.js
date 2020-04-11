@@ -1,11 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const createError = require('http-errors');
-const Menu = require('../models/Menu');
 const Company = require('../models/Company');
 const Table = require('../models/Table');
-const Dish = require('../models/Dish');
-const Order = require('../models/Order');
 
 const { isLoggedIn} = require('../helpers/middlewares');
 router.use(isLoggedIn());
@@ -17,7 +14,7 @@ router.post('/add', async (req, res, next) => {
 	
 	try {
 		for (let i=1;i<=numberTables;i++){
-		const newTable=await Table.create({number: i, dishes: [], companyId: req.session.currentUser, bill:0});
+		const newTable=await Table.create({number: i, orders: [], companyId: req.session.currentUser, bill:0});
 
 		await Company.findByIdAndUpdate(
 			req.session.currentUser, 
@@ -47,7 +44,7 @@ router.put('/edit', async (req,res,next) => {
 		for (let i=1;i<=numberTables;i++){
 			const newTable=await Table.create(
 			{number: i, 
-			dishes: [], 
+			orders: [], 
 			companyId: req.session.currentUser,
 			bill:0});
 
@@ -68,29 +65,14 @@ router.put('/edit', async (req,res,next) => {
 router.get('/showAll', async (req,res,next) => {
 
     try {
-        const allTablesWithDishes = await Table.find({dishes: {$ne: null}});
+        const allTablesWithOrders = await Table.find({orders: {$ne: null}});
 		/* Habrá que probar si las trae en el mismo orden 
         que se crearon */
-        res.status(200).json(allTablesWithDishes);
+        res.status(200).json(allTablesWithOrders);
 
 	} catch (error) {
 		next(error);
     }
-});
-
-/* MANDAR A COCINA LA MESA (EL PEDIDO) */
-router.post('/:_id', async (req,res,next) => {
-
-    try{
-      	const orderConfirmed = await Company.findByIdAndUpdate(
-		  	req.session.currentUser, 
-		  	{$push: {tables: req.params._id}}
-		  	);
-      	res.status(200).json(orderConfirmed);  
-    } catch (err) {
-        next(err);
-    }
-
 });
 
 module.exports = router;
