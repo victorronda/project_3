@@ -10,7 +10,7 @@ router.use(isLoggedIn());
 router.post("/add", uploadCloud.single('image'), async (req, res, next) => { 
 
     const { name, typeItem, ingredients, description, price, quantity } = req.body;
-    /* const image = req.file.url; Nos da problemas al coger el file */
+    /* const image = req.file.secure_url; Nos da problemas al coger el file */
 
     try{
         const dish = await Dish.create({ name, typeItem, ingredients, description, price, quantity });
