@@ -140,6 +140,7 @@ This is a high-level platform for restaurants where customers could order the me
 | `POST`        | `/orders/add/tableId`        |{quantity, dishesId, tableId, bill}| 201              | 400            | Creates a order in the current table |
 | `PUT`         | `/orders/orderId/edit`       |                                   | 200              | 400            | Edit the order in the current table  |
 | `PUT`         | `/orders/:orderId/table/:tableId/confirm`|                       | 200              | 400            | Confirms the final order in the current table|
+| `DELETE`      | `/orders/staff/:orderId/table/:tableId/delete`|                  | 200              | 400            | Deletes the order                    |
 
 ## Links
 

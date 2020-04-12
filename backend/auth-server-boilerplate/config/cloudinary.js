@@ -8,13 +8,17 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_SECRET
 });
 var storage = cloudinaryStorage({
-  cloudinary: cloudinary,
+  cloudinary,
   folder: 'project-3', // The name of the folder in cloudinary
   allowedFormats: ['jpg', 'png'],
   filename: function(req, file, cb) {
     cb(null, file.originalname); // The file on cloudinary would have the same name as the original file name
+    /*
+    let fileName = res.originalname.split(".");
+    cb(null, fileName[0]); // The file on cloudinary would have the same name as the original file name
+    */ 
   }
 });
 
-const uploadCloud = multer({ storage: storage });
+const uploadCloud = multer({ storage });
 module.exports = uploadCloud;

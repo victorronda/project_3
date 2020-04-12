@@ -13,8 +13,8 @@ router.post('/add', async (req, res, next) => {
 	const { numberTables } = req.body;
 	
 	try {
-		for (let i=1;i<=numberTables;i++){
-		const newTable=await Table.create({number: i, orders: [], companyId: req.session.currentUser, bill:0});
+		for (let i=0;i<numberTables;i++){
+		const newTable=await Table.create({number: 0, orders: [], companyId: req.session.currentUser, bill:0});
 
 		await Company.findByIdAndUpdate(
 			req.session.currentUser, 
@@ -41,9 +41,9 @@ router.put('/edit', async (req,res,next) => {
 			{ new: true }
 			);
 
-		for (let i=1;i<=numberTables;i++){
+		for (let i=0;i<numberTables;i++){
 			const newTable=await Table.create(
-			{number: i, 
+			{number: 0, 
 			orders: [], 
 			companyId: req.session.currentUser,
 			bill:0});
@@ -59,6 +59,22 @@ router.put('/edit', async (req,res,next) => {
 	} catch (error) {
 		next(error);
 	} 
+});
+
+// El numero que le pone el employee a la mesa
+router.put('/:_id/editNumber', async (req, res, next) => {
+	
+	try {
+		const editTable = await Table.findByIdAndUpdate(
+			req.params._id,
+			{ number: req.body.number },
+			{ new: true }
+			);
+		res.status(200).json({editTable});
+
+	} catch (err) {
+		next(err);
+	}
 });
 
 /* TODAS LAS MESAS CON PLATOS (CON PEDIDOS) */
