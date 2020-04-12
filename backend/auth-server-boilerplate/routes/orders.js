@@ -57,4 +57,21 @@ router.put('/:orderId/table/:tableId/confirm', async (req, res, next) => {
 	}
 });
 
+router.delete('/staff/:orderId/table/:tableId/delete', async (req, res, next) => {
+
+	try {
+		await Order.findByIdAndRemove(req.params.orderId);
+	
+		await Table.findByIdAndUpdate(
+			req.params.tableId, 
+			{ $pull: { orders: req.params.orderId} }, 
+			{ new: true }
+			);
+		res.status(200).json({ message: 'Order deleted' });
+
+	} catch (error) {
+		next(error);
+	}
+});
+
 module.exports = router;
