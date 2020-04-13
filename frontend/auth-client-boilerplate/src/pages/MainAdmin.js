@@ -1,4 +1,5 @@
 import React from 'react'
+import { withAuth } from '../context/AuthProvider'
 
 const MainAdmin = () => {
     return (
@@ -8,4 +9,4 @@ const MainAdmin = () => {
     )
 }
 
-export default MainAdmin
+export default withAuth(MainAdmin)

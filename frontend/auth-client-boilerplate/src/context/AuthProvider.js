@@ -1,5 +1,5 @@
 import React from "react";
-import auth from "./auth-service"; // Importamos funciones para llamadas axios a la API
+import auth from "../api/auth-service"; // Importamos funciones para llamadas axios a la API
 const { Consumer, Provider } = React.createContext();
 
 // HOC para crear Consumer
@@ -10,10 +10,11 @@ const withAuth = (WrappedComponent) => {
       return (
         <Consumer>
           {/* El componente <Consumer> provee un callback que recibe el "value" con el objeto Providers */}
-          {({ login, signup, user, logout, isLoggedin }) => {
+          {({ signup, user, loginAdmin, loginEmployee, logout, isLoggedin }) => {
             return (
               <WrappedComponent
-                login={login}
+                loginAdmin={loginAdmin}
+                loginEmployee={loginEmployee}
                 signup={signup}
                 user={user}
                 logout={logout}
@@ -45,21 +46,30 @@ class AuthProvider extends React.Component {
   }
 
   signup = (user) => {
-    const { username, password } = user;
+    const { name, email, password } = user;
 
     auth
-      .signup({ username, password })
+      .signup({ name, email, password })
       .then((user) => this.setState({ isLoggedin: true, user }))
       .catch(({ response }) =>
         this.setState({ message: response.data.statusMessage })
       );
   };
 
-  login = (user) => {
-    const { username, password } = user;
+  loginAdmin = (user) => {
+    const { name, password } = user;
 
     auth
-      .login({ username, password })
+      .loginAdmin({ name, password })
+      .then((user) => this.setState({ isLoggedin: true, user }))
+      .catch((err) => console.log(err));
+  };
+
+  loginEmployee = (user) => {
+    const { name, password } = user;
+
+    auth
+      .loginEmployee({ name, password })
       .then((user) => this.setState({ isLoggedin: true, user }))
       .catch((err) => console.log(err));
   };
@@ -74,20 +84,20 @@ class AuthProvider extends React.Component {
   render() {
     // destructuramos isLoading, isLoggedin y user de this.state y login, logout y signup de this
     const { isLoading, isLoggedin, user } = this.state;
-    const { login, logout, signup } = this;
+    const { loginAdmin, loginEmployee, logout, signup } = this;
 
     return isLoading ? (
       // si está loading, devuelve un <div> y sino devuelve un componente <Provider> con un objeto con los valores: { isLoggedin, user, login, logout, signup}
       // el objeto pasado en la prop value estará disponible para todos los componentes <Consumer>
       <div>Loading</div>
     ) : (
-      <Provider value={{ isLoggedin, user, login, logout, signup }}>
+      <Provider value={{ isLoggedin, user, loginAdmin, loginEmployee, logout, signup }}>
         {this.props.children}
       </Provider>
     ); /*<Provider> "value={}" datos que estarán disponibles para todos los componentes <Consumer> */
   }
 }
 
-export { Consumer, withAuth }; //  <--	RECUERDA EXPORTAR  ! ! !
+export { Consumer, withAuth };
 
-export default AuthProvider; //	<--	RECUERDA EXPORTAR  ! ! !
+export default AuthProvider;

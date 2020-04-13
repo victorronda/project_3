@@ -1,4 +1,5 @@
 import React from 'react'
+import { withAuth } from '../context/AuthProvider'
 
 const MainEmployee = () => {
     return (
@@ -8,4 +9,4 @@ const MainEmployee = () => {
     )
 }
 
-export default MainEmployee
+export default withAuth(MainEmployee)

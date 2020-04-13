@@ -1,14 +1,12 @@
 import React from 'react'
 import { withAuth } from '../context/AuthProvider'
 
-const Home = () => {
-
-    
+const LoginEmployee = () => {
     return (
         <div>
-            <h1>Holiiiiiiii</h1>
+            
         </div>
     )
 }
 
-export default withAuth(Home)
+export default withAuth(LoginEmployee)
