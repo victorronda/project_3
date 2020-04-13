@@ -6,7 +6,7 @@ export default function navbarAdmin() {
     return(
         <div className="navbarAdmin">
             <div>
-                <p>MGBITE</p>
+                <p className="mb-0">MGBITE</p>
             </div>
             <div>
                 <Link className="right" to="/">Profile</Link>
