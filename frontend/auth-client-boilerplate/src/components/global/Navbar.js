@@ -1,7 +1,17 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import auth from '../../api/auth-service';
 
-export default function navbarAdmin() {
+export default function navbarAdmin() {  
+
+    const history = useHistory()
+
+    // FALLAA AQUIIIII
+
+    const handleClick = (e) => {
+        auth.logout()
+        history.push('/signup')
+    }
 
     return(
         <div className="navbarAdmin">
@@ -11,7 +21,7 @@ export default function navbarAdmin() {
             <div>
                 <Link className="right" to="/">Profile</Link>
                 <Link className="right" to="employees/staff">Staff</Link>
-                <Link className="right" to="/auth/logout">Logout</Link>
+                <Link className="right" to="/signup" onClick={(e) => handleClick(e)}>Logout</Link>
             </div>
         </div>
     )
