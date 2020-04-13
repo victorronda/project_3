@@ -35,7 +35,7 @@ router.post('/signup', isNotLoggedIn(), formFullfilled(), async (req, res, next)
 	}
 );
 
-//  POST '/login/admin'
+//  POST '/auth/login
 router.post('/login', isNotLoggedIn(), formFullfilledLogin(), async (req, res, next) => {
 
 	const { name, password } = req.body;

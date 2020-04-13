@@ -9,7 +9,7 @@ const Company = require('../models/Company');
 const { isLoggedIn, formFullfilledLogin } = require('../helpers/middlewares');
 
 // Login employee (para acceder al client side)
-router.post('/login', isLoggedIn(), formFullfilledLogin(), async (req, res, next) => {
+router.post('/login', formFullfilledLogin(), async (req, res, next) => {
 
 	const { name, password } = req.body;
 
