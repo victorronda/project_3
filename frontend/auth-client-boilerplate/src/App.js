@@ -10,6 +10,7 @@ import LoginEmployee from './pages/LoginEmployee';
 import Signup from './pages/Signup';
 import AuthProvider from './context/AuthProvider';
 import MainAdmin from './pages/MainAdmin';
+import Home from './pages/Home';
 
 function App() {
   return (

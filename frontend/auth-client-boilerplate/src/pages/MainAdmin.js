@@ -4,7 +4,7 @@ import { withAuth } from '../context/AuthProvider'
 const MainAdmin = () => {
     return (
         <div>
-            <h1>Esto es Main Admin</h1>
+            <h1>Main Adminn!!</h1>
         </div>
     )
 }
