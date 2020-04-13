@@ -68,4 +68,10 @@ router.post('/logout', isLoggedIn(),(req, res, next) => {
 	return;
 });
 
+router.get("/me", isLoggedIn(), (req, res, next) => {
+  // si está logueado, previene que el password sea enviado y devuelve un json con los datos del usuario (disponibles en req.session.currentUser)
+  req.session.currentUser.password = "*";
+  res.json(req.session.currentUser);
+});
+
 module.exports = router;
