@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import menus_service from "../../../api/menus-service";
-import dishes_service from "../../../api/dishes-service"; /* ME HE QUEDADO POR AQUÍ, falta aladir la ruta de get all dishes para 
+import dishes_service from "../../../api/dishes-service"; /* ME HE QUEDADO POR AQUÍ, falta añadir la ruta de get all dishes para 
 listarlos en el form del menú */
 
 import { useHistory } from "react-router-dom"
@@ -11,8 +11,14 @@ import { useHistory } from "react-router-dom"
 const AddMenu = () => {
 	const [ name, setName ] = useState('');
     const [ dishes, setDishes ] = useState([]);
+    const [ allDishes, setAllDishes ] = useState([]);
 
     const history = useHistory();
+
+    const getAllDishes = () => {
+        
+
+    }
 
 
 	const handleSubmit = async (e) => {

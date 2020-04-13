@@ -25,6 +25,12 @@ export default {
       .then((res) => res.data)
       .catch(errorHandler);
   },
+  getAllDishes() {
+    return dishes_service
+      .get('/showAll')
+      .then((res) => res.data)
+      .catch(errorHandler);
+  }
 
   
 };
