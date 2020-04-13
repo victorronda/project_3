@@ -60,6 +60,9 @@ router.post('/login', isNotLoggedIn(), formFullfilledLogin(), async (req, res, n
 	}
 });
 
+
+
+
 // POST '/logout'
 router.post('/logout', isLoggedIn(),(req, res, next) => {
 
