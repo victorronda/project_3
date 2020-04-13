@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 import { withAuth } from '../context/AuthProvider'
-import { Link, useHistory } from 'react-router-dom'
-import auth from '../api/auth-service'
+import { Link } from 'react-router-dom'
 
-const Signup = () => {
+const Signup = (props) => {
 
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
@@ -11,14 +10,11 @@ const Signup = () => {
     const [confirmPassword, setConfirmPassword] = useState("")
     const [error, setError] = useState("")
 
-    const history = useHistory();
-
     const handleFormSubmit = (e) => {
         e.preventDefault()
         if (password !== confirmPassword) {
             return setError("Passwords don't match")} 
-        auth.signup({name, email, password})
-        history.push('/home')
+        props.signup({name, email, password})
     }
 
     return (
@@ -68,7 +64,7 @@ const Signup = () => {
             </form>
 
             <p>Already have account?</p>
-            <Link to={"/admin/login"}> Login</Link>
+            <Link to={"/employee/login"}> Login</Link>
         </div>
     )
 }
