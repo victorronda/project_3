@@ -4,13 +4,12 @@ import auth from '../../api/auth-service';
 
 export default function navbarAdmin() {  
 
-    const history = useHistory()
+    //const history = useHistory()
 
     // FALLAA AQUIIIII
 
     const handleClick = (e) => {
         auth.logout()
-        history.push('/signup')
     }
 
     return(
@@ -19,9 +18,9 @@ export default function navbarAdmin() {
                 <p className="mb-0">MGBITE</p>
             </div>
             <div>
-                <Link className="right" to="/">Profile</Link>
-                <Link className="right" to="employees/staff">Staff</Link>
-                <Link className="right" to="/signup" onClick={(e) => handleClick(e)}>Logout</Link>
+                <a className="right" href="/">Profile</a>
+                <a className="right" href="/employees/staff">Staff</a>
+                <a className="right" href="/signup" onClick={(e) => handleClick(e)}>Logout</a>
             </div>
         </div>
     )
