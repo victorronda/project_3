@@ -11,6 +11,7 @@ import Signup from './pages/Signup';
 import AuthProvider from './context/AuthProvider';
 import MainAdmin from './pages/MainAdmin';
 import Home from './pages/Home';
+import Staff from './components/particulares/admin/Staff';
 
 function App() {
   return (
@@ -21,7 +22,9 @@ function App() {
         <AnonRoutes path='/admin/login' component={LoginAdmin} />
         <AnonRoutes path='/employee/login' component={LoginEmployee} />
         <AnonRoutes path='/signup' component={Signup} />
-        <PrivateRoutes path='/home' component={MainAdmin} />
+        <PrivateRoutes exact path='/' component={Home} />
+        <PrivateRoutes exact path='/profile' component={MainAdmin} />
+        <PrivateRoutes exact path='/staff' component={Staff} />
       </Switch>
       <Footer/>
     </AuthProvider>
