@@ -7,9 +7,14 @@ const { isLoggedIn } = require("../helpers/middlewares");
 router.use(isLoggedIn()); 
 
 // Create Dish ///OJOOOOO FALTA REVISAR EL PROBLEMILLA DEL IMAGE FILE // Se hace desde react?
-router.post("/add", uploadCloud.single('image'), async (req, res, next) => { 
+router.post("/add", /* uploadCloud.single('image'),  */  async (req, res, next) => { 
 
     const { name, typeItem, ingredients, description, price, quantity } = req.body;
+    
+   /*  if (!req.file) {
+        next(new Error('No file uploaded!'));
+        return;
+      } */
     /* const image = req.file.secure_url; Nos da problemas al coger el file */
 
     try{
@@ -57,7 +62,8 @@ router.put("/:_id/edit", async (req, res, next) => {
     try{
         const updatedDish = await Dish.findByIdAndUpdate(
             req.params._id, 
-            { $set: {name, typeItem, ingredients, description, price, quantity} }, 
+            { $set: {name, typeItem, ingredients, description, price, quantity} }, /* Revisar si al editar se machacan los
+            campos que no han sido editados*/
             //Quito de dentro la image
             { new: true });
         res.status(200).json(updatedDish);
