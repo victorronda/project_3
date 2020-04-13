@@ -1,16 +1,9 @@
 import React from 'react';
 import { Link, useHistory } from "react-router-dom";
 import auth from '../../api/auth-service';
+import { withAuth } from '../../context/AuthProvider';
 
-export default function navbarAdmin() {  
-
-    //const history = useHistory()
-
-    // FALLAA AQUIIIII
-
-    const handleClick = (e) => {
-        auth.logout()
-    }
+function navbarAdmin(props) {  
 
     return(
         <div className="navbarAdmin">
@@ -20,19 +13,21 @@ export default function navbarAdmin() {
             <div>
                 <a className="right" href="/">Profile</a>
                 <a className="right" href="/employees/staff">Staff</a>
-                <a className="right" href="/signup" onClick={(e) => handleClick(e)}>Logout</a>
+                <button className="right" onClick={props.logout}>Logout</button>
             </div>
         </div>
     )
 }
 
-export function navbarClient() {
+export default withAuth(navbarAdmin)
 
-    return(
-        <div>
-            <div className="navbarClient">
-                <p>MGBITE</p>
-            </div>
-        </div>
-    )
-}
+// export function navbarClient() {
+
+//     return(
+//         <div>
+//             <div className="navbarClient">
+//                 <p>MGBITE</p>
+//             </div>
+//         </div>
+//     )
+// }
