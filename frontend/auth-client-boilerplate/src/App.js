@@ -12,6 +12,8 @@ import AuthProvider from './context/AuthProvider';
 import MainAdmin from './pages/MainAdmin';
 import Home from './pages/Home';
 import MainEmployee from './pages/MainEmployee'
+import AddDish from './components/Particulares/admin/AddDish';
+import AddMenu from './components/Particulares/admin/AddMenu';
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
         <AnonRoutes path='/signup' component={Signup} />
         <PrivateRoutes path='/home' component={Home} />
         <PrivateRoutes path='/main/employee' component={MainEmployee} />
+        <PrivateRoutes path='/dishes/add' component={AddDish} />
+        <PrivateRoutes path='/menus/add' component={AddMenu} />
       </Switch>
       <Footer/>
     </AuthProvider>

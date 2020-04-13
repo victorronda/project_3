@@ -8,7 +8,8 @@ import { useHistory } from "react-router-dom"
 const AddDish = () => {
 	const [ name, setName ] = useState('');
     const [ typeItem, setTypeItem ] = useState('Entree');
-/*     const [ ingredients, setIngredients] = useState([]); */
+    const [ ingredientInput, setIngredientInput] = useState('')
+    const [ ingredients, setIngredients] = useState([]);
     const [description, setDescription] = useState('');
     /* const [image, setImage] = useState('');  *///No lo usamos?? 
     const [price, setPrice] = useState(0);
@@ -20,11 +21,10 @@ const AddDish = () => {
 
 	const handleSubmit = async (e) => {
         e.preventDefault();
-        const newDish = { name, typeItem, description, price }
         try {
-            await dishes_service.saveNewDish(newDish)
+            await dishes_service.saveNewDish({ name, typeItem, description, price, ingredients })
             console.log({ message: 'New dish created successfully!' })
-            history.push('/main_private')          
+            history.push('/main/admin')          
         } catch (error) {
             console.log(error)
         }
@@ -49,9 +49,9 @@ const AddDish = () => {
       };
 
 
-      /* const addIngredient = (e) => {
-        setIngredients([...ingredients,])
-      } */
+      const addIngredient = (e) => {
+        setIngredients([...ingredients, ingredientInput])
+      }
 
 
 
@@ -73,24 +73,24 @@ const AddDish = () => {
 		    		<option value="secondCourse">Second Course</option>
 				</select>
 
-                {/* INGREDIENTS *
+                {/* INGREDIENTS */}
 
                 
 
 
                 <ul>
-                {ingredients.map((ingredient, index) => {
+                {ingredients.length > 0 ? ingredients.map((ingredient, index) => {
                     return(
-                        <React.Fragment>
+                        <React.Fragment key={index}>
                             <li key={index}>{ingredient}</li>
                         </React.Fragment> 
                 )
-                })}                 
+                }) : <div>No ingredients</div>}                 
                 </ul>
                 <label>Ingredients:</label>
-				<input name="ingredients" value={ingredients} onChange={(e) => setIngredients(e.target.value)} />
+				<input name="ingredientInput" value={ingredientInput} onChange={(e) => setIngredientInput(e.target.value)} />
                 <button className="d-inline" onClick={e=>addIngredient(e)}>+</button>
-                Probar!!!!! */}
+                
 
 
                 {/* DESCRIPTION */}

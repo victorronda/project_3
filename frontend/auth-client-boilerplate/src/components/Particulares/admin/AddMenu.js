@@ -15,10 +15,12 @@ const AddMenu = () => {
 
     const history = useHistory();
 
-    const getAllDishes = () => {
-        
-
-    }
+    const getAllDishes = (async () => {
+       const allTheDishes = await dishes_service.getAllDishes()
+        setAllDishes([...allDishes, allTheDishes])
+    })()
+    
+    console.log(allDishes)
 
 
 	const handleSubmit = async (e) => {
@@ -45,6 +47,7 @@ const AddMenu = () => {
 				<input type="text" name="name" value={name} onChange={(e) => setName(e.target.value)} />
 
                 {/* AQUÍ FALTA TODO LO DE LOS DISHES */}
+                <div></div>
 
 
 
