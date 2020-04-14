@@ -59,13 +59,17 @@ const AddDish = () => {
 
 	return (
 		<div className="d-block w-100 text-center">
-			<form className="d-flex flex-column justify-content-center align-items-center" onSubmit={(e) => handleSubmit(e)} >
+			<form className="d-flex flex-column justify-content-center align-items-center addDishForm" onSubmit={(e) => handleSubmit(e)} >
                 
                 {/* NAME */}
-				<label>Name:</label>
-				<input type="text" name="name" value={name} onChange={(e) => setName(e.target.value)} />
+                <div>
+                    <label>Name:</label>
+                    <input type="text" name="name" value={name} onChange={(e) => setName(e.target.value)} />
+                </div>
 
                 {/* TYPE */}
+                <div>
+                <span>Type</span>    
                 <select value={typeItem} onChange={(e) => setTypeItem(e.target.value)}>
 					<option value="Dessert">Dessert</option>
 					<option value="Drinks">Drinks</option>
@@ -73,40 +77,47 @@ const AddDish = () => {
 					<option value="Entree">Entree</option>
 		    		<option value="Second Course">Second Course</option>
 				</select>
+                </div>
 
                 {/* INGREDIENTS */}
-
-                
-
-
-                <ul>
-                {ingredients.length > 0 ? ingredients.map((ingredient, index) => {
-                    return(
-                        <React.Fragment key={index}>
-                            <li key={index}>{ingredient}</li>
-                        </React.Fragment> 
-                )
-                }) : <div>No ingredients</div>}                 
-                </ul>
-                <label>Ingredients:</label>
-				<input name="ingredientInput" value={ingredientInput} onChange={(e) => setIngredientInput(e.target.value)} />
-                <button className="d-inline" onClick={(e) => addIngredient(e)}>+</button>
+                <div>
+                    <ul className="showIngredients" >
+                    {ingredients.length > 0 ? ingredients.map((ingredient, index) => {
+                        return(
+                            <React.Fragment key={index}>
+                                <li key={index}>{ingredient}</li>
+                            </React.Fragment> 
+                    )
+                    }) : <div>No ingredients</div>}                 
+                    </ul>
+                </div>
+                 <div>
+                    <label>Ingredients:</label>
+                    <input name="ingredientInput" value={ingredientInput} onChange={(e) => setIngredientInput(e.target.value)} />
+                    <button className="d-inline" onClick={(e) => addIngredient(e)} style={{width: "1.5rem", height: "1.5rem",borderRadius: "40px", backgroundColor: "#EEEEEE", color: "#3EC0B8", marginLeft: "0.4rem"}}>+</button>           
+                </div>   
                 
 
 
                 {/* DESCRIPTION */}
-                <label>Description:</label>
-				<input type="text" name="description" value={description} onChange={(e) => setDescription(e.target.value)} />
+                <div>
+                    <label>Description:</label>
+                    <input type="text" name="description" value={description} onChange={(e) => setDescription(e.target.value)} />
+                </div>
 
                 {/* IMAGE */}
-                <label htmlFor="image">Image: <span>Upload a </span></label>
-                <input name="image" type='file' onChange={(e) => handleFileUpload(e)} />
+                <div>
+                    <label htmlFor="image">Image:</label>
+                    <input name="image" type='file' onChange={(e) => handleFileUpload(e)} />             
+                </div>
                 {/* Chequear, no usamos image ni set image?? */}
 
 
                 {/* PRICE */}
-                <label>Price:</label>
-				<input type="number" name="price" value={price} onChange={(e) => setPrice(e.target.value)} />
+                <div>
+                    <label>Price:</label>
+                    <input type="number" min="0" name="price" value={price} onChange={(e) => setPrice(e.target.value)} />
+                </div>
 
 
                 <input type="submit" value="ADD NEW DISH" />
