@@ -2,7 +2,7 @@ import axios from "axios";
 
 const menus_service = axios.create({
   baseURL: "http://localhost:4000",
-  /* withCredentials: true */
+  withCredentials: true
 });
 
 const errorHandler = (err) => {
