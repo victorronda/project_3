@@ -14,14 +14,14 @@ const LoginAdmin = (props) => {
     return (
         <div className="pageAd">
         <div className="formuAdmin">
-            <div lassName="">
+            <div className="">
                 <h2 className="titleEm">Login Admin</h2>
             </div>
             <form onSubmit={(e) => handleFormSubmit(e)}>
                 <div className="labelsEm">
                     <label><h4>Company name</h4></label>
                 </div>
-                <div lassName="">
+                <div className="">
                     <input className="inputs"
                     type='text'
                     name='name'
@@ -33,7 +33,7 @@ const LoginAdmin = (props) => {
                 <div className="labelsEm">
                     <label><h4>Password</h4></label>
                 </div>
-                <div lassName="">
+                <div className="">
                     <input className="inputs"
                     type='password'
                     name='password'
@@ -42,7 +42,7 @@ const LoginAdmin = (props) => {
                     required
                     />
                 </div>
-                <div lassName="">
+                <div className="">
                     <input className="btn-login-ad" type='submit' value='Login' />
                 </div>
             </form>

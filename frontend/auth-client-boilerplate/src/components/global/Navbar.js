@@ -20,13 +20,13 @@ function navbarAdmin(props) {
 
 export default withAuth(navbarAdmin)
 
-// export function navbarClient() {
+export function navbarClient() {
 
-//     return(
-//         <div>
-//             <div className="navbarClient">
-//                 <p>MGBITE</p>
-//             </div>
-//         </div>
-//     )
-// }
+    return(
+        <div>
+            <div className="navbarClient">
+                <Link className="links mb-0" to='/'>MGBITE</Link>
+            </div>
+        </div>
+    )
+}

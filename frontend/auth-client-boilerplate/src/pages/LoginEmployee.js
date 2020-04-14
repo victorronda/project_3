@@ -15,14 +15,14 @@ const LoginEmployee = (props) => {
     return (
         <div className="pageEm">
             <div className="formuEmplo">
-                <div lassName="">
+                <div className="">
                     <h2 className="titleEm">Login Employee</h2>
                 </div>
                 <form onSubmit={(e) => handleFormSubmit(e)}>
                     <div className="labelsEm">
                         <label><h4>Name</h4></label>
                     </div>
-                    <div lassName="">
+                    <div className="">
                         <input className="inputs"
                         type='text'
                         name='name'
@@ -34,7 +34,7 @@ const LoginEmployee = (props) => {
                     <div className="labelsEm">
                         <label><h4>Password</h4></label>
                     </div>
-                    <div lassName="">
+                    <div className="">
                         <input className="inputs"
                         type='password'
                         name='password'
@@ -43,7 +43,7 @@ const LoginEmployee = (props) => {
                         required
                         />
                     </div>
-                    <div lassName="">
+                    <div className="">
                         <input className="btn-login-em" type='submit' value='Login' />
                     </div>
                 </form>

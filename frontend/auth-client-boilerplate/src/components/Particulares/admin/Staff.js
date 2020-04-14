@@ -26,8 +26,6 @@ const Staff = (props) => {
        setAllEmployees([...allEmployees, allTheEmployees])
     }
 
-
-
     /* PREGUNTAR!!!    useEffect(() => {
     const timerMessage = setTimeout(setMessage(""), 1000);
     return () => clearTimeout(timerMessage);
