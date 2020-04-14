@@ -8,7 +8,7 @@ const MainAdmin = (props) => {
         <div>
             <div className="contMy">
                 <div className="my">
-                    <Link className="links" to='/menu'><h3>My menu</h3></Link>
+                    <Link className="links" to='/menus/add'><h3>My menu</h3></Link>
                 </div>
                 <div className="my">
                     <Link className="links" to='/dishes/add'><h3>My dishes</h3></Link>
