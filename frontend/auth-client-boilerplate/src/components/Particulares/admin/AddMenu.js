@@ -34,7 +34,7 @@ const AddMenu = () => {
         try {
             await menus_service.saveNewMenu(newMenu)
             console.log({ message: 'New menu created successfully!' })
-            history.push('/main_private')          
+            history.push('/profile')          
         } catch (error) {
             console.log(error)
         }
