@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { withAuth } from '../../../context/AuthProvider'
+import employees_service from "../../../api/employees-service"; 
 
 const Staff = (props) => {
-    console.log("props en staff?", props)
     const [name, setName] = useState("")
     const [password, setPassword] = useState("")
     const [message, setMessage] = useState("")
+    const [allEmployees, setAllEmployees] = useState([])
+    
 
     const handleFormSubmit = (e) => {
         e.preventDefault()
@@ -14,6 +16,17 @@ const Staff = (props) => {
         setName("")
         setPassword("")
     }
+
+    useEffect(() => {
+        setAllEmployees(getAllEmployees())
+    },[] );
+    
+    const getAllEmployees = async () => {
+       const allTheEmployees = await employees_service.getAllEmployees()
+       setAllEmployees([...allEmployees, allTheEmployees])
+    }
+
+
 
     /* PREGUNTAR!!!    useEffect(() => {
     const timerMessage = setTimeout(setMessage(""), 1000);
@@ -62,11 +75,15 @@ const Staff = (props) => {
                     <h2 className="">My employees</h2>
                 </div>
                 <div className="enum">
-                    <ul>
-                    <li>Employee 1</li>
-                    <li>Employee 2</li>
-                    <li>Employee 3</li>
-                    </ul>
+                <ul>
+                { allEmployees.length > 0 ? allEmployees.map((employee, i) => {
+                    return(
+                        <React.Fragment key={i}>
+                            <li key={i}> {employee[i].name} </li> {/* En este map solo nos llega el primero aunque están todos */}
+                        </React.Fragment> 
+                )
+                }) : <div>No employees</div>}                 
+                </ul>
                 </div>
             </div>
         </div>

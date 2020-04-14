@@ -255,3 +255,30 @@
   padding: 60px 60px;
   box-shadow: 2px 1px 1px #490000, 0px 0px 1px #620000;
 }
+
+/* AddDish */
+.addDishForm {
+  background-color: rgba(62, 192, 184,0.6);
+  border: 2px solid #3EC0B8;
+  width: 42%;
+  margin: 7.5vh auto;
+  padding: 3% 0.1rem;
+  border-radius: 10px;
+}
+
+.addDishForm input {
+  background-color: #EEEEEE;
+}
+
+.addDishForm div {
+  margin: 0.2rem 0;
+}
+
+/* Falta ver la distribución de  */
+.showIngredients{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 5vh;
+}

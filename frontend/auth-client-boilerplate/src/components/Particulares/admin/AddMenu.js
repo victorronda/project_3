@@ -18,6 +18,7 @@ const AddMenu = () => {
     
     useEffect(() => {
         setAllDishes(getAllDishes())
+        
     }, []);
     
     const getAllDishes = async () => {
@@ -52,7 +53,9 @@ const AddMenu = () => {
 				<input type="text" name="name" value={name} onChange={(e) => setName(e.target.value)} />
 
                 {/* AQUÍ FALTA TODO LO DE LOS DISHES */}
-                <div></div>
+                <ul>
+                    {console.log('Estoy dentro', allDishes)}
+                </ul>
 
 
 
