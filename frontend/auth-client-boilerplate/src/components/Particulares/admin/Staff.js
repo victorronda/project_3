@@ -6,6 +6,7 @@ const Staff = (props) => {
     const [name, setName] = useState("")
     const [password, setPassword] = useState("")
     const [message, setMessage] = useState("")
+    const [allEmployees, setAllEmployees] = ([])
 
     const handleFormSubmit = (e) => {
         e.preventDefault()
@@ -13,6 +14,15 @@ const Staff = (props) => {
         setMessage('Employee created successfully!')
         setName("")
         setPassword("")
+    }
+
+    useEffect(() => {
+        setAllEmployees(getAllEmployees())
+    }, []);
+    
+    const getAllEmployees = async () => {
+       const allTheEmployees = await employees_service.getAllEmployees()
+        setAllEmployees([...allEmployees, allTheEmployees])
     }
 
     /* PREGUNTAR!!!    useEffect(() => {
@@ -63,9 +73,13 @@ const Staff = (props) => {
                 </div>
                 <div className="enum">
                     <ul>
-                    <li>Employee 1</li>
-                    <li>Employee 2</li>
-                    <li>Employee 3</li>
+                        { allEmployees.length > 0 ? allEmployees.map((employee, i) => {
+                        return(
+                            <React.Fragment key={i}>
+                                <li key={i}> {employee[i].name} </li>
+                            </React.Fragment> 
+                          )
+                         }) : <div>No employees</div>}                 
                     </ul>
                 </div>
             </div>
