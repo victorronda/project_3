@@ -28,6 +28,7 @@ This is a high-level platform for restaurants where customers could order the me
 - Customize error messages
 - Screensaver 
 - Several menus
+- Delete account
 
 ## Tech challenge
 - Connect the front-end with the back end
@@ -149,5 +150,8 @@ https://github.com/victorronda/project_3
 
 ### Trello
 https://trello.com/b/PDuaPoMc/project-3
+
+### Slides
+https://docs.google.com/presentation/d/1M63k4PhfnaDMhEqOfxjthyb88QvB4TpP22yhiDG7u7o/edit?usp=sharing
 
 ### Firebase

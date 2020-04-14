@@ -11,7 +11,7 @@ const MainAdmin = (props) => {
                     <Link className="links" to='/menu'><h3>My menu</h3></Link>
                 </div>
                 <div className="my">
-                    <Link className="links" to='/dishes'><h3>My dishes</h3></Link>
+                    <Link className="links" to='/dishes/add'><h3>My dishes</h3></Link>
                 </div>
                 <div className="my">
                     <Link className="links" to='/tables'><h3>My tables</h3></Link>

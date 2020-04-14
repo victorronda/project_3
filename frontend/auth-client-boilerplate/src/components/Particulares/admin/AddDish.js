@@ -24,7 +24,7 @@ const AddDish = () => {
         try {
             await dishes_service.saveNewDish({ name, typeItem, description, price, ingredients })
             console.log({ message: 'New dish created successfully!' })
-            history.push('/main/admin')          
+            history.push('/profile')          
         } catch (error) {
             console.log(error)
         }
@@ -50,6 +50,7 @@ const AddDish = () => {
 
 
       const addIngredient = (e) => {
+          e.preventDefault()
         setIngredients([...ingredients, ingredientInput])
       }
 
@@ -66,11 +67,11 @@ const AddDish = () => {
 
                 {/* TYPE */}
                 <select value={typeItem} onChange={(e) => setTypeItem(e.target.value)}>
-					<option value="dessert">Dessert</option>
-					<option value="drinks">Drinks</option>
-					<option value="appetizers">Appetizers</option>
-					<option value="entree">Entree</option>
-		    		<option value="secondCourse">Second Course</option>
+					<option value="Dessert">Dessert</option>
+					<option value="Drinks">Drinks</option>
+					<option value="Appetizers">Appetizers</option>
+					<option value="Entree">Entree</option>
+		    		<option value="Second Course">Second Course</option>
 				</select>
 
                 {/* INGREDIENTS */}
@@ -89,7 +90,7 @@ const AddDish = () => {
                 </ul>
                 <label>Ingredients:</label>
 				<input name="ingredientInput" value={ingredientInput} onChange={(e) => setIngredientInput(e.target.value)} />
-                <button className="d-inline" onClick={e=>addIngredient(e)}>+</button>
+                <button className="d-inline" onClick={(e) => addIngredient(e)}>+</button>
                 
 
 
