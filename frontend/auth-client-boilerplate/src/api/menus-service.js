@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const menus_service = axios.create({
-  baseURL: "http://localhost:4000/menus",
+  baseURL: process.env.REACT_APP_API_URI,
   withCredentials: true
 });
 
@@ -15,7 +15,7 @@ export default {
 
   saveNewMenu(newMenu) {
     return menus_service
-      .post("/add", newMenu)
+      .post("/menus/add", newMenu)
       .then((res) => res.data)
       .catch(errorHandler);
   },

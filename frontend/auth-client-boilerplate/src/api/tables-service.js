@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const tables_service = axios.create({
-  baseURL: "http://localhost:4000/tables",
+  baseURL: process.env.REACT_APP_API_URI,
   withCredentials: true
 });
 
@@ -15,7 +15,7 @@ export default {
     
   editTheNumberOfTheTable(number) {
     return tables_service
-      .put("/:_id/editNumber", number)
+      .put("/tables/:_id/editNumber", number)
       .then((res) => res.data)
       .catch(errorHandler);
   }

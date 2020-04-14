@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState, useEffect } from 'react'
 import { withAuth } from '../../../context/AuthProvider'
 
 const Staff = (props) => {
@@ -11,7 +11,14 @@ const Staff = (props) => {
         e.preventDefault()
         props.addEmployee({name, password})
         setMessage('Employee created successfully!')
+        setName("")
+        setPassword("")
     }
+
+    /* PREGUNTAR!!!    useEffect(() => {
+    const timerMessage = setTimeout(setMessage(""), 1000);
+    return () => clearTimeout(timerMessage);
+  }, []); */
 
     return (
         <div className="page">

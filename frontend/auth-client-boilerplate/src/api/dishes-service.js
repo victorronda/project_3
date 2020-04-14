@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const dishes_service = axios.create({
-  baseURL: "http://localhost:4000", /* Esto es lo que da problemas?? */
+  baseURL: process.env.REACT_APP_API_URI, 
   withCredentials: true
 });
 

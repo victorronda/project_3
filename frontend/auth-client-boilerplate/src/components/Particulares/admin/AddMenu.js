@@ -16,14 +16,14 @@ const AddMenu = () => {
     const history = useHistory();
 
     
-    useEffect() {
-        
-    }
+    useEffect(() => {
+        setAllDishes(getAllDishes())
+    }, []);
     
-    /* const getAllDishes = (async () => {
+    const getAllDishes = async () => {
        const allTheDishes = await dishes_service.getAllDishes()
         setAllDishes([...allDishes, allTheDishes])
-    })() */
+    }
     
     console.log(allDishes)
 
