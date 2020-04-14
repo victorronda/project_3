@@ -14,6 +14,12 @@ class Auth {
       .then(({ data }) => data);
   }
 
+  addEmployee({ name, password }) {
+    return this.auth
+      .post("/employees/staff/add", { name, password })
+      .then(({ data }) => data);
+  }
+
   loginAdmin({ name, password }) {
     return this.auth
       .post("/auth/login", { name, password })
@@ -27,11 +33,15 @@ class Auth {
   }
 
   logout() {
-    return this.auth.post("/auth/logout", {}).then(({ data }) => data);
+    return this.auth
+      .post("/auth/logout", {})
+      .then(({ data }) => data);
   }
 
   me() {
-    return this.auth.get("/auth/me").then(({ data }) => data);
+    return this.auth
+      .get("/auth/me")
+      .then(({ data }) => data);
   }
 }
 

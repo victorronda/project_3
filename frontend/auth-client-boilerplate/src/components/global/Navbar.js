@@ -1,5 +1,5 @@
 import React from 'react';
-import auth from '../../api/auth-service';
+import { Link } from "react-router-dom";
 import { withAuth } from '../../context/AuthProvider';
 
 function navbarAdmin(props) {  
@@ -7,12 +7,12 @@ function navbarAdmin(props) {
     return(
         <div className="navbarAdmin">
             <div>
-                <p className="mb-0">MGBITE</p>
+                <Link className="links mb-0" to='/'>MGBITE</Link>
             </div>
             <div>
-                <a className="right" href="/">Profile</a>
-                <a className="right" href="/employees/staff">Staff</a>
-                <button className="right" onClick={props.logout}>Logout</button>
+                <Link className="links right" to='/profile'>Profile</Link>
+                <Link className="links right" to='/staff'>Staff</Link>
+                <button className="right nobutton" onClick={props.logout}>Logout</button>
             </div>
         </div>
     )

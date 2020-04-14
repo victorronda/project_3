@@ -10,12 +10,13 @@ const withAuth = (WrappedComponent) => {
       return (
         <Consumer>
           {/* El componente <Consumer> provee un callback que recibe el "value" con el objeto Providers */}
-          {({ signup, user, loginAdmin, loginEmployee, logout, isLoggedin }) => {
+          {({ signup, addEmployee, user, loginAdmin, loginEmployee, logout, isLoggedin }) => {
             return (
               <WrappedComponent
                 loginAdmin={loginAdmin}
                 loginEmployee={loginEmployee}
                 signup={signup}
+                addEmployee={addEmployee}
                 user={user}
                 logout={logout}
                 isLoggedin={isLoggedin}
@@ -56,6 +57,18 @@ class AuthProvider extends React.Component {
       );
   };
 
+  addEmployee = (user) => {
+    const { name, password } = user;
+
+    auth
+      .addEmployee({ name, password })
+      .then((user) => this.setState({ isLoggedin: true, user }))
+      .catch(({ response }) =>
+        this.setState({ message: response.data.statusMessage })
+      );
+        console.log("employee created")
+  };
+
   loginAdmin = (user) => {
     const { name, password } = user;
 
@@ -84,14 +97,14 @@ class AuthProvider extends React.Component {
   render() {
     // destructuramos isLoading, isLoggedin y user de this.state y login, logout y signup de this
     const { isLoading, isLoggedin, user } = this.state;
-    const { loginAdmin, loginEmployee, logout, signup } = this;
+    const { loginAdmin, loginEmployee, logout, signup, addEmployee } = this;
 
     return isLoading ? (
       // si está loading, devuelve un <div> y sino devuelve un componente <Provider> con un objeto con los valores: { isLoggedin, user, login, logout, signup}
       // el objeto pasado en la prop value estará disponible para todos los componentes <Consumer>
       <div>Loading</div>
     ) : (
-      <Provider value={{ isLoggedin, user, loginAdmin, loginEmployee, logout, signup }}>
+      <Provider value={{ isLoggedin, user, loginAdmin, loginEmployee, logout, signup, addEmployee }}>
         {this.props.children}
       </Provider>
     ); /*<Provider> "value={}" datos que estarán disponibles para todos los componentes <Consumer> */
