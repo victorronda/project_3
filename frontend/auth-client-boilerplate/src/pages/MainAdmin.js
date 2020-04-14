@@ -1,7 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { withAuth } from '../context/AuthProvider'
 
 const MainAdmin = (props) => {
+    console.log("Hellooooo")
     return (
         <div>
             <div className="contMy">
@@ -22,4 +24,4 @@ const MainAdmin = (props) => {
     )
 }
 
-export default MainAdmin
+export default withAuth(MainAdmin)

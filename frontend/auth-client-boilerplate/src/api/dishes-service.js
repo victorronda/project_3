@@ -2,7 +2,7 @@ import axios from "axios";
 
 const dishes_service = axios.create({
   baseURL: "http://localhost:4000/dishes", /* Esto es lo que da problemas?? */
-/*   withCredentials: true */
+  withCredentials: true
 });
 
 const errorHandler = (err) => {

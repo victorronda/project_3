@@ -20,7 +20,7 @@ const LoginEmployee = (props) => {
                 </div>
                 <form onSubmit={(e) => handleFormSubmit(e)}>
                     <div className="labels">
-                        <label><h4>Company name</h4></label>
+                        <label><h4>Name</h4></label>
                     </div>
                     <div lassName="">
                         <input className="inputs"

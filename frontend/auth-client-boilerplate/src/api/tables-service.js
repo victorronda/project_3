@@ -2,7 +2,7 @@ import axios from "axios";
 
 const tables_service = axios.create({
   baseURL: "http://localhost:4000/tables",
-  /* withCredentials: true */
+  withCredentials: true
 });
 
 const errorHandler = (err) => {
