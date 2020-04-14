@@ -75,27 +75,15 @@ const Staff = (props) => {
                     <h2 className="">My employees</h2>
                 </div>
                 <div className="enum">
-<<<<<<< HEAD
                     <ul>
                         { allEmployees.length > 0 ? allEmployees.map((employee, i) => {
                         return(
-                            <React.Fragment key={i}>
+                            <React.Fragment>
                                 <li key={i}> {employee[i].name} </li>
                             </React.Fragment> 
                           )
                          }) : <div>No employees</div>}                 
                     </ul>
-=======
-                <ul>
-                { allEmployees.length > 0 ? allEmployees.map((employee, i) => {
-                    return(
-                        <React.Fragment key={i}>
-                            <li key={i}> {employee[i].name} </li> {/* En este map solo nos llega el primero aunque están todos */}
-                        </React.Fragment> 
-                )
-                }) : <div>No employees</div>}                 
-                </ul>
->>>>>>> develop
                 </div>
             </div>
         </div>
@@ -103,3 +91,4 @@ const Staff = (props) => {
 }
 
 export default withAuth(Staff)
+

@@ -15,10 +15,10 @@ const LoginAdmin = (props) => {
         <div className="pageAd">
         <div className="formuAdmin">
             <div lassName="">
-                <h2 className="title">Login Admin</h2>
+                <h2 className="titleEm">Login Admin</h2>
             </div>
             <form onSubmit={(e) => handleFormSubmit(e)}>
-                <div className="labels">
+                <div className="labelsEm">
                     <label><h4>Company name</h4></label>
                 </div>
                 <div lassName="">
@@ -30,7 +30,7 @@ const LoginAdmin = (props) => {
                     required
                     />
                 </div>
-                <div className="labels">
+                <div className="labelsEm">
                     <label><h4>Password</h4></label>
                 </div>
                 <div lassName="">

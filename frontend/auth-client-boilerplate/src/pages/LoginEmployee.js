@@ -16,10 +16,10 @@ const LoginEmployee = (props) => {
         <div className="pageEm">
             <div className="formuEmplo">
                 <div lassName="">
-                    <h2 className="title">Login Employee</h2>
+                    <h2 className="titleEm">Login Employee</h2>
                 </div>
                 <form onSubmit={(e) => handleFormSubmit(e)}>
-                    <div className="labels">
+                    <div className="labelsEm">
                         <label><h4>Name</h4></label>
                     </div>
                     <div lassName="">
@@ -31,7 +31,7 @@ const LoginEmployee = (props) => {
                         required
                         />
                     </div>
-                    <div className="labels">
+                    <div className="labelsEm">
                         <label><h4>Password</h4></label>
                     </div>
                     <div lassName="">
