@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const dishes_service = axios.create({
-  baseURL: "http://localhost:4000/dishes", /* Esto es lo que da problemas?? */
+  baseURL: "http://localhost:4000", /* Esto es lo que da problemas?? */
   withCredentials: true
 });
 
@@ -15,22 +15,23 @@ export default {
 
   handleUpload(theFile) {
     return dishes_service
-      .post("/add", theFile)
+      .post("/dishes/add", theFile)
       .then((res) => res.data)
       .catch(errorHandler);
   },
+
   saveNewDish(newDish) {
     return dishes_service
-      .post("/add", newDish)
+      .post("/dishes/add", newDish)
       .then((res) => res.data)
       .catch(errorHandler);
   },
+  
   getAllDishes() {
     return dishes_service
-      .get('/showAll')
+      .get('/dishes/showAll')
       .then((res) => res.data)
       .catch(errorHandler);
   }
-
   
 };
