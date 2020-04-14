@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import menus_service from "../../../api/menus-service";
 import dishes_service from "../../../api/dishes-service"; /* ME HE QUEDADO POR AQUÍ, falta añadir la ruta de get all dishes para 
 listarlos en el form del menú */
@@ -15,10 +15,15 @@ const AddMenu = () => {
 
     const history = useHistory();
 
-    const getAllDishes = (async () => {
+    
+    useEffect() {
+        
+    }
+    
+    /* const getAllDishes = (async () => {
        const allTheDishes = await dishes_service.getAllDishes()
         setAllDishes([...allDishes, allTheDishes])
-    })()
+    })() */
     
     console.log(allDishes)
 
