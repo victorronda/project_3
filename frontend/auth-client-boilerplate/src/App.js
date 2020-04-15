@@ -15,6 +15,7 @@ import Staff from './components/particulares/admin/Staff';
 import MainAdmin from './pages/MainAdmin';
 import AnonRoutes from './components/auth/AnonRoutes';
 import PrivateRoutes from './components/auth/PrivateRoutes';
+import PrivateRoutesEmployee from './components/auth/PrivateRoutesEmployee';
 import FinalMessage from './pages/FinalMessage';
 import Pay from './pages/Pay';
 import MyTable from './components/particulares/admin/MyTable';

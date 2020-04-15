@@ -15,13 +15,13 @@ const Staff = (props) => {
         setMessage('Employee created successfully!')
         setName("")
         setPassword("")
-        setAllEmployees([...allEmployees, {name, password}])
+        getAllEmployees()
     }
 
 	const deleteEmployees = async (e) => {
         e.preventDefault();
         const employeeId = e.target.value
-        console.log("employeId??", employeeId)
+        
         try {
             await employees_service.deleteEmployee(employeeId)
             console.log({ message: 'Employee deleted!' })
@@ -33,8 +33,8 @@ const Staff = (props) => {
     };
 
     useEffect(() => {
-        setAllEmployees(getAllEmployees())
-    },[]);
+        getAllEmployees()
+    }, [allEmployees]);
     
     const getAllEmployees = async () => {
        const allTheEmployees = await employees_service.getAllEmployees()

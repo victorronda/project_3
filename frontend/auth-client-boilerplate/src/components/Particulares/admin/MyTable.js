@@ -4,16 +4,17 @@ import { Link, useHistory } from 'react-router-dom'
 
 const MyTable = () => {
 
-    const [ number, setNumber ] = useState('')
+    const [ number, setNumber ] = useState()
 
     const history = useHistory();
 
 	const handleFormSubmit = async (e) => {
         e.preventDefault();
         try {
-            await tables_service.addTables({ number })
+            await tables_service.addTables({number})
+            console.log("numbeeer", number)
             console.log({ message: 'Tables created successfully!' })
-            history.push('/profile')          
+            //history.push('/profile')          
         } catch (error) {
             console.log(error)
         }
@@ -28,7 +29,7 @@ const MyTable = () => {
                 </div>
                 <div className="contOrders">
                     <input className="inputs" 
-                        type='text'
+                        type='number'
                         name='number'
                         value={number}
                         onChange={(e) => setNumber(e.target.value)}

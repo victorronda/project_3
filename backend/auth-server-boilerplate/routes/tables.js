@@ -5,25 +5,27 @@ const Company = require('../models/Company');
 const Table = require('../models/Table');
 
 const { isLoggedIn} = require('../helpers/middlewares');
-router.use(isLoggedIn());
+//router.use(isLoggedIn());
 
 // Add Table
-router.post('/add', async (req, res, next) => {
-
-	const { numberTables } = req.body;
-	
+router.post('/add', isLoggedIn(), async (req, res, next) => {
+	const { number } = req.body;
+	console.log("numbeer", number)
+	console.log("reeeeq", req.body)
 	try {
-		for (let i=0;i<numberTables;i++){
+		for (let i=0;i<number;i++){
 		const newTable=await Table.create({number: 0, orders: [], companyId: req.session.currentUser, bill:0});
-
+		
 		await Company.findByIdAndUpdate(
 			req.session.currentUser, 
 			{ $push: { tables: newTable } },
 			{ new: true }
 			);
 		}	
+		console.log("number desde fuera", number)
+		console.log("req desde fuera", req.session.currentUser)
 		res.status(201).json({message: 'Tables created successful'});
-
+		console.log("Tables created!")
 	} catch (error) {
 		next(error);
 	}
