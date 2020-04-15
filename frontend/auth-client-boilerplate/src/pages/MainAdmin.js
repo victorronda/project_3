@@ -4,17 +4,18 @@ import { withAuth } from '../context/AuthProvider'
 
 const MainAdmin = (props) => {
     
+
     return (
         <div>
             <div className="contMy">
                 <div className="my">
-                    <Link className="links" to='/menus/add'><h3>My menu</h3></Link>
+                    <Link style={{textDecoration: "none"}} className="links" to='/menus/add'><h3>My menu</h3></Link>
                 </div>
                 <div className="my">
-                    <Link className="links" to='/dishes/add'><h3>My dishes</h3></Link>
+                    <Link style={{textDecoration: "none"}} className="links" to='/dishes/add'><h3>My dishes</h3></Link>
                 </div>
                 <div className="my">
-                    <Link className="links" to='/tables'><h3>My tables</h3></Link>
+                    <Link style={{textDecoration: "none"}} className="links" to='/tables'><h3>My tables</h3></Link>
                 </div>
             </div>
             <div className="contOrders">

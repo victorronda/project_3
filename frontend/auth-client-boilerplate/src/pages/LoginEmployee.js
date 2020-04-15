@@ -55,12 +55,12 @@ const LoginEmployee = (props) => {
                         />
                     </div>
                     <div className="">
-                        <input className="btn-login-em" type='submit' value='Login' />
+                        <input style={{textDecoration: "none"}} className="btn-login-em" type='submit' value='Login' />
                     </div>
                 </form>
             </div>
             <div>
-                <Link className="linksB" to={"/admin/login"}>If you are the Admin, click here</Link>
+                <Link style={{textDecoration: "none"}} className="linksB" to={"/admin/login"}>If you are the Admin, click here</Link>
             </div>
         </div>
     )

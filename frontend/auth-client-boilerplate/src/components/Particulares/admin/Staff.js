@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { withAuth } from '../../../context/AuthProvider'
 import employees_service from "../../../api/employees-service"
-import { Link, useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const Staff = (props) => {
     const [name, setName] = useState("")
     const [password, setPassword] = useState("")
     const [message, setMessage] = useState("")
     const [allEmployees, setAllEmployees] = useState([])
-    
-    const history = useHistory();
 
     const handleFormSubmit = (e) => {
         e.preventDefault()
@@ -17,14 +15,18 @@ const Staff = (props) => {
         setMessage('Employee created successfully!')
         setName("")
         setPassword("")
+        setAllEmployees([...allEmployees, {name, password}])
     }
 
 	const deleteEmployees = async (e) => {
         e.preventDefault();
+        const employeeId = e.target.value
+        console.log("employeId??", employeeId)
         try {
-            await employees_service.deleteEmployee(e)
+            await employees_service.deleteEmployee(employeeId)
             console.log({ message: 'Employee deleted!' })
-            history.push('/staff')          
+            const newArr = allEmployees.filter((item) => item._id !== employeeId)    
+            setAllEmployees(newArr)
         } catch (error) {
             console.log(error)
         }
@@ -32,7 +34,7 @@ const Staff = (props) => {
 
     useEffect(() => {
         setAllEmployees(getAllEmployees())
-    },[] );
+    },[]);
     
     const getAllEmployees = async () => {
        const allTheEmployees = await employees_service.getAllEmployees()
@@ -92,11 +94,11 @@ const Staff = (props) => {
                         { allEmployees.length > 0 ? allEmployees.map((employee, i) => {
                         return(
                             <div>
-                                <li key={i}> {employee.name} <button className="btn btn-secondary" onClick={(e) => deleteEmployees(e)}>Delete</button></li>
-                                
+                                <li key={i}> {employee.name} <button className="btn btn-secondary" value={employee._id}
+                                onClick={(e) => deleteEmployees(e)}>Delete</button></li>
                             </div> 
-                          )
-                         }) : <div>No employees</div>}                 
+                            )
+                         }) : <div className="center">No employees</div>}                 
                     </ul>
                 </div>
             </div>

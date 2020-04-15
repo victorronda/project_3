@@ -7,12 +7,12 @@ function navbarAdmin(props) {
     return(
         <div className="navbarAdmin">
             <div>
-                <Link className="links mb-0" to='/'>MGBITE</Link>
+                <Link style={{textDecoration: "none"}} className="links mb-0" to='/'>MGBITE</Link>
             </div>
             <div>
-                <Link className="links right" to='/profile'>Profile</Link>
-                <Link className="links right" to='/staff'>Staff</Link>
-                <button className="right nobutton" onClick={props.logout}>Logout</button>
+                <Link style={{textDecoration: "none"}} className="links right" to='/profile'>Profile</Link>
+                <Link style={{textDecoration: "none"}} className="links right" to='/staff'>Staff</Link>
+                <button style={{textDecoration: "none"}} className="right nobutton" onClick={props.logout}>Logout</button>
             </div>
         </div>
     )

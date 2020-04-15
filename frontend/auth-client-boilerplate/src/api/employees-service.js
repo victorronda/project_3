@@ -21,9 +21,9 @@ export default {
       .catch(errorHandler);
   },
 
-  deleteEmployee() {
+  deleteEmployee(_id) {
     return employees_service
-      .delete('/employees/staff/:_id/delete')
+      .delete(`/employees/staff/${_id}/delete`)
       .then((res) => res.data)
       .catch(errorHandler);
   }
