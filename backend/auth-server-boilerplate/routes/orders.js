@@ -9,8 +9,8 @@ router.use(isLoggedIn());
 
 // NOTA: Preguntar si los calculos de bill son aqui o en el front
 
-// Rastaurar order para próximo cliente
-router.post('/add/:tableId/', async (req, res, next) => {
+// Restaurar order para próximo cliente
+router.post('/add/:tableId', async (req, res, next) => {
 
 	try {
 		const newOrder = await Order.create({quantity: req.body.quantity, dishesId: req.body.dishesId, tableId: req.params.tableId, bill: req.body.bill});
