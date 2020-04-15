@@ -26,7 +26,7 @@ function App() {
         <AnonRoutes exact path='/admin/login' component={LoginAdmin} />
         <AnonRoutes exact path='/employee/login' component={LoginEmployee} />
         <AnonRoutes exact path='/signup' component={Signup} />
-        <PrivateRoutes exact path='/main/employee' component={MainEmployee} />
+        <AnonRoutes exact path='/main/employee' component={MainEmployee} />
         <PrivateRoutes exact path='/dishes/add' component={AddDish} />
         <PrivateRoutes exact path='/menus/add' component={AddMenu} />
         <PrivateRoutes exact path='/profile' component={MainAdmin} />

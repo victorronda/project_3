@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const employees_service = axios.create({
-  baseURL: process.env.REACT_APP_API_URI, 
+  baseURL: 'http://localhost:4000', //process.env.REACT_APP_API_URI, 
   withCredentials: true
 });
 
@@ -17,6 +17,13 @@ export default {
   getAllEmployees() {
     return employees_service
       .get('/employees/staff')
+      .then((res) => res.data)
+      .catch(errorHandler);
+  },
+
+  deleteEmployee() {
+    return employees_service
+      .delete('/employees/staff/:_id/delete')
       .then((res) => res.data)
       .catch(errorHandler);
   }

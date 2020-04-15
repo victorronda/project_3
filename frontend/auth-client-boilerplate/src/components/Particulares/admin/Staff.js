@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { withAuth } from '../../../context/AuthProvider'
-import employees_service from "../../../api/employees-service"; 
+import employees_service from "../../../api/employees-service"
+import { Link, useHistory } from 'react-router-dom'
 
 const Staff = (props) => {
     const [name, setName] = useState("")
@@ -8,6 +9,7 @@ const Staff = (props) => {
     const [message, setMessage] = useState("")
     const [allEmployees, setAllEmployees] = useState([])
     
+    const history = useHistory();
 
     const handleFormSubmit = (e) => {
         e.preventDefault()
@@ -16,6 +18,17 @@ const Staff = (props) => {
         setName("")
         setPassword("")
     }
+
+	const deleteEmployees = async (e) => {
+        e.preventDefault();
+        try {
+            await employees_service.deleteEmployee(e)
+            console.log({ message: 'Employee deleted!' })
+            history.push('/staff')          
+        } catch (error) {
+            console.log(error)
+        }
+    };
 
     useEffect(() => {
         setAllEmployees(getAllEmployees())
@@ -76,9 +89,10 @@ const Staff = (props) => {
                     <ul>
                         { allEmployees.length > 0 ? allEmployees.map((employee, i) => {
                         return(
-                            <React.Fragment>
-                                <li key={i}> {employee[i].name} </li>
-                            </React.Fragment> 
+                            <div>
+                                <li key={i}> {employee[i].name} <button className="btn btn-secondary" onClick={(e) => deleteEmployees(e)}>Delete</button></li>
+                                
+                            </div> 
                           )
                          }) : <div>No employees</div>}                 
                     </ul>
