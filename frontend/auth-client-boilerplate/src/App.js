@@ -17,7 +17,6 @@ import AnonRoutes from './components/auth/AnonRoutes';
 import PrivateRoutes from './components/auth/PrivateRoutes';
 import FinalMessage from './pages/FinalMessage';
 import Pay from './pages/Pay';
-import AddMenu2 from './components/particulares/admin/AddMenu2';
 import MyTable from './components/particulares/admin/MyTable';
 import Menu from './components/global/Menu';
 

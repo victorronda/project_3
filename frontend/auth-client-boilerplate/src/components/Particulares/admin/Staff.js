@@ -88,21 +88,11 @@ const Staff = (props) => {
                     <h2 className="">My employees</h2>
                 </div>
                 <div className="enum">
-                    
-                <ul>
-                { allEmployees.length > 0 ? allEmployees.map((employee, i) => {
-                    return(
-                        <React.Fragment key={i}>
-                            <li key={i}> {employee.name} </li> {/* En este map solo nos llega el primero aunque están todos */}
-                        </React.Fragment> 
-                )
-                }) : <div>No employees</div>}                 
-                </ul>
                     <ul>
                         { allEmployees.length > 0 ? allEmployees.map((employee, i) => {
                         return(
                             <div>
-                                <li key={i}> {employee[i].name} <button className="btn btn-secondary" onClick={(e) => deleteEmployees(e)}>Delete</button></li>
+                                <li key={i}> {employee.name} <button className="btn btn-secondary" onClick={(e) => deleteEmployees(e)}>Delete</button></li>
                                 
                             </div> 
                           )
