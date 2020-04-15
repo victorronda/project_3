@@ -187,7 +187,7 @@ const MenuClient = () => {
 																	/>
 																</div>
 																<div className="col-sm-1">
-																	<input type="checkbox" />
+																	<input name="dishes[]" type="checkbox" />
 																</div>
 															</div>
 														);
@@ -265,7 +265,7 @@ const MenuClient = () => {
                     }) : <div>No dishes</div> }
                 </ul> */}
 
-			<div>
+			<div style={{ marginTop: "4rem"}}>
 				{dishes.length > 0 ? (
 					<div className="card">
 						<div>
@@ -273,8 +273,8 @@ const MenuClient = () => {
 						</div>
 					</div>
 				) : (
-					<div className="" style={{ backgroundColor: 'white', height: '7rem', padding: '2rem', marginTop: "4rem", borderRadius: "2px", boxShadow: '1px 1.5px 1.5px 1px #3EC0B8' }}>
-						<h1>What are you going to order today?</h1>
+					<div className="" style={{ }}>
+						<h1 style={{backgroundColor: 'white', padding: '2rem', boxShadow: '1px 1.5px 1.5px 1px #3EC0B8', borderRadius: "3px" }}>What are you going to order today?</h1>
 					</div>
 				)}
 			</div>
