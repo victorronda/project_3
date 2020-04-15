@@ -20,15 +20,15 @@ const Signup = (props) => {
     return (
         <div className="pageSignup">
             <div className="formuSignup">
-                <div>
+                <div className="titleSig">
                     <h2>Sign Up</h2>
                 </div>
                 <form onSubmit={(e) => handleFormSubmit(e)}>
-                    <div>
+                    <div className="labelsSig">
                         <label><h4>Company name</h4></label>
                     </div>
                     <div>
-                        <input className="inputs"
+                        <input className="inputsSig"
                         type='text'
                         name='name'
                         value={name}
@@ -36,11 +36,11 @@ const Signup = (props) => {
                         required
                         />
                     </div>
-                    <div>
+                    <div className="labelsSig">
                         <label><h4>Email</h4></label>
                     </div>
                     <div>
-                        <input className="inputs"
+                        <input className="inputsSig"
                         type='email'
                         name='email'
                         value={email}
@@ -48,11 +48,11 @@ const Signup = (props) => {
                         required
                         />
                     </div>
-                    <div>
+                    <div className="labelsSig">
                         <label><h4>Password</h4></label>
                     </div>
                     <div>
-                        <input className="inputs"
+                        <input className="inputsSig"
                         type='password'
                         name='password'
                         value={password}
@@ -60,11 +60,11 @@ const Signup = (props) => {
                         required
                         />
                     </div>
-                    <div>
+                    <div className="labelsSig">
                         <label><h4>Confirm Password</h4></label>
                     </div>
                     <div>
-                        <input className="inputs"
+                        <input className="inputsSig"
                         type='password'
                         name='confirmPassword'
                         value={confirmPassword}
@@ -79,10 +79,10 @@ const Signup = (props) => {
                         <input className="btn-login-signup" type='submit' value='Signup' />
                     </div>
                 </form>
-                <div>
-                    <p>Already have account?<Link className="linksB" to={"/employee/login"}> Login</Link></p>
-                </div>
             </div>
+                <div>
+                    <p>Already have account?<Link className="links" to={"/employee/login"}> Login</Link></p>
+                </div>
         </div>
     )
 }

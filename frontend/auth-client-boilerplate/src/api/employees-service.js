@@ -19,6 +19,13 @@ export default {
       .get('/employees/staff')
       .then((res) => res.data)
       .catch(errorHandler);
+  },
+
+  deleteEmployee() {
+    return employees_service
+      .delete('/employees/staff/:_id/delete')
+      .then((res) => res.data)
+      .catch(errorHandler);
   }
   
 };

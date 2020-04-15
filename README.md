@@ -154,4 +154,4 @@ https://trello.com/b/PDuaPoMc/project-3
 ### Slides
 https://docs.google.com/presentation/d/1M63k4PhfnaDMhEqOfxjthyb88QvB4TpP22yhiDG7u7o/edit?usp=sharing
 
-### Firebase
+### Deploy

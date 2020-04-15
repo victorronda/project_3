@@ -28,7 +28,7 @@ class Auth {
 
   loginEmployee({ name, password }) {
     return this.auth
-      .post("/employee/login", { name, password })
+      .post("/employees/login", { name, password })
       .then(({ data }) => data);
   }
 

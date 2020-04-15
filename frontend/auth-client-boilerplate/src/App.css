@@ -150,9 +150,13 @@
   padding-top: 50px;
 }
 
+.center {
+  text-align: center;
+}
+
 /* Login Admin */
 .pageAd {
-  padding-top: 150px;
+  padding-top: 100px;
   display: flex;
   justify-content: center;
 }
@@ -163,6 +167,9 @@
   border-radius: 10px;
   height: 500px;
   width: 300px;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .btn-login-ad {
@@ -171,12 +178,28 @@
   border-radius: 10px;
   height: 40px;
   width: 100px;
+  margin-top: 50px;
 }
 
 /* Login Employee */
+.titleEm {
+  text-align: center;
+  padding: 20px;
+  padding-top: 60px;
+}
+
+.labelsEm {
+  display: flex;
+  justify-content: flex-start;
+  padding-top: 20px;
+  padding-left: 40px;
+}
+
 .pageEm {
-  padding-top: 150px;
-  align-content: center;
+  padding-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .formuEmplo {
@@ -185,6 +208,9 @@
   border-radius: 10px;
   height: 500px;
   width: 300px;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .btn-login-em {
@@ -193,20 +219,45 @@
   border-radius: 10px;
   height: 40px;
   width: 100px;
+  margin-top: 50px;
 }
 
 /* Signup */
 .pageSignup {
-  padding-top: 150px;
-  align-content: center;
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .formuSignup {
   background: rgb(226, 83, 83, 0.5);
   border: 2px solid #E25353;
   border-radius: 10px;
-  height: 500px;
-  width: 300px;
+  height: 550px;
+  width: 320px;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.titleSig {
+  text-align: center;
+  padding-bottom: 20px;
+  padding-top: 30px;
+}
+
+.inputsSig {
+  border-radius: 10px;
+  width: 235px;
+  padding: 5px;
+}
+
+.labelsSig {
+  display: flex;
+  justify-content: flex-start;
+  padding-top: 10px;
+  padding-left: 40px;
 }
 
 .btn-login-signup {
@@ -215,6 +266,35 @@
   border-radius: 10px;
   height: 40px;
   width: 100px;
+  margin-top: 20px;
+}
+
+/* Tables (en admin) */
+.pageTable {
+  padding-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.formuTable {
+  background: rgb(172, 149, 225);
+  border: 2px solid rgb(145, 109, 228);
+  border-radius: 10px;
+  height: 280px;
+  width: 550px;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.btn-add-table {
+  background-color: rgb(145, 109, 228);
+  border: 2px solid rgb(145, 109, 228);
+  border-radius: 10px;
+  height: 40px;
+  width: 100px;
+  margin-top: 40px;
 }
 
 /* Footer */
