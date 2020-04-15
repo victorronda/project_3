@@ -11,38 +11,21 @@ import Navbar from '../../global/Navbar';
 
 const AddMenu = () => {
 	const [ name, setName ] = useState('');
-    const [ dishes, setDishes ] = useState([]);
-    const [ allDishes, setAllDishes ] = useState([]);
+
 
     const history = useHistory();
     
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const newMenu = { name, dishes }
+        const newMenuName = { name }
         try {
-            await menus_service.saveNewMenu(newMenu)
+            await menus_service.saveNewMenuName(newMenuName)
             console.log({ message: 'New menu created successfully!' })
-            history.push('/profile')          
+            history.push('/menus/admin')          
         } catch (error) {
             console.log(error)
         }
     };
-    
-
-    
-    useEffect(() => {
-        setAllDishes(getAllDishes()) 
-    },[]);
-    
-    const getAllDishes = async () => {
-       const allTheDishes = await dishes_service.getAllDishes()
-        setAllDishes(allTheDishes)
-    }
-
-
-
-  
-
 
 	return (
         <div>
@@ -53,18 +36,6 @@ const AddMenu = () => {
                 {/* NAME OF THE MENU */}
 				<label>Name of the menu:</label>
 				<input type="text" name="name" value={name} onChange={(e) => setName(e.target.value)} />
-
-                
-                <ul>
-                    {allDishes.length > 0 ? allDishes.map((elem,index) => {
-                        return (
-                                <li key={index}>{elem.name}</li> 
-                            )
-                    }) : <div>No dishes</div> }
-                </ul>
-
-
-
                 <input type="submit" value="ADD NEW MENU" />
 			</form>
 		</div>

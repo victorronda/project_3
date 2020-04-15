@@ -4,29 +4,9 @@ const Dish = require("../models/Dish");
 const uploadCloud = require('../config/cloudinary.js');
 
 const { isLoggedIn } = require("../helpers/middlewares");
-router.use(isLoggedIn()); 
 
-// Create Dish ///OJOOOOO FALTA REVISAR EL PROBLEMILLA DEL IMAGE FILE // Se hace desde react?
-router.post("/add", /* uploadCloud.single('image'),  */  async (req, res, next) => { 
 
-    const { name, typeItem, ingredients, description, price, quantity } = req.body;
-    
-   /*  if (!req.file) {
-        next(new Error('No file uploaded!'));
-        return;
-      } */
-    /* const image = req.file.secure_url; Nos da problemas al coger el file */
 
-    try{
-        const dish = await Dish.create({ name, typeItem, ingredients, description, price, quantity });
-        /* Falta poner image dentro del create cuando solucionemos el problema de la linea 19 */
-        res.status(201).json(dish);
-
-    } catch(err) {
-        console.log('You have the error: ', err);
-        next(err);
-    } 
-})
 
 // Dishes List 
 router.get('/showAll', async (req,res, next) => {
@@ -52,6 +32,34 @@ router.get('/:_id', async (req,res,next) => {
     }
 
 })
+
+router.use(isLoggedIn()); 
+
+// Create Dish ///OJOOOOO FALTA REVISAR EL PROBLEMILLA DEL IMAGE FILE // Se hace desde react?
+router.post("/add", /* uploadCloud.single('image'),  */  async (req, res, next) => { 
+
+    const { name, typeItem, ingredients, description, price, quantity } = req.body;
+    
+   /*  if (!req.file) {
+        next(new Error('No file uploaded!'));
+        return;
+      } */
+    /* const image = req.file.secure_url; Nos da problemas al coger el file */
+
+    try{
+        const dish = await Dish.create({ name, typeItem, ingredients, description, price, quantity });
+        /* Falta poner image dentro del create cuando solucionemos el problema de la linea 19 */
+        res.status(201).json(dish);
+
+    } catch(err) {
+        console.log('You have the error: ', err);
+        next(err);
+    } 
+})
+
+
+
+
 
 // Edit dish
 router.put("/:_id/edit", async (req, res, next) => {  

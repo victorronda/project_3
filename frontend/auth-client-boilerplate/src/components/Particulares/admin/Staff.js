@@ -4,11 +4,14 @@ import employees_service from "../../../api/employees-service"
 import { Link } from 'react-router-dom'
 import Navbar from '../../global/Navbar'
 
+
 const Staff = (props) => {
     const [name, setName] = useState("")
     const [password, setPassword] = useState("")
     const [message, setMessage] = useState("")
     const [allEmployees, setAllEmployees] = useState([])
+
+    
 
     const handleFormSubmit = (e) => {
         e.preventDefault()
@@ -28,6 +31,7 @@ const Staff = (props) => {
             console.log({ message: 'Employee deleted!' })
             const newArr = allEmployees.filter((item) => item._id !== employeeId)    
             setAllEmployees(newArr)
+            
         } catch (error) {
             console.log(error)
         }

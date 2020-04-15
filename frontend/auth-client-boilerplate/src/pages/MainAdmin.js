@@ -12,7 +12,7 @@ const MainAdmin = (props) => {
         <div>
             <div className="contMy">
                 <div className="my">
-                    <Link style={{textDecoration: "none"}} className="linksA" to='/menus/add'><h3>My menu</h3></Link>
+                    <Link style={{textDecoration: "none"}} className="links" to='/menus/admin'><h3>My menu</h3></Link>
                 </div>
                 <div className="my">
                     <Link style={{textDecoration: "none"}} className="linksA" to='/dishes/add'><h3>My dishes</h3></Link>

@@ -6,6 +6,24 @@ const Company = require('../models/Company');
 
 // HELPER FUNCTIONS -> me lo he traído por si acaso, creo que no es necesario así luego borrar si eso
 const {isLoggedIn} = require('../helpers/middlewares');
+
+
+
+
+
+
+// Ver el menú tanto como admin como cliente
+router.get('/show', async (req, res, next) => {
+
+	try {
+		const theClientMenu = await Menu.find();
+		res.status(200).json(theClientMenu);
+	} catch (err) {
+		next(err);
+	}
+});
+
+
 router.use(isLoggedIn());
 
 // Add menu
@@ -59,10 +77,10 @@ router.delete('/:_id/delete', async (req, res, next) => {
 });
 
 // Ver el menú tanto como admin como cliente
-router.get('/:_id', async (req, res, next) => {
+router.get('/show', async (req, res, next) => {
 
 	try {
-		const theClientMenu = await Menu.findById(req.params._id);
+		const theClientMenu = await Menu.find();
 		res.status(200).json(theClientMenu);
 	} catch (err) {
 		next(err);
