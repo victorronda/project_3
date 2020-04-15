@@ -7,9 +7,9 @@ const Home = () => {
     return (
         <div className="d-block text-center align-content-center" style={{margin: "8em auto"}}>
             <h1 style={{fontSize: "120px"}}>MGBITE</h1>
-            <Link className="px-5 py-2 mb-4 signupButton " to="/signup">Signup</Link><br/>
+            <Link style={{textDecoration: "none"}} className="px-5 py-2 mb-4 signupButton " to="/signup">Signup</Link><br/>
             <p className="d-inline mr-3">Already registered?</p>
-            <Link className="linksB" to="/employee/login">Login</Link>
+            <Link style={{textDecoration: "none"}} className="linksB" to="/employee/login">Login</Link>
         </div>
     )
 }

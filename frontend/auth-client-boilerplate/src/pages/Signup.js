@@ -81,7 +81,7 @@ const Signup = (props) => {
                 </form>
             </div>
                 <div>
-                    <p>Already have account?<Link className="links" to={"/employee/login"}> Login</Link></p>
+                    <p>Already have account?<Link style={{textDecoration: "none"}} className="links" to={"/employee/login"}> Login</Link></p>
                 </div>
         </div>
     )
