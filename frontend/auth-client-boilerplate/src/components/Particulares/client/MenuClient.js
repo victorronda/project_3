@@ -4,6 +4,7 @@ import dishes_service from '../../../api/dishes-service'; /* ME HE QUEDADO POR A
 listarlos en el form del menú */
 
 import { Link, useHistory } from 'react-router-dom';
+import NavbarEm from '../../global/NavbarEm';
 
 /* BACKEND ROUTE: POST /menus/add */
 
@@ -42,6 +43,8 @@ const MenuClient = () => {
 	};
 
 	return (
+		<div>
+		<NavbarEm/>
 		<div
 			className="d-flex flex-row w-100 text-center mh-100"
 			style={{ backgroundColor: '#81cfca', padding: '10vh' }}
@@ -278,6 +281,7 @@ const MenuClient = () => {
 					</div>
 				)}
 			</div>
+		</div>
 		</div>
 	);
 };

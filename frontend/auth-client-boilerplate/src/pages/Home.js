@@ -18,7 +18,7 @@ const Home = () => {
             
             <div className="mt-5">
                 <p className="d-inline mr-3" style={{fontWeight: "bolder"}}><b>Already registered?</b></p>
-                <Link style={{textDecoration: "none", color: "#576064"}} className="linksB" to="/employee/login">Login</Link>
+                <Link style={{textDecoration: "none", color: "#576064"}} className="linksB" to="/employees/login">Login</Link>
 
             </div>
         </div>

@@ -6,7 +6,7 @@ function NavbarEm() {
      return(
         <div>
             <div className="navbarClient">
-                <Link className="links mb-0" to='/'>MGBITE</Link>
+                <Link style={{textDecoration: "none"}} className="links mb-0" to='/'>MGBITE</Link>
             </div>
         </div>
     )
