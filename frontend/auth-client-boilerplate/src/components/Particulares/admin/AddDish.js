@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import dishes_service from "../../../api/dishes-service";
 import { useHistory } from "react-router-dom"
+import { withAuth } from '../../../context/AuthProvider'
 
 
 /* BACKEND ROUTE: POST /dishes/add */
@@ -126,4 +127,4 @@ const AddDish = () => {
 	);
 };
 
-export default AddDish;
+export default withAuth(AddDish);

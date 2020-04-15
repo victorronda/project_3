@@ -23,7 +23,7 @@ const Staff = (props) => {
     
     const getAllEmployees = async () => {
        const allTheEmployees = await employees_service.getAllEmployees()
-       setAllEmployees([...allEmployees, allTheEmployees])
+       setAllEmployees(allTheEmployees)
     }
 
 
@@ -79,7 +79,7 @@ const Staff = (props) => {
                 { allEmployees.length > 0 ? allEmployees.map((employee, i) => {
                     return(
                         <React.Fragment key={i}>
-                            <li key={i}> {employee[i].name} </li> {/* En este map solo nos llega el primero aunque están todos */}
+                            <li key={i}> {employee.name} </li> {/* En este map solo nos llega el primero aunque están todos */}
                         </React.Fragment> 
                 )
                 }) : <div>No employees</div>}                 

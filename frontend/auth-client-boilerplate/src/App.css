@@ -274,11 +274,35 @@
   margin: 0.2rem 0;
 }
 
-/* Falta ver la distribución de  */
+/* Falta ver la distribución de ingredients */
 .showIngredients{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   width: 100%;
   height: 5vh;
+}
+
+
+/* Pay.js */
+
+.payButton{
+  text-decoration: none;
+  padding: 0.5rem 4rem;
+  background-color: #34D99E;
+  border: 2px solid rgba(51, 184, 192,.53);
+  border-radius: 10px;
+  color: black
+
+}
+
+
+.cancelPayButton{
+  text-decoration: none; 
+  padding: 0.5rem 4rem;
+  background-color: #D94834;
+  border: 2px solid rgba(51, 184, 192,.53);
+  border-radius: 10px;
+  color:#FFFFFF;
+  
 }

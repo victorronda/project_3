@@ -15,6 +15,9 @@ import Staff from './components/particulares/admin/Staff';
 import MainAdmin from './pages/MainAdmin';
 import AnonRoutes from './components/auth/AnonRoutes';
 import PrivateRoutes from './components/auth/PrivateRoutes';
+import FinalMessage from './pages/FinalMessage';
+import Pay from './pages/Pay';
+import AddMenu2 from './components/particulares/admin/AddMenu2';
 
 function App() {
   return (
@@ -31,6 +34,8 @@ function App() {
         <PrivateRoutes exact path='/menus/add' component={AddMenu} />
         <PrivateRoutes exact path='/profile' component={MainAdmin} />
         <PrivateRoutes exact path='/staff' component={Staff} />
+        <PrivateRoutes exact path='/thankyou' component={FinalMessage} />
+        <PrivateRoutes exact path='/pay' component={Pay} />
       </Switch>
       <Footer/>
     </AuthProvider>
