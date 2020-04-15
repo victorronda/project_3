@@ -86,7 +86,7 @@ const AddDish = () => {
                     {ingredients.length > 0 ? ingredients.map((ingredient, index) => {
                         return(
                             <React.Fragment key={index}>
-                                <li key={index}>{ingredient}</li>
+                                <li className="px-2" key={index}>{ingredient}</li>
                             </React.Fragment> 
                     )
                     }) : <div>No ingredients</div>}                 
@@ -106,11 +106,11 @@ const AddDish = () => {
                     <input type="text" name="description" value={description} onChange={(e) => setDescription(e.target.value)} />
                 </div>
 
-                {/* IMAGE */}
-                <div>
+                {/* IMAGE -----> TODO ESTO SERÁ BACKLOG */}
+                {/* <div>
                     <label htmlFor="image">Image:</label>
                     <input name="image" type='file' onChange={(e) => handleFileUpload(e)} />             
-                </div>
+                </div> */}
                 {/* Chequear, no usamos image ni set image?? */}
 
 
@@ -121,7 +121,7 @@ const AddDish = () => {
                 </div>
 
 
-                <input type="submit" value="ADD NEW DISH" />
+                <input style={{backgroundColor: "#3EC0B8", padding: "1rem 4rem", margin: "2rem 1rem", borderRadius: "10px", boxShadow: "1px 1px 1px 1px #3EC0B8"}} type="submit" value="ADD NEW DISH" />
 			</form>
 		</div>
 	);

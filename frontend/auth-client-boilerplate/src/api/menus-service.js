@@ -25,6 +25,12 @@ export default {
       .get('/menus/show')
       .then((res) => res.data)
       .catch(errorHandler);
+  },
+  deleteMyMenu(id){
+    return menus_service
+      .delete(`/menus/${id}/delete`)
+      .then((res) => res.data)
+      .catch(errorHandler);
   }
 
 

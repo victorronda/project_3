@@ -20,6 +20,7 @@ import Pay from './pages/Pay';
 import MyTable from './components/particulares/admin/MyTable';
 import Menu from './components/global/Menu';
 import MenuAdmin from './components/particulares/admin/MenuAdmin';
+import MenuClient from './components/particulares/client/MenuClient';
 
 function App() {
   return (
@@ -32,7 +33,7 @@ function App() {
         <AnonRoutes exact path='/employee/login' component={LoginEmployee} />
         <AnonRoutes exact path='/signup' component={Signup} />
         <AnonRoutes exact path='/main/employee' component={MainEmployee} />
-        <AnonRoutes exact path='/menu' component={Menu} />
+        <AnonRoutes exact path='/menu' component={MenuClient} />
         <PrivateRoutes exact path='/dishes/add' component={AddDish} />
         <PrivateRoutes exact path='/menus/add' component={AddMenu} />
         <PrivateRoutes exact path='/menus/admin' component={MenuAdmin} />
