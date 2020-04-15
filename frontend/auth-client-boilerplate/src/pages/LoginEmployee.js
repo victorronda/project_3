@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { withAuth } from '../context/AuthProvider'
 import { Link, useHistory } from 'react-router-dom'
+import NavbarEm from '../components/global/NavbarEm'
 
 const LoginEmployee = (props) => {
 
@@ -24,6 +25,8 @@ const LoginEmployee = (props) => {
     };
 
     return (
+        <div>
+        <NavbarEm/>
         <div className="pageEm">
             <div className="formuEmplo">
                 <div className="">
@@ -62,6 +65,7 @@ const LoginEmployee = (props) => {
             <div>
                 <Link style={{textDecoration: "none"}} className="linksB" to={"/admin/login"}>If you are the Admin, click here</Link>
             </div>
+        </div>
         </div>
     )
 }

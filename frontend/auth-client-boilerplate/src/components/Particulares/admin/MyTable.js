@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import tables_service from "../../../api/tables-service"
 import { Link, useHistory } from 'react-router-dom'
+import Navbar from '../../global/Navbar'
 
 const MyTable = () => {
 
@@ -11,16 +12,18 @@ const MyTable = () => {
 	const handleFormSubmit = async (e) => {
         e.preventDefault();
         try {
-            await tables_service.addTables({number})
+            await tables_service.editTables({number})
             console.log("numbeeer", number)
             console.log({ message: 'Tables created successfully!' })
-            //history.push('/profile')          
+            history.push('/profile')          
         } catch (error) {
             console.log(error)
         }
     };
 
     return (
+        <div>
+        <Navbar/>
         <div>
             <div className="pageTable">
             <form className="formuTable" onSubmit={(e) => handleFormSubmit(e)}>
@@ -40,7 +43,9 @@ const MyTable = () => {
                     <input className="btn-add-table" type='submit' value='Add' />
                 </div>
             </form>
+
             </div>
+        </div>
         </div>
     )
 }

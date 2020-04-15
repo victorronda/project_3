@@ -1,11 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { withAuth } from '../context/AuthProvider'
+import NavbarEm from '../components/global/NavbarEm'
 
 const Pay = () => {
 
 
     return (
+        <div>
+        <NavbarEm/>
         <div className="w-100 h-100 d-flex flex-column justify-content-center text-center align-content-center align-items-center"  >
             <div className="card w-25 align-items-center" style={{backgroundColor: "#C5EBCF", margin: "2%"}}>
                 <div className="card-body text-center w-100">
@@ -21,6 +24,7 @@ const Pay = () => {
                 <Link className="cancelPayButton" style={{textDecoration: "none", margin: "0 20px"}}>CANCEL</Link>
             </div>
             
+        </div>
         </div>
     )
 }

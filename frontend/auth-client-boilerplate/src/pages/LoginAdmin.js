@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { withAuth } from '../context/AuthProvider'
+import NavbarEm from '../components/global/NavbarEm'
 
 const LoginAdmin = (props) => {
 
@@ -12,6 +13,8 @@ const LoginAdmin = (props) => {
     }
 
     return (
+        <div>
+        <NavbarEm/>
         <div className="pageAd">
         <div className="formuAdmin">
             <div className="">
@@ -46,6 +49,7 @@ const LoginAdmin = (props) => {
                     <input className="btn-login-ad" type='submit' value='Login' />
                 </div>
             </form>
+        </div>
         </div>
         </div>
     )

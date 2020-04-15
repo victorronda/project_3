@@ -13,6 +13,10 @@
   color: black;
 }
 
+.linksA {
+  color: whitesmoke;
+}
+
 .linksB {
   color: #3EC0B8;
 }
@@ -74,8 +78,7 @@
 
 .my {
   padding: 20px;
-  background: #3EC0B8;
-  border: 1px solid;
+  background:  rgba(36, 163, 163, 0.7);
   border-radius: 10px;
   font-size: 25px;
   width: 180px;
@@ -113,10 +116,10 @@
 }
 
 .page {
-  padding: 150px;
+  padding-top: 100px;
   display: flex;
   flex-direction: row-reverse;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 
 .cont {

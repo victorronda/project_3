@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { withAuth } from '../context/AuthProvider'
 import { Link } from 'react-router-dom'
+import NavbarEm from '../components/global/NavbarEm'
 
 const Signup = (props) => {
 
@@ -18,6 +19,8 @@ const Signup = (props) => {
     }
 
     return (
+        <div>
+        <NavbarEm/>
         <div className="pageSignup">
             <div className="formuSignup">
                 <div className="titleSig">
@@ -81,8 +84,9 @@ const Signup = (props) => {
                 </form>
             </div>
                 <div>
-                    <p>Already have account?<Link style={{textDecoration: "none"}} className="links" to={"/employee/login"}> Login</Link></p>
+                    <p>Already have account?<Link style={{textDecoration: "none"}} className="links" to={"/employees/login"}> Login</Link></p>
                 </div>
+        </div>
         </div>
     )
 }

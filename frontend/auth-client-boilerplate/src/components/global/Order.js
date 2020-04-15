@@ -1,9 +1,13 @@
 import React from 'react'
+import NavbarEm from './NavbarEm'
 
 const Order = () => {
     return (
         <div>
-            <h1>Client Order view (with price)</h1>
+        <NavbarEm/>
+            <div>
+                <h1>Client Order view (with price)</h1>
+            </div>
         </div>
     )
 }

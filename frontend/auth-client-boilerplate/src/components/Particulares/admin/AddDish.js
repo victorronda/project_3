@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import dishes_service from "../../../api/dishes-service";
 import { useHistory } from "react-router-dom"
 import { withAuth } from '../../../context/AuthProvider'
+import Navbar from '../../global/Navbar';
 
 
 /* BACKEND ROUTE: POST /dishes/add */
@@ -59,6 +60,8 @@ const AddDish = () => {
 
 
 	return (
+        <div>
+        <Navbar/>
 		<div className="d-block w-100 text-center">
 			<form className="d-flex flex-column justify-content-center align-items-center addDishForm" onSubmit={(e) => handleSubmit(e)} >
                 
@@ -124,6 +127,7 @@ const AddDish = () => {
                 <input type="submit" value="ADD NEW DISH" />
 			</form>
 		</div>
+        </div>
 	);
 };
 

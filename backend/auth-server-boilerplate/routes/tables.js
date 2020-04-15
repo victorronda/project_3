@@ -34,7 +34,7 @@ router.post('/add', isLoggedIn(), async (req, res, next) => {
 // Edit table
 router.put('/edit', async (req,res,next) => {
 
-	const {numberTables} = req.body;
+	const {number} = req.body;
     Table.collection.drop();
 
     try {
@@ -43,7 +43,7 @@ router.put('/edit', async (req,res,next) => {
 			{ new: true }
 			);
 
-		for (let i=0;i<numberTables;i++){
+		for (let i=0;i<number;i++){
 			const newTable=await Table.create(
 			{number: 0, 
 			orders: [], 

@@ -3,8 +3,8 @@ import { withAuth } from '../../../context/AuthProvider'
 import menus_service from "../../../api/menus-service";
 import dishes_service from "../../../api/dishes-service"; /* ME HE QUEDADO POR AQUÍ, falta añadir la ruta de get all dishes para 
 listarlos en el form del menú */
-
 import { useHistory } from "react-router-dom"
+import Navbar from '../../global/Navbar';
 
 
 /* BACKEND ROUTE: POST /menus/add */
@@ -45,6 +45,8 @@ const AddMenu = () => {
 
 
 	return (
+        <div>
+        <Navbar/>
         <div className="d-block w-100 text-center">
 			<form className="d-flex flex-column justify-content-center align-items-center" onSubmit={(e) => handleSubmit(e)} >
                 
@@ -66,6 +68,7 @@ const AddMenu = () => {
                 <input type="submit" value="ADD NEW MENU" />
 			</form>
 		</div>
+        </div>
 	);
 };
 

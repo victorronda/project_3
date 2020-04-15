@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import { withAuth } from '../../context/AuthProvider';
 
-function navbarAdmin(props) {  
+function Navbar(props) {  
 
     return(
         <div className="navbarAdmin">
@@ -18,15 +18,4 @@ function navbarAdmin(props) {
     )
 }
 
-export default withAuth(navbarAdmin)
-
-export function navbarClient() {
-
-    return(
-        <div>
-            <div className="navbarClient">
-                <Link className="links mb-0" to='/'>MGBITE</Link>
-            </div>
-        </div>
-    )
-}
+export default withAuth(Navbar)
