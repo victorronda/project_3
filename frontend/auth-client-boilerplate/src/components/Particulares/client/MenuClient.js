@@ -12,7 +12,10 @@ const MenuClient = () => {
 	const [ dishes, setDishes ] = useState([]);
 	const [ allDishes, setAllDishes ] = useState([]);
 	const [ myMenu, setMyMenu ] = useState([]);
-	const [ typeItem, setTypeItem ] = useState('Dessert');
+    const [ typeItem, setTypeItem ] = useState('Dessert');
+    const [ quantity, setQuantity] = useState(0)
+    
+    
 
 	const history = useHistory();
 
@@ -40,7 +43,14 @@ const MenuClient = () => {
 	const getTheMenu = async () => {
 		const theMenu = await menus_service.getMyMenu();
 		setMyMenu(theMenu);
-	};
+    };
+    
+
+    
+
+
+
+    
 
 	return (
 		<div>
@@ -56,7 +66,7 @@ const MenuClient = () => {
 					return (
 						<div
 							key={i}
-							className="card d-flex justify-content-center align-items-center text-center mx-auto w-50"
+							className="col-8 card d-flex justify-content-center align-items-center text-center mx-auto w-100"
 							style={{ margin: '4rem 0' }}
 						>
 							<form
@@ -76,10 +86,10 @@ const MenuClient = () => {
 													.filter((entree) => entree.typeItem === 'Entree')
 													.map((elem, index) => {
 														return (
-															<div className="d-flex flex-row" key={index}>
+															<form className="d-flex flex-row" key={index}>
 																<div className="col-sm-6">
 																	<li key={index}>
-																		<Link
+																		<Link name="dishName"
 																			style={{
 																				textDecoration: 'none',
 																				color: 'black'
@@ -91,19 +101,21 @@ const MenuClient = () => {
 																	</li>
 																</div>
 																<div className="col-sm-3">
-																	<span>{elem.price.toFixed(2)}€</span>
+																	<span name={elem.price}>{elem.price.toFixed(2)}€</span>
 																</div>
 																<div className="col-sm-2">
 																	<input
 																		style={{ display: 'inline', width: '2rem' }}
 																		min="0"
-																		type="number"
+                                                                        type="number"
+                                                                        name="quantity"
 																	/>
 																</div>
 																<div className="col-sm-1">
-																	<input type="checkbox" />
+                                                                    <button className="d-inline" name={elem._id} style={{width: "1.5rem", height: "1.5rem",borderRadius: "40px", backgroundColor: "#EEEEEE", color: "#3EC0B8", marginLeft: "0.4rem"}}>+</button> 
+                                                                    <button className="d-inline" name={elem._id} style={{width: "1.5rem", height: "1.5rem",borderRadius: "40px", backgroundColor: "#EEEEEE", color: "#3EC0B8", marginLeft: "0.4rem"}}>-</button> 
 																</div>
-															</div>
+															</form>
 														);
 													})
 											) : (
@@ -268,16 +280,20 @@ const MenuClient = () => {
                     }) : <div>No dishes</div> }
                 </ul> */}
 
-			<div style={{ marginTop: "4rem"}}>
+			<div className="col-4" style={{ marginTop: "4rem"}}>
 				{dishes.length > 0 ? (
 					<div className="card">
-						<div>
+						<div className="card-header">
 							<h1>MY ORDER</h1>
 						</div>
+                        <div className="card-body">
+
+                        </div>
+
 					</div>
 				) : (
 					<div className="" style={{ }}>
-						<h1 style={{backgroundColor: 'white', padding: '2rem', boxShadow: '1px 1.5px 1.5px 1px #3EC0B8', borderRadius: "3px" }}>What are you going to order today?</h1>
+						<h1 style={{backgroundColor: 'white', padding: '2rem', boxShadow: '1px 1.5px 1.5px 1px #3EC0B8', borderRadius: "3px" }}>My order...</h1>
 					</div>
 				)}
 			</div>
