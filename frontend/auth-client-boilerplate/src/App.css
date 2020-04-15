@@ -150,6 +150,10 @@
   padding-top: 50px;
 }
 
+.center {
+  text-align: center;
+}
+
 /* Login Admin */
 .pageAd {
   padding-top: 100px;
@@ -263,6 +267,34 @@
   height: 40px;
   width: 100px;
   margin-top: 20px;
+}
+
+/* Tables (en admin) */
+.pageTable {
+  padding-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.formuTable {
+  background: rgb(172, 149, 225);
+  border: 2px solid rgb(145, 109, 228);
+  border-radius: 10px;
+  height: 280px;
+  width: 550px;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.btn-add-table {
+  background-color: rgb(145, 109, 228);
+  border: 2px solid rgb(145, 109, 228);
+  border-radius: 10px;
+  height: 40px;
+  width: 100px;
+  margin-top: 40px;
 }
 
 /* Footer */

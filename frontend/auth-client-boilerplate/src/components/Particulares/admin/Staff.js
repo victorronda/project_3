@@ -75,12 +75,14 @@ const Staff = (props) => {
                                 required
                             />
                         </div>
+                        <div className="center">
+                        {message}
+                        </div>
                         <div className="contOrders put">
                             <input className="btn-login" type='submit' value='Submit' />
                         </div>
                     </form>
                 </div>
-                {message}
             <div className="cont2">
                 <div className="contOrders">
                     <h2 className="">My employees</h2>

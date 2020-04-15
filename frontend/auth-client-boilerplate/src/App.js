@@ -15,6 +15,8 @@ import Staff from './components/particulares/admin/Staff';
 import MainAdmin from './pages/MainAdmin';
 import AnonRoutes from './components/auth/AnonRoutes';
 import PrivateRoutes from './components/auth/PrivateRoutes';
+import MyTable from './components/particulares/admin/MyTable';
+import Menu from './components/global/Menu';
 
 function App() {
   return (
@@ -27,10 +29,12 @@ function App() {
         <AnonRoutes exact path='/employee/login' component={LoginEmployee} />
         <AnonRoutes exact path='/signup' component={Signup} />
         <AnonRoutes exact path='/main/employee' component={MainEmployee} />
+        <AnonRoutes exact path='/menu' component={Menu} />
         <PrivateRoutes exact path='/dishes/add' component={AddDish} />
         <PrivateRoutes exact path='/menus/add' component={AddMenu} />
         <PrivateRoutes exact path='/profile' component={MainAdmin} />
         <PrivateRoutes exact path='/staff' component={Staff} />
+        <PrivateRoutes exact path='/tables' component={MyTable} />
       </Switch>
       <Footer/>
     </AuthProvider>
