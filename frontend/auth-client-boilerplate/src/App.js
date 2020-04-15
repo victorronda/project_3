@@ -19,6 +19,7 @@ import FinalMessage from './pages/FinalMessage';
 import Pay from './pages/Pay';
 import MyTable from './components/particulares/admin/MyTable';
 import Menu from './components/global/Menu';
+import MenuAdmin from './components/particulares/admin/MenuAdmin';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
         <AnonRoutes exact path='/menu' component={Menu} />
         <PrivateRoutes exact path='/dishes/add' component={AddDish} />
         <PrivateRoutes exact path='/menus/add' component={AddMenu} />
+        <PrivateRoutes exact path='/menus/admin' component={MenuAdmin} />
         <PrivateRoutes exact path='/profile' component={MainAdmin} />
         <PrivateRoutes exact path='/staff' component={Staff} />
         <PrivateRoutes exact path='/thankyou' component={FinalMessage} />
