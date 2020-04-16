@@ -26,6 +26,14 @@
   border: none;
 }
 
+.btn-goback {
+  background: #FBEBBA;
+  border: 1px solid #D7CAA4;
+  border-radius: 10px;
+  height: 80px;
+  width: 200px;
+}
+
 .btn-login {
   background-color: #10a4d2;
   border: 2px solid #10a4d2;
@@ -68,12 +76,15 @@
 }
 
 /* MainAdmin */
-.contMy {
-  padding-top: 200px;
-  padding-bottom: 200px;
+.contMain {
   display: flex;
-  flex-direction: row;
   justify-content: space-evenly;
+  padding-top: 100px;
+}
+
+.contMy {
+  display: flex;
+  flex-direction: column;
 }
 
 .my {
@@ -81,23 +92,29 @@
   background:  rgba(36, 163, 163, 0.7);
   border-radius: 10px;
   font-size: 25px;
-  width: 180px;
+  width: 265px;
   text-align: center;
-}
-
-.contOrders {
-  display: flex;
-  justify-content: center;
+  margin-bottom: 100px;
 }
 
 .orders {
   padding: 20px;
   background: #F7FA78;
-  border: 1px solid;
   border-radius: 10px;
   font-size: 25px;
   width: 265px;
   text-align: center;
+  margin-bottom: 50px;
+}
+
+.ordersTa {
+  padding: 10px;
+  background: rgb(241, 243, 143);
+  border-radius: 10px;
+  font-size: 25px;
+  width: 265px;
+  text-align: center;
+  margin-bottom: 50px;
 }
 
 /* Staff */
@@ -155,6 +172,25 @@
 
 .center {
   text-align: center;
+}
+
+.titleLi {
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 40px;
+}
+
+.btn-del {
+  padding: 5px;
+  margin-right: 40px;
+  background: #7fd0e9;
+  border-radius: 5px;
+  width: 60px;
+}
+
+.list {
+  display: flex;
+  justify-content: space-between;
 }
 
 /* Login Admin */
@@ -298,6 +334,50 @@
   height: 40px;
   width: 100px;
   margin-top: 40px;
+}
+
+.contEdit {
+  display: flex;
+  justify-content: center;
+  padding: 200px;
+}
+
+.editTables {
+  padding: 8px;
+  padding-right: 60px;
+}
+
+.btn-edit {
+  padding: 8px;
+  width: 150px;
+  background: rgb(145, 109, 228);
+  border: 1px solid;
+  border-radius: 10px;
+  text-align: center;
+}
+
+/* Order Info (Admin) */
+.contOrder {
+  padding-top: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cont-order {
+  background: rgb(247, 250, 120, 0.7);
+  border-radius: 10px;
+  border: 1px solid #F7FA78;
+  height: 450px;
+  width: 430px;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.orderList {
+  padding: 10px;
 }
 
 /* Footer */

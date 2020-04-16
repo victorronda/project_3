@@ -17,6 +17,7 @@ import Pay from './pages/Pay';
 import MyTable from './components/particulares/admin/MyTable';
 import MenuAdmin from './components/particulares/admin/MenuAdmin';
 import MenuClient from './components/particulares/client/MenuClient';
+import OrderInfo from './components/particulares/admin/OrderInfo';
 import AnonRoutes from './components/auth/AnonRoutes';
 import PrivateRoutes from './components/auth/PrivateRoutes';
 
@@ -39,6 +40,7 @@ function App() {
         <PrivateRoutes exact path='/thankyou' component={FinalMessage} />
         <PrivateRoutes exact path='/pay' component={Pay} />
         <PrivateRoutes exact path='/tables' component={MyTable} />
+        <PrivateRoutes exact path='/admin/orderinfo' component={OrderInfo} />
       </Switch>
       <Footer/>
     </AuthProvider>

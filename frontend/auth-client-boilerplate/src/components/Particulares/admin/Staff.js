@@ -57,7 +57,7 @@ const Staff = (props) => {
         <div className="page">
              <div className="cont formu">
                 <div className="contOrders">
-                    <h2 className="title">Add Employee</h2>
+                    <h2 className="titleEm">Add Employee</h2>
                 </div>
                 <form onSubmit={(e) => handleFormSubmit(e)}>
                      <div className="labels">
@@ -94,15 +94,16 @@ const Staff = (props) => {
             </div>
             <div className="cont2">
                 <div className="contOrders">
-                    <h2 className="">My employees</h2>
+                    <h2 className="titleLi">My employees</h2>
                 </div>
                 <div className="enum">
                     <ul>
                         { allEmployees.length > 0 ? allEmployees.map((employee, i) => {
                         return(
-                            <div className="btn-del">
-                                <li key={i}><h4> {employee.name} </h4><button className="" value={employee._id}
-                                onClick={(e) => deleteEmployees(e)}>Delete</button></li>
+                            <div className="list">
+                                <li key={i}><h4> {employee.name} </h4></li>
+                                <div><button className="nobutton btn-del" value={employee._id}
+                                onClick={(e) => deleteEmployees(e)}>Delete</button></div>
                             </div> 
                             )
                             }) : <div className="center">No employees</div>}                 

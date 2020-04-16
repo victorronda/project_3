@@ -4,7 +4,7 @@ const createError = require('http-errors');
 const Company = require('../models/Company');
 const Table = require('../models/Table');
 
-const { isLoggedIn} = require('../helpers/middlewares');
+const {isLoggedIn} = require('../helpers/middlewares');
 //router.use(isLoggedIn());
 
 // Add Table

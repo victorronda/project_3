@@ -14,9 +14,9 @@ export default {
   tables_service,
   
   // Con esta editamos el numero de la mesa ya creada (la key number pasa a ser el que le indiquemos)
-  editTheNumberOfTheTable(number) {
+  editTheNumberOfTheTable(_id, number) {
     return tables_service
-      .put("/tables/:_id/editNumber", number) // _id = tableId
+      .put(`/tables/${_id}/editNumber`, number) // _id = tableId
       .then((res) => res.data)
       .catch(errorHandler);
   },
