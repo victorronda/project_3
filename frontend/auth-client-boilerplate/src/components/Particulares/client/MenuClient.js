@@ -13,7 +13,11 @@ const MenuClient = () => {
 	const [ allDishes, setAllDishes ] = useState([]);
 	const [ myMenu, setMyMenu ] = useState([]);
     const [ typeItem, setTypeItem ] = useState('Dessert');
-    const [ quantity, setQuantity] = useState(0)
+    /* const [ typeItemSelected, setTypeItemSelected ] = useState([]);
+    const [ quantity, setQuantity] = useState([])
+    const [ dishName, setDishName] = useState([])
+    const [ price, setPrice] = useState([]) */
+    const [ eachDish, setEachDish ] = useState([])
     
     
 
@@ -45,8 +49,14 @@ const MenuClient = () => {
 		setMyMenu(theMenu);
     };
     
-
+    const handleClickAdd = (e) => {
+        let test=e.urlParams
+        console.log('Test', test)
+    }
     
+    const handleDeleteDish = (e) => {
+        return
+    }
 
 
 
@@ -69,27 +79,37 @@ const MenuClient = () => {
 							className="col-8 card d-flex justify-content-center align-items-center text-center mx-auto w-100"
 							style={{ margin: '4rem 0' }}
 						>
-							<form
+                            {/* principio*/}
+							<div
 								className="card-body w-100"
-								onSubmit={(e) => handleSubmitDeleteMenu(e, myMenu[0]._id)}
+								
 								style={{ boxShadow: '1px 1.5px 1.5px 1px #3EC0B8' }}
 							>
+                                    {/* nombre menu */}
 								<h1 className="w-100 mx-2 mb-5" key={i}>
 									{menu.name}
 								</h1>
 								<div className="d-flex flex-row justify-content-between w-100">
 									<div className="card-item col-6">
+                                        {/* nombre categoría plato */}
 										<h5>Entree</h5>
 										<ul>
 											{allDishes.length > 0 ? (
 												allDishes
 													.filter((entree) => entree.typeItem === 'Entree')
 													.map((elem, index) => {
+                                                     
+                                                        
+
 														return (
-															<form className="d-flex flex-row" key={index}>
+                                                            <div key={index} className="d-flex flex-row ">
+                
+                                                        
+															
 																<div className="col-sm-6">
-																	<li key={index}>
-																		<Link name="dishName"
+                                                                    {/* nombre plato */}
+																	<li >
+																		<Link value={elem.name}
 																			style={{
 																				textDecoration: 'none',
 																				color: 'black'
@@ -100,22 +120,27 @@ const MenuClient = () => {
 																		</Link>
 																	</li>
 																</div>
+                                                                {/* precio plato */}
 																<div className="col-sm-3">
-																	<span name={elem.price}>{elem.price.toFixed(2)}€</span>
+																	<span name="price" >{elem.price.toFixed(2)}<span>€</span></span>
 																</div>
+
+                                                        
+                                                                {/* cantidad */}
 																<div className="col-sm-2">
 																	<input
 																		style={{ display: 'inline', width: '2rem' }}
 																		min="0"
                                                                         type="number"
-                                                                        name="quantity"
+                                                                    
 																	/>
 																</div>
-																<div className="col-sm-1">
-                                                                    <button className="d-inline" name={elem._id} style={{width: "1.5rem", height: "1.5rem",borderRadius: "40px", backgroundColor: "#EEEEEE", color: "#3EC0B8", marginLeft: "0.4rem"}}>+</button> 
-                                                                    <button className="d-inline" name={elem._id} style={{width: "1.5rem", height: "1.5rem",borderRadius: "40px", backgroundColor: "#EEEEEE", color: "#3EC0B8", marginLeft: "0.4rem"}}>-</button> 
+                                                                {/* botones añadir y quitar */}
+																<div className="col-sm-1" >
+                                                                    <button className="d-inline" name={elem._id} onClick={e=>handleClickAdd(e)} style={{fontSize: "15px", width: "1.5rem", height: "1.5rem",borderRadius: "90px", backgroundColor: "#EEEEEE", color: "#3EC0B8", marginLeft: "0.4rem"}}>+</button>
 																</div>
-															</form>
+															
+                                                        </div>
 														);
 													})
 											) : (
@@ -123,6 +148,10 @@ const MenuClient = () => {
 											)}
 										</ul>
 									</div>
+
+
+
+
 									<div className="card-item col-6 w-100">
 										<h5>Second Course</h5>
 										<ul>
@@ -256,7 +285,7 @@ const MenuClient = () => {
 										</ul>
 									</div>
 								</div>
-							</form>
+							</div>
 						</div>
 					);
 				})
@@ -280,6 +309,17 @@ const MenuClient = () => {
                     }) : <div>No dishes</div> }
                 </ul> */}
 
+
+
+
+
+
+
+
+
+
+
+
 			<div className="col-4" style={{ marginTop: "4rem"}}>
 				{dishes.length > 0 ? (
 					<div className="card">
@@ -287,7 +327,11 @@ const MenuClient = () => {
 							<h1>MY ORDER</h1>
 						</div>
                         <div className="card-body">
-
+                            <h5>{eachDish.dish}</h5>
+                            <div>
+                                <p>{}<span>{eachDish.quant} un.</span><span>{eachDish.price}€</span></p>
+                            </div>
+                            <button className="d-inline" style={{fontSize: "15px", width: "1.5rem", height: "1.5rem",borderRadius: "90px", backgroundColor: "#EEEEEE", color: "#3EC0B8", marginLeft: "0.4rem"}}>-</button> 
                         </div>
 
 					</div>

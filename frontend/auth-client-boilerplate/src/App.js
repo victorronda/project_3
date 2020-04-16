@@ -16,7 +16,7 @@ import FinalMessage from './pages/FinalMessage';
 import Pay from './pages/Pay';
 import MyTable from './components/particulares/admin/MyTable';
 import MenuAdmin from './components/particulares/admin/MenuAdmin';
-import MenuClient from './components/particulares/client/MenuClient';
+import MenuClient2 from './components/particulares/client/MenuClient2';
 import AnonRoutes from './components/auth/AnonRoutes';
 import PrivateRoutes from './components/auth/PrivateRoutes';
 
@@ -30,7 +30,7 @@ function App() {
         <AnonRoutes exact path='/employees/login' component={LoginEmployee} />
         <AnonRoutes exact path='/signup' component={Signup} />
         <AnonRoutes exact path='/main/employee' component={MainEmployee} />
-        <AnonRoutes exact path='/menu' component={MenuClient} />
+        <AnonRoutes exact path='/menu' component={MenuClient2} />
         <PrivateRoutes exact path='/dishes/add' component={AddDish} />
         <PrivateRoutes exact path='/menus/add' component={AddMenu} />
         <PrivateRoutes exact path='/menus/admin' component={MenuAdmin} />
