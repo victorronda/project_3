@@ -1,28 +1,8 @@
-import React, { useState } from 'react'
-import { withAuth } from '../context/AuthProvider'
-import { Link, useHistory } from 'react-router-dom'
+import React from 'react'
+import { Link } from 'react-router-dom'
 import NavbarEm from '../components/global/NavbarEm'
 
-const LoginEmployee = (props) => {
-
-    const [name, setName] = useState("")
-    const [password, setPassword] = useState("")
-
-    // const handleFormSubmit = (e) => {
-    //     e.preventDefault()
-    //     props.loginEmployee({name, password})
-    // }
-
-    const history = useHistory();
-
-	const handleFormSubmit = async (e) => {
-        e.preventDefault();
-        await props.loginEmployee({ name, password })
-        console.log({ message: 'Employee login' })
-        history.push('/main/employee')     
-        setName("")
-        setPassword("")     
-    };
+const LoginEmployee = () => {
 
     return (
         <div>
@@ -32,7 +12,7 @@ const LoginEmployee = (props) => {
                 <div className="">
                     <h2 className="titleEm">Login Employee</h2>
                 </div>
-                <form onSubmit={(e) => handleFormSubmit(e)}>
+                <form>
                     <div className="labelsEm">
                         <label><h4>Name</h4></label>
                     </div>
@@ -40,8 +20,6 @@ const LoginEmployee = (props) => {
                         <input className="inputs"
                         type='text'
                         name='name'
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
                         required
                         />
                     </div>
@@ -52,13 +30,11 @@ const LoginEmployee = (props) => {
                         <input className="inputs"
                         type='password'
                         name='password'
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
                         required
                         />
                     </div>
                     <div className="">
-                        <input style={{textDecoration: "none"}} className="btn-login-em" type='submit' value='Login' />
+                        <Link style={{textDecoration: "none"}} className="btn-login" to='/main/employee'>Access</Link>
                     </div>
                 </form>
             </div>
@@ -70,4 +46,4 @@ const LoginEmployee = (props) => {
     )
 }
 
-export default withAuth(LoginEmployee)
+export default LoginEmployee

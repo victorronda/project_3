@@ -11,7 +11,7 @@ function Navbar(props) {
             </div>
             <div>
                 <Link style={{textDecoration: "none"}} className="links right" to='/profile'>Profile</Link>
-                <Link style={{textDecoration: "none"}} className="links right" to='/staff'>Staff</Link>
+                { /* <Link className="links right" to='/staff'>Staff</Link> */ }
                 <button style={{textDecoration: "none"}} className="right nobutton" onClick={props.logout}>Logout</button>
             </div>
         </div>

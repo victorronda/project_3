@@ -6,12 +6,13 @@ import NavbarEm from '../components/global/NavbarEm'
 
 
 const MainEmployee = () => {
-    const [number, setNumber] = useState('0')
+
+    const [ number, setNumber ] = useState('')
 
     const history = useHistory();
 
     const handleClick = (e) => {
-        tables_service.editTheNumberOfTheTable(number)
+        e.preventDefault()
         history.push('/menu')
     }    
 
@@ -31,4 +32,4 @@ const MainEmployee = () => {
     )
 }
 
-export default withAuth(MainEmployee)
+export default MainEmployee
