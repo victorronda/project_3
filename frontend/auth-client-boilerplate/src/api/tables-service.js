@@ -14,12 +14,7 @@ export default {
   tables_service,
   
   // Con esta editamos el numero de la mesa ya creada (la key number pasa a ser el que le indiquemos)
-  editTheNumberOfTheTable(_id, number) {
-    return tables_service
-      .put(`/tables/${_id}/editNumber`, number) // _id = tableId
-      .then((res) => res.data)
-      .catch(errorHandler);
-  },
+
   
   // Con esta añadimos tantas como pongamos en el input (con numero de mesa 0), y borra las anteriores
   editTables(number) {

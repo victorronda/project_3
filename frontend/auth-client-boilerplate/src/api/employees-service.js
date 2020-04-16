@@ -2,7 +2,7 @@ import axios from "axios";
 
 const employees_service = axios.create({
   baseURL: process.env.REACT_APP_API_URI, 
-  withCredentials: true
+  // withCredentials: true
 });
 
 const errorHandler = (err) => {
@@ -12,7 +12,13 @@ const errorHandler = (err) => {
 
 export default {
   employees_service,
-
+  
+  getTable(number) {
+    return employees_service
+      .get(`/tables/editNumber`, number) // _id = tableId
+      .then((res) => res.data)
+      .catch(errorHandler);
+  },
   
   getAllEmployees() {
     return employees_service

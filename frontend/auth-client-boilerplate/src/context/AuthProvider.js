@@ -83,7 +83,7 @@ class AuthProvider extends React.Component {
 
     auth
       .loginEmployee({ name, password })
-      .then((user) => this.setState({ isLoggedin: false, user }))
+      .then((user) => this.setState({ user }))
       .catch((err) => console.log(err));
   };
 

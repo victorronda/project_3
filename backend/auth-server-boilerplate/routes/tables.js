@@ -43,9 +43,9 @@ router.put('/edit', async (req,res,next) => {
 			{ new: true }
 			);
 
-		for (let i=0;i<number;i++){
+		for (let i=1;i<number;i++){
 			const newTable=await Table.create(
-			{number: 0, 
+			{number: i, 
 			orders: [], 
 			companyId: req.session.currentUser,
 			bill:0});
@@ -64,14 +64,11 @@ router.put('/edit', async (req,res,next) => {
 });
 
 // El numero que le pone el employee a la mesa
-router.put('/:_id/editNumber', async (req, res, next) => {
+router.get('/editNumber', async (req, res, next) => {
 	
 	try {
-		const editTable = await Table.findByIdAndUpdate(
-			req.params._id,
-			{ number: req.body.number },
-			{ new: true }
-			);
+		const editTable = await Table.find(
+			{ number: Number(req.body.number) });
 		res.status(200).json({editTable});
 
 	} catch (err) {
