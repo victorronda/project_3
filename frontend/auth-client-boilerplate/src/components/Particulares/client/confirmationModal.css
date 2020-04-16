@@ -1,0 +1,38 @@
+.Modal{
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    
+    box-sizing: border-box;
+    text-align: center;
+    width: 50vw;
+    padding: 1vw;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.Overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color:rgb(128,128,128, 0.8);
+}
+
+.modal-button {
+    display: inline-block;
+    width: 35%;
+    margin: 5%;
+    height: 50px;
+    border:none;
+    color: black
+}
+
+.green{
+    background-color: lightgreen;
+}
+.red{
+    background-color: coral;
+}

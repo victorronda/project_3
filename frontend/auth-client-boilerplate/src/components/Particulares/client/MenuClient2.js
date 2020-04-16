@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import menus_service from '../../../api/menus-service';
 import dishes_service from '../../../api/dishes-service';
+import Modal from "react-modal"
+import ConfirmOrder from './ConfirmOrder'
 
 
 
@@ -14,10 +16,7 @@ const MenuClient2 = () => {
 	const [ dishes, setDishes ] = useState([]);
 	const [ allDishes, setAllDishes ] = useState([]);
 	const [ myMenu, setMyMenu ] = useState([]);
-    const [ typeItem, setTypeItem ] = useState('Dessert');
-	const [ eachDish, setEachDish ] = useState([])
-	const [ myOrder, setMyOrder] = useState([]);
-	const [ quantity, setQuantity ] = useState([])
+	const [ showModal, setShowModal] = useState(false)
     
     
 
@@ -218,8 +217,7 @@ const MenuClient2 = () => {
 							)
 						})}
 						<div className="card-header"><h1>TOTAL PRICE:</h1><h5>{totalPrice()}€</h5></div>
-                        
-
+                        <button onClick={()=>setShowModal(!showModal)}>CONFIRM ORDER</button>
 					</div>
 				) : (
 					<div className="" style={{ }}>
@@ -228,6 +226,7 @@ const MenuClient2 = () => {
 				)}
 			</div>
 		</div>
+					<ConfirmOrder isOpen={showModal}  closeModal={()=>setShowModal(false)} />
 		</div>
 	);
 };
