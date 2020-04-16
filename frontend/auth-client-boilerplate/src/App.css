@@ -257,8 +257,9 @@
   border: #33B8C0;
   border-radius: 10px;
   height: 40px;
-  width: 100px;
+  width: 10vw;
   margin-top: 50px;
+  margin-left: 20%
 }
 
 /* Signup */

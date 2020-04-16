@@ -33,8 +33,8 @@ const LoginEmployee = () => {
                         required
                         />
                     </div>
-                    <div className="">
-                        <Link style={{textDecoration: "none"}} className="btn-login" to='/main/employee'>Access</Link>
+                    <div className="btn-login-em">
+                        <Link style={{textDecoration: "none", transform: "trans"}} className="" to='/main/employee'>Access</Link>
                     </div>
                 </form>
             </div>

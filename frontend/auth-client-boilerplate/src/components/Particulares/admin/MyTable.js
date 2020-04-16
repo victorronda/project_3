@@ -22,9 +22,7 @@ const MyTable = () => {
         }
     };
 
-    const handleClickEdit = (e) => { // Hacer que renderice al hableFormSubmit
-        e.preventDefault()
-    }
+   
 
     useEffect(() => {
 		showAll();
@@ -35,20 +33,9 @@ const MyTable = () => {
         setTables(showTables);
     }
 
-    return (
-        <div>
-        <Navbar/>
-        <div>
-            <div>
-					{tables.length > 0 ? <div className="contEdit">
-                                            <div className="editTables">
-                                            <h2>You have {tables.length} tables</h2>
-                                            </div>
-                                            <div className="btn-box">
-                                            <button className="nobutton btn-edit" onClick={(e) => handleClickEdit(e)}><h3>Edit</h3></button>
-                                            </div>
-                                        </div> : 
-                                        <div className="pageTable">
+
+    const formTable = (
+        <div className="pageTable">
                                         <form className="formuTable" onSubmit={(e) => handleFormSubmit(e)}>
                                             <div className="title">
                                                 <label><h2>How many tables do you have?</h2></label>
@@ -67,6 +54,29 @@ const MyTable = () => {
                                             </div>
                                         </form>
                                      </div>
+    )
+
+    const handleClickEdit = (e) => { // Hacer que renderice al hableFormSubmit
+        e.preventDefault()
+       if(tables.lenght > 0){
+           return formTable
+       }  
+    }
+
+    return (
+        <div>
+        <Navbar/>
+        <div>
+            <div>
+					{tables.length > 0 ? <div className="contEdit">
+                                            <div className="editTables">
+                                            <h2>You have {tables.length} tables</h2>
+                                            </div>
+                                            <div className="btn-box">
+                                            <button className="nobutton btn-edit" onClick={(e) => handleClickEdit(e)}><h3>Edit</h3></button>
+                                            </div>
+                                        </div> : 
+                                        formTable
                                      }
             </div>
 
