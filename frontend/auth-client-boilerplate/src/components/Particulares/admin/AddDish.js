@@ -56,6 +56,12 @@ const AddDish = () => {
         setIngredients([...ingredients, ingredientInput])
       }
 
+      const deleteIngredient = (e) => {
+        e.preventDefault()
+          ingredients.pop();
+          setIngredients([...ingredients])
+      }
+
 
 
 
@@ -84,7 +90,7 @@ const AddDish = () => {
                 </div>
 
                 {/* INGREDIENTS */}
-                <div>
+                <div className="d-flex flex-row justify-content-center w-100 text-center mx-auto">
                     <ul className="showIngredients" >
                     {ingredients.length > 0 ? ingredients.map((ingredient, index) => {
                         return(
@@ -92,13 +98,14 @@ const AddDish = () => {
                                 <li className="px-2" key={index}>{ingredient}</li>
                             </React.Fragment> 
                     )
-                    }) : <div>No ingredients</div>}                 
+                    }) : <div style={{right: "50%", top: "50%", transform: "translate(20%,-50%)"}}>No ingredients</div>}                 
                     </ul>
                 </div>
                  <div>
                     <label>Ingredients:</label>
                     <input name="ingredientInput" value={ingredientInput} onChange={(e) => setIngredientInput(e.target.value)} />
                     <button className="d-inline" onClick={(e) => addIngredient(e)} style={{width: "1.5rem", height: "1.5rem",borderRadius: "40px", backgroundColor: "#EEEEEE", color: "#3EC0B8", marginLeft: "0.4rem"}}>+</button>           
+                    <button className="d-inline" onClick={(e) => deleteIngredient(e)} style={{width: "1.5rem", height: "1.5rem",borderRadius: "40px", backgroundColor: "#EEEEEE", color: "#3EC0B8", marginLeft: "0.4rem"}}>-</button>           
                 </div>   
                 
 
