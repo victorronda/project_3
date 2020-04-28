@@ -133,7 +133,7 @@ const MenuClient2 = () => {
 										</div>
 									</div>
 
-									<div className="row container-fluid">
+									<div className="d-flex flex-row justify-content-between w-100">
 										<div className="card-item col-6 w-100">
 											<h5>Dessert</h5>
 											<div className="myOverflow">
