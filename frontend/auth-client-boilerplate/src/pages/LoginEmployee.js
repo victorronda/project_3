@@ -34,7 +34,7 @@ const LoginEmployee = () => {
                         />
                     </div>
                     <div className="btn-login-em">
-                        <Link style={{textDecoration: "none", transform: "trans"}} className="" to='/main/employee'>Access</Link>
+                        <Link style={{textDecoration: "none", color: "black"}} className="" to='/main/employee'>Access</Link>
                     </div>
                 </form>
             </div>

@@ -8,6 +8,7 @@
   list-style: none;
 }
 
+
 /* Varios */
 .links {
   color: black;
@@ -259,8 +260,11 @@
   height: 40px;
   width: 10vw;
   margin-top: 50px;
-  margin-left: 20%
+  margin-left: 20%;
+  padding: 3% 0;
+  text-decoration: none;
 }
+
 
 /* Signup */
 .pageSignup {
@@ -473,4 +477,28 @@
   border-radius: 10px;
   color:#FFFFFF;
   
+}
+
+/* MenuClient2 */
+
+
+/* para que el overflow sea visible cuando haces scroll */
+.myOverflow{
+  overflow-y: auto;
+  height: 10rem;
+}
+
+.myOverflow::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+.myOverflow::-webkit-scrollbar-track {
+  background: white;
+}
+.myOverflow::-webkit-scrollbar-thumb {
+  background: #ddd;
+  visibility:hidden;
+}
+.myOverflow:hover::-webkit-scrollbar-thumb {
+  visibility:visible;
 }

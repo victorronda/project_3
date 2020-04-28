@@ -11,7 +11,7 @@ const MyDish = (props) => {
     }
 
     return (
-		<div>
+		<div className="mx-4">
 			<ul>
 				<li  className="d-flex flex-row ">
 					{/* nombre plato */}
