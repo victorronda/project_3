@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { Switch, Route } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 import Footer from './components/global/Footer';
 import LoginAdmin from './pages/LoginAdmin';
 import LoginEmployee from './pages/LoginEmployee';
@@ -15,7 +15,7 @@ import FinalMessage from './pages/FinalMessage';
 import Pay from './pages/Pay';
 import MyTable from './components/particulares/admin/MyTable';
 import MenuAdmin from './components/particulares/admin/MenuAdmin';
-import MenuClient2 from './components/particulares/client/MenuClient2';
+import MenuClient2 from './components/particulares/client/MenuClient';
 import OrderInfo from './components/particulares/admin/OrderInfo';
 import AnonRoutes from './components/auth/AnonRoutes';
 import PrivateRoutes from './components/auth/PrivateRoutes';

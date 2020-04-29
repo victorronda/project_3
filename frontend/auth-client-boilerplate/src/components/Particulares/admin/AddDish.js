@@ -32,8 +32,8 @@ const AddDish = () => {
         }
     };
     
-
-
+/* 
+//Aquí manejaremos la subida de fotos a Cloudinary
     const handleFileUpload = (e) => {
         console.log("The file to be uploaded is: ", e.target.files[0]);
     
@@ -48,12 +48,16 @@ const AddDish = () => {
           .catch((err) => {
             console.log("Error while uploading the file: ", err);
           });
-      };
+      }; */
 
 
       const addIngredient = (e) => {
           e.preventDefault()
-        setIngredients([...ingredients, ingredientInput])
+          if(ingredients.length > 29){
+              alert('You can not add more ingredients!')
+          } else{
+              setIngredients([...ingredients, ingredientInput])
+          }
       }
 
       const deleteIngredient = (e) => {
@@ -98,7 +102,7 @@ const AddDish = () => {
                                 <li className="px-2" key={index}>{ingredient}</li>
                             </React.Fragment> 
                     )
-                    }) : <div style={{right: "50%", top: "50%", transform: "translate(20%,-50%)"}}>No ingredients</div>}                 
+                    }) : <div>No ingredients</div>}                 
                     </ul>
                 </div>
                  <div>

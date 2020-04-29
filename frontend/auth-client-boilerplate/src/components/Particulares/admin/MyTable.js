@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import tables_service from '../../../api/tables-service';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import Navbar from '../../global/Navbar';
 
 
@@ -32,6 +32,8 @@ const MyTable = () => {
 		setTables(showTables);
 	};
 
+
+	/* // Tenemos que arreglar esta parte
 	const formTable = () => {
       
             return(
@@ -57,7 +59,7 @@ const MyTable = () => {
                     </div>
                 </form>
             </div>
-        )} 
+        )}  */
 
         
         

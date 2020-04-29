@@ -4,12 +4,6 @@ const MyDish = (props) => {
 
     const [ quantityDish, setQuantityDish ] = useState(0)
 
-
-    const handleClickAdd = (e) => {
-        props.clicked()
-        console.log('You have clicked this button')
-    }
-
     return (
 		<div className="mx-4">
 			<ul>

@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import menus_service from '../../../api/menus-service';
 import dishes_service from '../../../api/dishes-service';
-import Modal from 'react-modal';
 import ConfirmOrder from './ConfirmOrder';
-import "./confirmationModal.css"
-
-import { Link, useHistory } from 'react-router-dom';
+import './confirmationModal.css';
 import NavbarEm from '../../global/NavbarEm';
-import MyDish from './MyDish';
+import DishType from './DishType';
 
 /* BACKEND ROUTE: POST /menus/add */
 
@@ -17,23 +14,12 @@ const MenuClient2 = () => {
 	const [ myMenu, setMyMenu ] = useState([]);
 	const [ showModal, setShowModal ] = useState(false);
 
-	const history = useHistory();
+
 
 	useEffect(() => {
 		getAllDishes();
 		getTheMenu();
 	}, []);
-
-	const handleSubmitDeleteMenu = async (e, id) => {
-		e.preventDefault();
-		try {
-			await menus_service.deleteMyMenu(id);
-			console.log({ message: 'New menu deleted!' });
-			history.push('/profile');
-		} catch (error) {
-			console.log(error);
-		}
-	};
 
 	const getAllDishes = async () => {
 		const allTheDishes = await dishes_service.getAllDishes();
@@ -67,7 +53,7 @@ const MenuClient2 = () => {
 	};
 
 	return (
-		<div >
+		<div>
 			<NavbarEm />
 			<div
 				className="d-flex flex-row w-100 text-center"
@@ -91,86 +77,18 @@ const MenuClient2 = () => {
 									</h1>
 									<div className="d-flex flex-row justify-content-between w-100">
 										<div className="card-item col-6 w-100">
-											{/* nombre categoría plato */}
-											<h5>Entree</h5>
-											<div className="myOverflow">
-												{allDishes.length > 0 ? (
-													allDishes
-														.filter((entree) => entree.typeItem === 'Entree')
-														.map((elem, index) => {
-															return (
-																<MyDish
-																	key={index}
-																	name={elem.name}
-																	price={elem.price}
-																	_id={elem._id}
-																	clicked={handleClickAdd}
-																/>
-															);
-														})
-												) : null}
-											</div>
+											<DishType allDishes={allDishes}	clicked={handleClickAdd} typeItem="Entree" />
 										</div>
-
 										<div className="card-item col-6 w-100">
-											<h5>Second Course</h5>
-											<div className="myOverflow">
-											{allDishes.length > 0 ? (
-												allDishes
-													.filter((entree) => entree.typeItem === 'Second Course')
-													.map((elem, index) => {
-														return (
-															<MyDish
-																name={elem.name}
-																price={elem.price}
-																_id={elem._id}
-																clicked={handleClickAdd}
-															/>
-														);
-													})
-											) : null}
-											</div>
+											<DishType allDishes={allDishes} clicked={handleClickAdd} typeItem="Second Course" />
 										</div>
 									</div>
-
 									<div className="d-flex flex-row justify-content-between w-100">
 										<div className="card-item col-6 w-100">
-											<h5>Dessert</h5>
-											<div className="myOverflow">
-											{allDishes.length > 0 ? (
-												allDishes
-													.filter((entree) => entree.typeItem === 'Dessert')
-													.map((elem, index) => {
-														return (
-															<MyDish
-																name={elem.name}
-																price={elem.price}
-																_id={elem._id}
-																clicked={handleClickAdd}
-															/>
-														);
-													})
-											) : null}
-											</div>
+											<DishType allDishes={allDishes} clicked={handleClickAdd} typeItem="Dessert"	/>
 										</div>
 										<div className="card-item col-6 w-100">
-											<h5>Drinks</h5>
-											<div className="myOverflow">
-											{allDishes.length > 0 ? (
-												allDishes
-													.filter((entree) => entree.typeItem === 'Drinks')
-													.map((elem, index) => {
-														return (
-															<MyDish
-																name={elem.name}
-																price={elem.price}
-																_id={elem._id}
-																clicked={handleClickAdd}
-															/>
-														);
-													})
-											) : null}
-											</div>
+											<DishType allDishes={allDishes} clicked={handleClickAdd} typeItem="Drinks"	/>
 										</div>
 									</div>
 								</div>
@@ -183,19 +101,11 @@ const MenuClient2 = () => {
 
 				{/*  FINALMENTE LO HEMOS QUITADO POR MOTIVOS DE PRESENTACIÓN (QUEDABA MEJOR 4 CATEGORÍAS)
         
-                <h5>Appetizers</h5>
-				 <ul>
-                    {allDishes.length > 0 ? allDishes.filter(appetizers => appetizers.typeItem === 'Appetizers').map((elem,index)  => {
-                        
-                        
-                            return (
-                                <div>
-                                   <li key={index}>{elem.name}</li> 
-                                </div>
-                                )
-                        
-                    }) : <div>No dishes</div> }
-                </ul> */}
+                							<DishType
+												allDishes={allDishes}
+												clicked={handleClickAdd}
+												typeItem="Appetizers"
+											/> */}
 
 				<div className="col-4" style={{ marginTop: '4rem' }}>
 					{dishes.length > 0 ? (

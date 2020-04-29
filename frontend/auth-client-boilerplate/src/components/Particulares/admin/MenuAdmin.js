@@ -10,10 +10,8 @@ import Navbar from '../../global/Navbar';
 /* BACKEND ROUTE: POST /menus/add */
 
 const MenuAdmin = () => {
-	const [ dishes, setDishes ] = useState([]);
 	const [ allDishes, setAllDishes ] = useState([]);
 	const [ myMenu, setMyMenu ] = useState([]);
-	const [ typeItem, setTypeItem ] = useState('Dessert');
 
 	const history = useHistory();
 

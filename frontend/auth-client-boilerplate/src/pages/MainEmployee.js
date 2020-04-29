@@ -1,13 +1,11 @@
 import React, { useState } from 'react'
-import { withAuth } from '../context/AuthProvider'
 import { useHistory } from "react-router-dom"
-import tables_service from '../api/tables-service'
 import NavbarEm from '../components/global/NavbarEm'
 
 
 const MainEmployee = () => {
 
-    const [ number, setNumber ] = useState('')
+    const [/*  number, */ setNumber ] = useState('') //Se puede omitir en Hooks la variable del state??
 
     const history = useHistory();
 

@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { withAuth } from '../../../context/AuthProvider'
 import menus_service from "../../../api/menus-service";
-import dishes_service from "../../../api/dishes-service"; /* ME HE QUEDADO POR AQUÍ, falta añadir la ruta de get all dishes para 
-listarlos en el form del menú */
 import { useHistory } from "react-router-dom"
 import Navbar from '../../global/Navbar';
 

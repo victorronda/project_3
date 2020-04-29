@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { withAuth } from '../context/AuthProvider'
 import iconChef from '../images/icono-chef2.jpg'
 import NavbarEm from '../components/global/NavbarEm'
 import { Redirect } from 'react-router-dom'
