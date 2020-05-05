@@ -8,7 +8,7 @@ import DishType from './DishType';
 
 /* BACKEND ROUTE: POST /menus/add */
 
-const MenuClient2 = () => {
+const MenuClient = () => {
 	const [ dishes, setDishes ] = useState([]);
 	const [ allDishes, setAllDishes ] = useState([]);
 	const [ myMenu, setMyMenu ] = useState([]);
@@ -168,4 +168,4 @@ const MenuClient2 = () => {
 	);
 };
 
-export default MenuClient2;
+export default MenuClient;
