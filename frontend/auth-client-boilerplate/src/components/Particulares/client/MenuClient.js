@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom'
 import menus_service from '../../../api/menus-service';
 import dishes_service from '../../../api/dishes-service';
 import ConfirmOrder from './ConfirmOrder';
@@ -14,7 +15,9 @@ const MenuClient = () => {
 	const [ myMenu, setMyMenu ] = useState([]);
 	const [ showModal, setShowModal ] = useState(false);
 
-
+const location=useLocation()
+/* FUNCIONAAAAAAA 😄 */
+console.log('Esto es location', location.state.table.editTable[0]._id)
 
 	useEffect(() => {
 		getAllDishes();

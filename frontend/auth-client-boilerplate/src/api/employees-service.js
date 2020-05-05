@@ -13,11 +13,13 @@ const errorHandler = (err) => {
 export default {
   employees_service,
   
-  getTable(number) {
+  getTable(num) {
     return employees_service
-      .get(`/tables/editNumber`, number) // _id = tableId
-      .then((res) => res.data)
-      .catch(errorHandler);
+      .get(`/tables/editNumber`, {params: num}) // _id = tableId
+      .then((res) =>{
+        console.log('Estoy en employees-service')
+        return res.data} )
+      .catch('Se va a ejecutar el error handler', errorHandler);
   },
   
   getAllEmployees() {
