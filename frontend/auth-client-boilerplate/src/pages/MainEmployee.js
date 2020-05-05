@@ -5,7 +5,7 @@ import NavbarEm from '../components/global/NavbarEm'
 
 const MainEmployee = () => {
 
-    const [/*  number, */ setNumber ] = useState('') //Se puede omitir en Hooks la variable del state??
+    const [ , setNumber ] = useState('') //Se puede omitir en Hooks la variable del state??
 
     const history = useHistory();
 
