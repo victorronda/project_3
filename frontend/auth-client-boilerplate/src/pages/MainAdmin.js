@@ -1,11 +1,23 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { withAuth } from '../context/AuthProvider'
 import Navbar from '../components/global/Navbar'
+import tables_service from '../api/tables-service';
 
 const MainAdmin = (props) => {
+	const [ tables, setTables ] = useState([]);
+	let tablesLength = tables.length
     
-    const history = useHistory()
+	const history = useHistory()
+	
+	useEffect(() => {
+		showAll();
+	}, []);
+
+	const showAll = async () => {
+		const showTables = await tables_service.showAllTables();
+		setTables(showTables);
+	};
 
     const handleClick = (e) => {
         e.preventDefault()
@@ -13,8 +25,13 @@ const MainAdmin = (props) => {
     }
 
     const handleClickTable = (e) => {
-        e.preventDefault()
-        history.push('/tables')
+		e.preventDefault()
+		if(tablesLength> 0) {
+			history.push("/tables", {number: tablesLength})
+		} else {
+			history.push("/tables/edit")
+		}
+       
     }
 
     return (
@@ -31,6 +48,7 @@ const MainAdmin = (props) => {
                 <div className="my">
                     <button className="nobutton" onClick={(e) => handleClickTable(e)}><h3>My tables</h3></button>
                 </div>
+				
             </div>
             <div className="contMy">
                 <button className="orders"><h3>Preference order</h3></button>

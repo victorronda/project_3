@@ -19,6 +19,7 @@ import MenuClient2 from './components/particulares/client/MenuClient';
 import OrderInfo from './components/particulares/admin/OrderInfo';
 import AnonRoutes from './components/auth/AnonRoutes';
 import PrivateRoutes from './components/auth/PrivateRoutes';
+import FormTablePage from './components/particulares/admin/FormTablePage'
 
 function App() {
   return (
@@ -38,7 +39,8 @@ function App() {
         <PrivateRoutes exact path='/profile' component={MainAdmin} />
         <PrivateRoutes exact path='/thankyou' component={FinalMessage} />
         <PrivateRoutes exact path='/pay' component={Pay} />
-        <PrivateRoutes exact path='/tables' component={MyTable} />
+        <PrivateRoutes exact path='/tables' component={MyTable} />     
+        <PrivateRoutes exact path='/tables/edit' component={FormTablePage} />     
         <PrivateRoutes exact path='/admin/orderinfo' component={OrderInfo} />
       </Switch>
       <Footer/>
