@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from '../../global/Navbar';
 import { useLocation } from "react-router-dom";
 import FormTable from './FormTable'
 
 
 const MyTable = (props) => {
+	const [ showFormTable, setShowFormTable ] = useState(false)
 	const location = useLocation();
 
 
@@ -12,8 +13,8 @@ const MyTable = (props) => {
 	 }, [location]);
 
 	 const handleShowFormTable = (e) => {
-		 
-	 }
+		setShowFormTable(!showFormTable)
+	}
 
 
 
@@ -30,7 +31,8 @@ const MyTable = (props) => {
 								<button onClick={(e)=>handleShowFormTable(e)} className="nobutton btn-edit">
 									<h3>Edit</h3>
 								</button>
-								<FormTable />
+								
+								<FormTable isDisplayed={showFormTable}/>
 							</div>
 						</div>
 					

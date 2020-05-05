@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 
 
 
-const FormTable = () => {
+const FormTable = (props) => {
     const [ number, setNumber ] = useState();
     
     const history = useHistory();
@@ -20,34 +20,39 @@ const FormTable = () => {
 		}
 	};
 
-    return (
-        <div>
-     
-        <div className="pageTable">
-            
-                <form className="formuTable" onSubmit={(e) => handleFormSubmit(e)}>
-                    <div className="title">
-                        <label>
-                            <h2>How many tables do you have?</h2>
-                        </label>
-                    </div>
-                    <div className="contOrders">
-                        <input
-                            className="inputs"
-                            type="number"
-                            name="number"
-                            value={number}
-                            onChange={(e) => setNumber(e.target.value)}
-                            required
-                        />
-                    </div>
-                    <div>
-                        <input className="btn-add-table" type="submit" value="Add" />
-                    </div>
-                </form>
-            </div>
-            </div>
-    )
+    if(props.isDisplayed) {
+        return (
+            <div>
+         
+            <div className="pageTable">
+                
+                    <form className="formuTable" onSubmit={(e) => handleFormSubmit(e)}>
+                        <div className="title">
+                            <label>
+                                <h2>How many tables do you have?</h2>
+                            </label>
+                        </div>
+                        <div className="contOrders">
+                            <input
+                                className="inputs"
+                                type="number"
+                                name="number"
+                                value={number}
+                                onChange={(e) => setNumber(e.target.value)}
+                                required
+                            />
+                        </div>
+                        <div>
+                            <input className="btn-add-table" type="submit" value="Add" />
+                        </div>
+                    </form>
+                </div>
+                </div>
+        )
+    } else {
+        return null
+    }
+    
 }
 
 export default FormTable
