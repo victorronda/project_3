@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import tables_service from '../../../api/tables-service';
 import { useHistory } from 'react-router-dom';
 import Navbar from '../../global/Navbar';
+import FormTable from './FormTable'
 
 
 const MyTable = () => {
@@ -108,7 +109,7 @@ const MyTable = () => {
 							</div>
 						</div>
 					) : 
-                    null
+                    <FormTable />
 					}
 				</div>
 			</div>
