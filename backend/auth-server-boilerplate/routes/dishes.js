@@ -1,14 +1,12 @@
 const express = require("express");
 const router = express.Router();
 const Dish = require("../models/Dish");
-const uploadCloud = require('../config/cloudinary.js');
+//const uploadCloud = require('../config/cloudinary.js');
 
-const { isLoggedIn } = require("../helpers/middlewares");
+const { isLoggedIn, isNotLoggedIn, formFullfilled } = require('../helpers/middlewaresAd');
+const { isLoggedInEm, isNotLoggedInEm, formFullfilledEm } = require('../helpers/middlewaresEm');
 
-
-
-
-// Dishes List 
+// Dishes list 
 router.get('/showAll', async (req,res, next) => {
 
     try {
@@ -20,7 +18,7 @@ router.get('/showAll', async (req,res, next) => {
     }
 })
 
-// A dish, in particular (see details) 
+// A dish (see details) 
 router.get('/:_id', async (req,res,next) => {
 
     try {
@@ -33,22 +31,16 @@ router.get('/:_id', async (req,res,next) => {
 
 })
 
-router.use(isLoggedIn()); 
-
-// Create Dish ///OJOOOOO FALTA REVISAR EL PROBLEMILLA DEL IMAGE FILE // Se hace desde react?
-router.post("/add", /* uploadCloud.single('image'),  */  async (req, res, next) => { 
+// Create dish
+router.post("/add", async (req, res, next) => { 
 
     const { name, typeItem, ingredients, description, price, quantity } = req.body;
     
-   /*  if (!req.file) {
-        next(new Error('No file uploaded!'));
-        return;
-      } */
-    /* const image = req.file.secure_url; Nos da problemas al coger el file */
+    try {
+        const dish = await Dish.create(
+            {name, typeItem, ingredients, description, price, quantity}
+            );
 
-    try{
-        const dish = await Dish.create({ name, typeItem, ingredients, description, price, quantity });
-        /* Falta poner image dentro del create cuando solucionemos el problema de la linea 19 */
         res.status(201).json(dish);
 
     } catch(err) {
@@ -57,23 +49,17 @@ router.post("/add", /* uploadCloud.single('image'),  */  async (req, res, next) 
     } 
 })
 
-
-
-
-
 // Edit dish
 router.put("/:_id/edit", async (req, res, next) => {  
 
     const { name, typeItem, ingredients, description, price, quantity } = req.body;
-    //Quito de dentro la image
 
     try{
         const updatedDish = await Dish.findByIdAndUpdate(
             req.params._id, 
-            { $set: {name, typeItem, ingredients, description, price, quantity} }, /* Revisar si al editar se machacan los
-            campos que no han sido editados*/
-            //Quito de dentro la image
+            { $set: {name, typeItem, ingredients, description, price, quantity} },
             { new: true });
+
         res.status(200).json(updatedDish);
 
     } catch(err) {
@@ -87,7 +73,7 @@ router.delete("/:_id/delete", async (req, res, next) => {
     
     try {
         await Dish.findByIdAndRemove(req.params._id);
-        res.status(200).json({ message: `Dish with ${req.params._id} deleted.` });
+        res.status(200).json({ message: `Dish with ${req.params._id} id deleted.` });
         
     } catch (err) {
         next(error)

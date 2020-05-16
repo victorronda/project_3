@@ -4,16 +4,21 @@ const createError = require('http-errors');
 const Table = require('../models/Table');
 const Order = require('../models/Order');
 
-const {isLoggedIn} = require('../helpers/middlewares');
-router.use(isLoggedIn());
+const { isLoggedIn, isNotLoggedIn, formFullfilled } = require('../helpers/middlewaresAd');
+const { isLoggedInEm, isNotLoggedInEm, formFullfilledEm } = require('../helpers/middlewaresEm');
 
-// NOTA: Preguntar si los calculos de bill son aqui o en el front
-
-// Restaurar order para próximo cliente
+// Order
 router.post('/add/:tableId', async (req, res, next) => {
-
+	
+	console.log("req.dishes", req.body.dishesId)
+	const reqDishes = req.body.dishesId
 	try {
-		const newOrder = await Order.create({quantity: req.body.quantity, dishesId: req.body.dishesId, tableId: req.params.tableId, bill: req.body.bill});
+		const newOrder = await Order.create(
+			{quantity: reqDishes.map(elem => elem.quantity),
+			dishesId: reqDishes, 
+			tableId: req.params.tableId, 
+			bill: req.body.bill})
+			console.log("req.quantity", reqDishes.map(elem => elem.quantity))
 		await Table.findByIdAndUpdate(
 			req.params.tableId,
 			{ $push: {orders: newOrder} },
@@ -25,6 +30,32 @@ router.post('/add/:tableId', async (req, res, next) => {
 		next(err);
 	}
 });
+
+// Orders list
+router.get('/showAll', isLoggedIn(), async (req, res, next) => {
+
+	try {
+		const orders = await Order.find().populate('tableId')
+		res.status(200).json(orders);
+
+	} catch (error) {
+		next(error);
+	}
+});
+
+// Show order details
+router.get('/:_id', async (req,res,next) => {
+
+    try {
+        const myOrder = await Order.findById(req.params._id)
+		.populate('dishesId') 
+        res.status(200).json(myOrder);
+
+	} catch (error) {
+		next(error);
+    }
+
+})
 
 router.put('/:orderId/edit', async (req, res, next) => {
 	

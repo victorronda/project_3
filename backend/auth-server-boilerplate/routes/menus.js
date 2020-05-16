@@ -4,16 +4,23 @@ const createError = require('http-errors');
 const Menu = require('../models/Menu');
 const Company = require('../models/Company');
 
-// HELPER FUNCTIONS -> me lo he traído por si acaso, creo que no es necesario así luego borrar si eso
-const {isLoggedIn} = require('../helpers/middlewares');
+const { isLoggedIn, isNotLoggedIn, formFullfilled } = require('../helpers/middlewaresAd');
+const { isLoggedInEm, isNotLoggedInEm, formFullfilledEm } = require('../helpers/middlewaresEm');
 
-
-
-
-
-
-// Ver el menú tanto como admin como cliente
+// Menu view (admin)
 router.get('/show', async (req, res, next) => {
+
+	try {
+		const theClientMenu = await Menu.find();
+		res.status(200).json(theClientMenu);
+
+	} catch (err) {
+		next(err);
+	}
+});
+
+// Menu view (client)
+router.get('/employee/show', async (req, res, next) => {
 
 	try {
 		const theClientMenu = await Menu.find();
@@ -22,9 +29,6 @@ router.get('/show', async (req, res, next) => {
 		next(err);
 	}
 });
-
-
-router.use(isLoggedIn());
 
 // Add menu
 router.post('/add', async (req, res, next) => {
@@ -45,7 +49,7 @@ router.post('/add', async (req, res, next) => {
 	}
 });
 
-//Editamos una carta (edit Menu)
+// Edit menu
 router.put('/:_id/edit', async (req, res, next) => {
 
 	try {
@@ -57,7 +61,7 @@ router.put('/:_id/edit', async (req, res, next) => {
 	}
 });
 
-//Eliminamos una carta (delete Menu)
+// Delete menu
 router.delete('/:_id/delete', async (req, res, next) => {
 
 	try {
@@ -73,17 +77,6 @@ router.delete('/:_id/delete', async (req, res, next) => {
 
 	} catch (error) {
 		next(error);
-	}
-});
-
-// Ver el menú tanto como admin como cliente
-router.get('/show', async (req, res, next) => {
-
-	try {
-		const theClientMenu = await Menu.find();
-		res.status(200).json(theClientMenu);
-	} catch (err) {
-		next(err);
 	}
 });
 

@@ -4,28 +4,29 @@ const createError = require('http-errors');
 const Company = require('../models/Company');
 const Table = require('../models/Table');
 
-const {isLoggedIn} = require('../helpers/middlewares');
-//router.use(isLoggedIn());
+const { isLoggedIn, isNotLoggedIn, formFullfilled } = require('../helpers/middlewaresAd');
+const { isLoggedInEm, isNotLoggedInEm, formFullfilledEm } = require('../helpers/middlewaresEm');
 
 // Add Table
-router.post('/add', isLoggedIn(), async (req, res, next) => {
+router.post('/add', async (req, res, next) => {
+
 	const { number } = req.body;
-	console.log("numbeer", number)
-	console.log("reeeeq", req.body)
+
 	try {
-		for (let i=0;i<number;i++){
-		const newTable=await Table.create({number: 0, orders: [], companyId: req.session.currentUser, bill:0});
-		
-		await Company.findByIdAndUpdate(
-			req.session.currentUser, 
-			{ $push: { tables: newTable } },
-			{ new: true }
-			);
+		for (let i = 0; i <= number; i++) {
+			const newTable = await Table.create(
+				{number: 0, orders: [], companyId: req.session.currentUser, bill: 0}
+				);
+				await Company.findByIdAndUpdate(
+				req.session.currentUser, 
+				{ $push: {tables: newTable} },
+				{ new: true }
+				);
 		}	
-		console.log("number desde fuera", number)
-		console.log("req desde fuera", req.session.currentUser)
+	
 		res.status(201).json({message: 'Tables created successful'});
 		console.log("Tables created!")
+
 	} catch (error) {
 		next(error);
 	}
@@ -34,28 +35,29 @@ router.post('/add', isLoggedIn(), async (req, res, next) => {
 // Edit table
 router.put('/edit', async (req,res,next) => {
 
-	const {number} = req.body;
+	const { number } = req.body;
     Table.collection.drop();
 
     try {
 		await Company.findByIdAndUpdate(
-			req.session.currentUser,{ tables: [] },
-			{ new: true }
-			);
-
-		for (let i=1;i<=number;i++){
-			const newTable=await Table.create(
-			{number: i, 
-			orders: [], 
-			companyId: req.session.currentUser,
-			bill:0});
-
-		await Company.findByIdAndUpdate(
 			req.session.currentUser,
-			{ $push: { tables: newTable } },
+			{ tables: [] },
 			{ new: true }
 			);
+
+		for (let i = 1; i <= number; i++) {
+			const newTable=await Table.create(
+				{number: i, 
+				orders: [], 
+				companyId: req.session.currentUser,
+				bill:0});
+				await Company.findByIdAndUpdate(
+				req.session.currentUser,
+				{ $push: {tables: newTable} },
+				{ new: true }
+				);
 		}	
+
 		res.status(200).json({message: 'Tables created successful'});
 
 	} catch (error) {
@@ -63,12 +65,11 @@ router.put('/edit', async (req,res,next) => {
 	} 
 });
 
-// El numero que le pone el employee a la mesa
-router.get('/editNumber', async (req, res, next) => {
-	console.log('Estoy en el back', req)
-
-	let myTable=JSON.parse(req.query.params)
+// Employee assigns a number for each table once the app starts
+router.get('/getNumber', async (req, res, next) => {
 	
+	console.log('Estoy en el back', req)
+	let myTable=JSON.parse(req.query.params)
 	console.log('Estoy recibiendo el número en el back', myTable)
 	try {
 		const editTable = await Table.find(
@@ -80,13 +81,12 @@ router.get('/editNumber', async (req, res, next) => {
 	}
 });
 
-/* TODAS LAS MESAS CON PLATOS (CON PEDIDOS) */
+// Tables with orders
 router.get('/showAll', async (req,res,next) => {
 
     try {
         const allTablesWithOrders = await Table.find({orders: {$ne: null}});
-		/* Habrá que probar si las trae en el mismo orden 
-        que se crearon */
+		
         res.status(200).json(allTablesWithOrders);
 
 	} catch (error) {

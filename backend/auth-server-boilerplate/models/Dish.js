@@ -9,8 +9,7 @@ const dishSchema = new Schema({
   image: String,
   price: Number,
   quantity: Number,
-  tables: [{type: Schema.Types.ObjectId, ref: "Table"}]/*No se si al final es necesario este array porque
-  al final el plato va en la order, quizás ponemos el array de orders??*/
+  tables: [{type: Schema.Types.ObjectId, ref: "Table"}]
 }, {
   timestamps: {
     createdAt: 'created_at',
