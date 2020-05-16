@@ -1,10 +1,15 @@
-import React from 'react'
+import React  from 'react'
 import { useHistory } from 'react-router-dom'
 import Navbar from '../../global/Navbar'
 
-const OrderInfo = () => {
+const OrderInfo = (props) => {
+    console.log("props de infoOrder", props)
+    console.log("dishes", props.location.state.dishesId)
+    console.log("quantity", props.location.state.quantity)
 
     const history = useHistory()
+    let dishes = props.location.state.dishesId // array de dishes
+    let quantities = props.location.state.quantity // array quantity
 
     const handleClick = () => {
         history.push('/profile')
@@ -15,15 +20,15 @@ const OrderInfo = () => {
         <Navbar/>
             <div className="contOrder">
                 <div className="cont-order">
-                    <div className="title">
-                        <h2>Order: Table (filter n mesa)</h2>
-                    </div>
-                    <ul className="orderList">
-                        <li><h4>2 Example</h4></li>
-                        <li><h4>1 Example</h4></li>
-                        <li><h4>3 Example</h4></li>
-                        <li><h4>2 Example</h4></li>
-                        <li><h4>2 Example</h4></li>
+                    <ul>
+                    {dishes.length > 0 ? dishes.map((dish, i) => {
+                    return(
+                        <div className="list" key={dish.name}>
+                            <li>
+                            <h4>{quantities[i]} {dish.name}</h4>
+                            </li>
+                        </div>
+                        )}) : <div className="center">No dish</div>}              
                     </ul>
                 </div>
             <div>

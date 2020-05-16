@@ -11,8 +11,6 @@ const Staff = (props) => {
     const [message, setMessage] = useState("")
     const [allEmployees, setAllEmployees] = useState([])
 
-    
-
     const handleFormSubmit = (e) => {
         e.preventDefault()
         props.addEmployee({name, password})
@@ -116,4 +114,3 @@ const Staff = (props) => {
 }
 
 export default withAuth(Staff)
-

@@ -7,7 +7,7 @@ import LoginEmployee from './pages/LoginEmployee';
 import Signup from './pages/Signup';
 import AuthProvider from './context/AuthProvider';
 import Home from './pages/Home';
-import MainEmployee2 from './pages/MainEmployee2'
+import MainEmployee from './pages/MainEmployee'
 import AddDish from './components/particulares/admin/AddDish';
 import AddMenu from './components/particulares/admin/AddMenu';
 import MainAdmin from './pages/MainAdmin';
@@ -30,7 +30,7 @@ function App() {
         <AnonRoutes exact path='/admin/login' component={LoginAdmin} />
         <AnonRoutes exact path='/employees/login' component={LoginEmployee} />
         <AnonRoutes exact path='/signup' component={Signup} />
-        <AnonRoutes exact path='/main/employee' component={MainEmployee2} />
+        <AnonRoutes exact path='/main/employee' component={MainEmployee} />
         <AnonRoutes exact path='/menu' component={MenuClient} />
         <AnonRoutes exact path='/thankyou' component={FinalMessage} />
         <PrivateRoutes exact path='/dishes/add' component={AddDish} />

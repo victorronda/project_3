@@ -32,6 +32,13 @@ export default {
       .get('/dishes/showAll')
       .then((res) => res.data)
       .catch(errorHandler);
+  },
+
+  getDish(dishId) {
+    return dishes_service
+      .get(`/dishes/${dishId}`)
+      .then((res) => res.data)
+      .catch(errorHandler);
   }
   
 };

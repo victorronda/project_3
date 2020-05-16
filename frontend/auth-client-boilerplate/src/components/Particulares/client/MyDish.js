@@ -37,7 +37,7 @@ const MyDish = (props) => {
 						<button
 							className="d-inline"
 							name={props._id}
-							onClick={()=>props.clicked({_id: props._id, name: props.name, price:props.price, quantity: quantityDish })}
+							onClick={()=>props.clicked({_id: props._id, name: props.name, price:props.price, quantity: Number(quantityDish) })}
 							style={{
 								fontSize: '15px',
 								width: '1.5rem',
@@ -58,4 +58,3 @@ const MyDish = (props) => {
 }
 
 export default MyDish
-

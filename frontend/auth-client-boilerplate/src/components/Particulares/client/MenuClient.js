@@ -7,17 +7,16 @@ import './confirmationModal.css';
 import NavbarEm from '../../global/NavbarEm';
 import DishType from './DishType';
 
-/* BACKEND ROUTE: POST /menus/add */
-
 const MenuClient = () => {
 	const [ dishes, setDishes ] = useState([]);
 	const [ allDishes, setAllDishes ] = useState([]);
 	const [ myMenu, setMyMenu ] = useState([]);
 	const [ showModal, setShowModal ] = useState(false);
+	const [ total ] = useState(0);
 
-const location=useLocation()
-/* FUNCIONAAAAAAA 😄 */
-console.log('Esto es location', location.state.table.editTable[0]._id)
+	const location = useLocation()
+	/* FUNCIONAAAAAAA 😄 */
+	console.log('Esto es location', location.state.table.editTable[0]._id)
 
 	useEffect(() => {
 		getAllDishes();
@@ -52,7 +51,7 @@ console.log('Esto es location', location.state.table.editTable[0]._id)
 		for (let i = 0; i < dishes.length; i++) {
 			total += dishes[i].price * dishes[i].quantity;
 		}
-		return total;
+		return total
 	};
 
 	return (
@@ -166,7 +165,9 @@ console.log('Esto es location', location.state.table.editTable[0]._id)
 					)}
 				</div>
 			</div>
-			<ConfirmOrder isOpen={showModal} closeModal={() => setShowModal(false)} />
+			<ConfirmOrder value={location.state.table.editTable[0]} 
+						  dishes={dishes} bill={total}
+						  isOpen={showModal} closeModal={() => setShowModal(false)} />
 		</div>
 	);
 };

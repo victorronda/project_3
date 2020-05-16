@@ -21,8 +21,6 @@ class FinalMessage extends Component {
     render() {
         const {showText}=this.state
              return (
-                
-                    
                 !showText ?  <div>
             <NavbarEm/>
             <div className="row mw-100">
@@ -36,16 +34,9 @@ class FinalMessage extends Component {
     
             </div>
             </div>
-            : <Redirect to={'/menu'} />   ) 
-
-
-             
-
-    }
-        
+            : <Redirect to={'/main/employee'} />)
+    }    
 }  
 
 
 export default FinalMessage
-
-

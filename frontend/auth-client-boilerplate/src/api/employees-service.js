@@ -15,7 +15,7 @@ export default {
   
   getTable(num) {
     return employees_service
-      .get(`/tables/editNumber`, {params: num}) // _id = tableId
+      .get(`/tables/getNumber`, {params: num}) // _id = tableId
       .then((res) =>{
         console.log('Estoy en employees-service')
         return res.data} )
