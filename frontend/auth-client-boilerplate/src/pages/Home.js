@@ -5,7 +5,7 @@ import NavbarEm from '../components/global/NavbarEm';
 
 const Home = () => {
 	const mainStyle = {
-		margin: '26vh auto'
+		margin: '20vh auto'
     };
     
     const titleStyle = {

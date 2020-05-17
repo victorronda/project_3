@@ -10,11 +10,11 @@ const LoginEmployee = () => {
         <div className="pageEm">
             <div className="formuEmplo">
                 <div className="">
-                    <h2 className="titleEm">Login Employee</h2>
+                    <h4 className="titleEm">Login Employee</h4>
                 </div>
                 <form>
                     <div className="labelsEm">
-                        <label><h4>Name</h4></label>
+                        <label><b>Name</b></label>
                     </div>
                     <div className="">
                         <input className="inputs"
@@ -24,7 +24,7 @@ const LoginEmployee = () => {
                         />
                     </div>
                     <div className="labelsEm">
-                        <label><h4>Password</h4></label>
+                        <label><b>Password</b></label>
                     </div>
                     <div className="">
                         <input className="inputs"
@@ -33,12 +33,12 @@ const LoginEmployee = () => {
                         required
                         />
                     </div>
-                    <div className="btn-login-em">
-                        <Link style={{textDecoration: "none", color: "black"}} className="" to='/main/employee'>Access</Link>
+                    <div className="container-button-log-em">
+                        <Link style={{textDecoration: "none", color: "black"}} className="btn-login-em" to='/main/employee'>Access</Link>
                     </div>
                 </form>
             </div>
-            <div>
+            <div className="mt-3">
                 <Link style={{textDecoration: "none"}} className="linksB" to={"/admin/login"}>If you are the Admin, click here</Link>
             </div>
         </div>
