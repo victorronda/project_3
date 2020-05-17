@@ -3,12 +3,22 @@ import { withAuth } from '../context/AuthProvider'
 import { Link } from "react-router-dom"
 import NavbarEm from '../components/global/NavbarEm'
 
+
+
+
 const Home = () => {
+
+
+
+
+    const mainStyle = {
+        margin: "26.5vh auto"
+    }
     
     return (
         <div>
         <NavbarEm/>
-        <div className="d-block text-center align-content-center" style={{margin: "8em auto"}}>
+        <div className="d-block text-center align-content-center " style={mainStyle}>
             <div>
             <h1 style={{fontSize: "120px"}}>MGBITE</h1>
             </div>
